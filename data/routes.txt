@@ -1,0 +1,218 @@
+route_id,agency_id,route_short_name,route_long_name,route_type,route_color,route_text_color
+1,1,005,Pedregoso 2a Sección - Central De Autobuses,3,a9745b,000000
+2,1,007,Central De Autobuses - Parque Industrial,3,a9745b,000000
+3,1,009,San Pedro Ahuacatlan - Central De Autobuses,3,a9745b,000000
+4,1,010,Cerro Gordo - 5 De Mayo,3,a9745b,000000
+5,1,012,Hospital General - Centro,3,a9745b,000000
+6,1,013,Carrizo - 5 De Mayo,3,a9745b,000000
+7,1,014,Granjas Banthi - Centro,3,a9745b,000000
+8,1,017,Barrio De La Cruz - Centro,3,a9745b,000000
+9,1,019,Pedregoso - Valle Real,3,a9745b,000000
+10,1,020,Valle Real - Central De Autobuses,3,a9745b,000000
+12,1,024,Praderas Del Sol - Centro,3,a9745b,000000
+14,1,028,Rancho De En Medio - Central De Autobuses,3,a9745b,000000
+17,1,031,Pedregoso - Pitsa,3,a9745b,000000
+19,1,036,Vistha (cereso) - 5 De Mayo (paradero),3,a9745b,000000
+20,1,037,La Peña - Centro,3,a9745b,000000
+21,1,038,La Peña - Central De Autobuses,3,a9745b,000000
+22,1,040,Las Aguilas - Universidad Tecnológica (utsjr),3,a9745b,000000
+23,1,041,Francisco Villa - Centro,3,a9745b,000000
+24,1,043,Valle Dorado I - Central De Autobuses,3,a9745b,000000
+25,1,044,Valle Dorado Ii - Centro,3,a9745b,000000
+90,1,L51,Alameda - Santa Barbara,3,f2ac32,000000
+91,1,L52,Segundo Barrio De Dolores - El Mirador,3,f2ac32,000000
+92,1,L53,Terminal Balvanera - Lourdes,3,f2ac32,000000
+93,1,L54,Terminal Balvanera - Col 20 De Enero,3,f2ac32,000000
+94,1,L55,Terminal Balvanera - Los Angeles,3,f2ac32,000000
+95,1,L56,Terminal Balvanera - Fracc Piramides,3,f2ac32,000000
+96,1,C21,Las Flores - Fracc Fray Junipero Serra,3,18b780,000000
+97,1,C22,Fracc Santuarios - Penal,3,18b780,000000
+98,1,C23,Lomas De La Cruz - Terminal De Autobuses (taq),3,18b780,000000
+99,1,T01,Terminal Balvanera - Los Heroes,3,e97936,000000
+112,1,L103,El Pozo - Uaq Aeropuerto,3,f2ac32,000000
+113,1,L104,La Pradera - Zibata,3,f2ac32,000000
+114,1,L105,Penal - Zibata,3,f2ac32,000000
+118,1,MV-R01,La Negreta,3,db3789,000000
+119,1,MV-R02,El Pueblito - Paseos Del Bosque,3,db3789,000000
+120,1,MV-R03,Lourdes - Camino Al Cerrito,3,db3789,000000
+122,1,MV-R05,El Pueblito - Mision Candiles,3,db3789,000000
+123,1,MV-R06,Santa Barbara - La Poza,3,db3789,000000
+124,1,MV-R07,Arroyo Hondo - Presa De Bravo,3,db3789,000000
+125,1,MV-R08,413 Camino A Coroneo - El Jaral,3,db3789,000000
+126,1,MV-R09,Los Angeles - El Pueblito,3,db3789,000000
+127,1,MV-R10,Los Altos Del Pueblito - Industrial El Pueblito,3,db3789,000000
+128,1,L100,Av De La Luz - Terminal Balvanera,3,f2ac32,000000
+129,1,L101,Terminal Blavanera - Imss H Gral No 1,3,f2ac32,000000
+130,1,L102,Valle Dorado - Terminal Balvanera,3,f2ac32,000000
+131,1,L106,La Pradera - Zakia,3,f2ac32,000000
+134,1,C26,Terminal De Autobuses (taq) - Av Zaragoza,3,18b780,000000
+136,1,C28,Av Del Parque - Av Zaragoza,3,18b780,000000
+138,1,C30,Alameda - Cto Moises Solana,3,18b780,000000
+139,1,C32,Blvd De Los Gobernadores - Av Tecnologico,3,18b780,000000
+140,1,L107,Lazaro Cardenas - Criq Queretaro,3,f2ac32,000000
+160,1,L59,San Pedrito El Alto - Linda Vista,3,f2ac32,000000
+162,1,L109,Socavon - Alameda,3,f2ac32,000000
+163,1,L110,Corporativo Santander - Colinas De Menchaca,3,f2ac32,000000
+164,1,L111,Victoria Popular - Prepa Norte Uaq,3,f2ac32,000000
+233,1,L113,Blvd De Las Americas - El Santuario Del Pueblito,3,f2ac32,000000
+234,1,L117,Reforma Agraria - Niños Heroes,3,f2ac32,000000
+235,1,MV-R04,Vista Hermosa - Candiles,3,db3789,000000
+245,1,C58,Fracc Vistana - Puerta Navarra,3,18b780,000000
+255,1,T11,Terminal Balvanera - Parque Industrial Queretaro,3,e97936,000000
+256,1,T12,Av De La Luz - Real Solare,3,e97936,000000
+257,1,C66,Santa Rosa Jauregui - Av De La Luz,3,18b780,000000
+273,1,L119,Santa Rosa Jauregui - Buenavista,3,f2ac32,000000
+274,1,L150,Mompani - La Obrera,3,f2ac32,000000
+275,1,L124,Santa Rosa Jauregui - La Solana,3,f2ac32,000000
+276,1,L120,Santa Rosa Jauregui - La Cantera,3,f2ac32,000000
+277,1,L121,Santa Rosa Jauregui - Cañada De La Monja,3,f2ac32,000000
+278,1,L122,Santa Rosa Jauregui - Casa Blanca,3,f2ac32,000000
+279,1,L123,Santa Rosa Jauregui - San Miguelito,3,f2ac32,000000
+280,1,L114,Santa Rosa Jauregui - Cecyteq 09 Montenegro,3,f2ac32,000000
+281,1,L115,Leyes De Reforma - Corporativo Santander,3,f2ac32,000000
+283,1,C67,Jardines De Jurica - La Obrera,3,18b780,000000
+288,1,UAQ1,Uaq: Centro Universitario - Uaq: Campus Juriquilla,3,0d8bd3,000000
+289,1,UAQ2,Uaq: Centro Universitario - Uaq: Campus Aeropuerto,3,0d8bd3,000000
+303,1,QV-R01,Agua Fria - Jalpan De Serra,3,5e4289,000000
+304,1,QV-R02,Mohonera - Jalpan De Serra,3,5e4289,000000
+305,1,QV-R03,La Arena - Jalpan De Serra,3,5e4289,000000
+306,1,QV-R04,Tancoyol - Jalpan De Serra,3,5e4289,000000
+307,1,QV-R05,Lagunita De San Diego - Jalpan De Serra,3,5e4289,000000
+308,1,QV-R06,El Rodezno - Jalpan De Serra,3,5e4289,000000
+309,1,QV-R07,Santa Agueda (sentido Sur) - Jalpan De Serra,3,5e4289,000000
+310,1,QV-R08,Santa Agueda (sentido Norte) - Jalpan De Serra,3,5e4289,000000
+311,1,QV-R09,Aguacate De San Pedro - Jalpan De Serra,3,5e4289,000000
+312,1,QV-R10,Sauz De Guadalupe - Jalpan De Serra,3,5e4289,000000
+313,1,QV-R11,Pie De La Cuesta - Jalpan De Serra,3,5e4289,000000
+314,1,C70,Santa Rosa Jauregui - La Pradera,3,18b780,000000
+315,1,L161,Cipres Iv - Av De La Luz,3,f2ac32,000000
+316,1,C71,Av De La Luz - Parque Industrial Queretaro,3,18b780,000000
+318,1,L114E,Santa Rosa Jauregui - Cecyteq 09 Montenegro,3,f2ac32,000000
+319,1,C24,La Pradera - Bosques Del Cimatario,3,18b780,000000
+320,1,C25,El Pozo - Cecati 17,3,18b780,000000
+321,1,C27,Vista Azul - Paseos Del Pedregal,3,18b780,000000
+322,1,C29,Terminal De Autobuses (taq) - Los Olvera,3,18b780,000000
+323,1,C31,Paseos De San Miguel - Independencia,3,18b780,000000
+324,1,C33,Fracc Fray Junipero Serra - Independencia,3,18b780,000000
+325,1,C34,Terminal De Autobuses (taq) - La Pradera,3,18b780,000000
+326,1,C35,Blvd De Las Americas - Fracc Fray Junipero Serra,3,18b780,000000
+327,1,C36,Bolaños - Ciudad Del Sol,3,18b780,000000
+328,1,C37,Bolaños Ii - Cecati 17,3,18b780,000000
+329,1,C38,Rancho San Antonio - Alameda,3,18b780,000000
+330,1,C39,Blvd De Las Americas - Av De Las Torres,3,18b780,000000
+331,1,C40,Blvd De Las Americas - Las Teresas,3,18b780,000000
+332,1,C41,Blvd De Las Americas - Cerrito Colorado,3,18b780,000000
+333,1,C42,Hacienda La Gloria - Colinas De La Piedad,3,18b780,000000
+334,1,C43,Col Sergio Villaseñor - Candiles,3,18b780,000000
+335,1,C44,San Pablo - El Portico,3,18b780,000000
+336,1,C46,Los Olvera - Uteq,3,18b780,000000
+337,1,C47,Terminal De Autobuses (taq) - Cam Corregidora,3,18b780,000000
+338,1,C48,Blvd De Las Americas - Fracc Vistana,3,18b780,000000
+339,1,C49,Fracc Vistana - Independencia,3,18b780,000000
+340,1,C50,Col 10 De Abril - Mercado La Cruz,3,18b780,000000
+341,1,C51,Blvd De Las Americas - Rancho San Pedro,3,18b780,000000
+342,1,C52,Paseos De San Miguel - Fracc Vistana,3,18b780,000000
+343,1,C53,Paseos Del Pedregal - Alameda,3,18b780,000000
+344,1,C54,Las Americas - Independencia,3,18b780,000000
+345,1,C55,Col Sergio Villaseñor - Rancho Bellavista,3,18b780,000000
+346,1,C56,Paseos De San Miguel - San Pedrito Peñuelas,3,18b780,000000
+347,1,C57,Terminal De Autobuses (taq) - San Pedrito Peñuelas,3,18b780,000000
+348,1,C60,La Pradera - Plaza Patio,3,18b780,000000
+349,1,C61,Jardines De Azucenas - Mercado La Cruz,3,18b780,000000
+350,1,C62,Col Che Guevara - Paseos Del Pedregal,3,18b780,000000
+351,1,C63,Ciudad Del Sol - Mercado De La Cruz,3,18b780,000000
+352,1,C64,Alameda - El Colorado,3,18b780,000000
+353,1,C65,Las Teresas - Hospital Sagrado Corazon De Jesus,3,18b780,000000
+354,1,C68,Terminal De Autobuses (taq) - Fracc Eduardo Loarca,3,18b780,000000
+355,1,C69,Terminal De Autobuses (taq) - Santa Rosa Jauregui,3,18b780,000000
+356,1,L108,Santa Maria Magdalena - La Comer Zaragoza,3,f2ac32,000000
+357,1,L112,Lomas Del Marques - Plaza Del Parque,3,f2ac32,000000
+358,1,L118,El Salitre - Plaza Del Parque,3,f2ac32,000000
+359,1,L151,Santa Maria Magdalena - Tanque,3,f2ac32,000000
+360,1,L152,Ejido Modelo - Alameda,3,f2ac32,000000
+361,1,L156,Valle De Santiago - Corporativo Santander,3,f2ac32,000000
+362,1,L157,Col Che Guevara - La Obrera,3,f2ac32,000000
+363,1,L158,Juriquilla (km 15) - La Obrera,3,f2ac32,000000
+364,1,L159,El Nabo - La Obrera,3,f2ac32,000000
+365,1,L160,Valle De Santiago - La Obrera,3,f2ac32,000000
+366,1,L57,Alameda - Santa Barbara,3,f2ac32,000000
+367,1,L60,Juncos - La Obrera,3,f2ac32,000000
+368,1,L61,Bosques Del Cimatario - Av De Las Torres,3,f2ac32,000000
+369,1,L62,Socavon - Alameda,3,f2ac32,000000
+370,1,T02,La Pradera - San Jose De Los Olvera,3,e97936,000000
+371,1,T03,Prados Del Sol - Fracc Vistana,3,e97936,000000
+372,1,T04,Desarrollo Familiar - Terminal De Autobuses (taq),3,e97936,000000
+373,1,T05,La Cañada - Los Olvera,3,e97936,000000
+374,1,T06,Terminal De Autobuses (taq) - Juncos,3,e97936,000000
+375,1,T07,Blvd De Las Americas - Fracc Vistana,3,e97936,000000
+376,1,T08,Santa Rosa Jauregui - Terminal De Autobuses Taq,3,e97936,000000
+377,1,T09,Blvd Peña Flor - Terminal De Autobuses (taq),3,e97936,000000
+378,1,T10,Hacienda Mompani - Criq Queretaro,3,e97936,000000
+379,1,T13,La Loma Ix - Alameda,3,e97936,000000
+380,1,L154,El Tintero - Plaza Del Parque,3,f2ac32,000000
+381,1,L155,Rancho Bellavista - Tanque,3,f2ac32,000000
+382,1,T14,Terminal De Autobuses (taq) - Pedro Escobedo - La Lira,3,e97936,000000
+383,1,T15,Terminal Balvanera - Huimilpan,3,e97936,000000
+384,1,M216,Av Pie De La Cuesta - Av Sombrerete - Av Zaragoza,3,6699cc,000000
+385,1,M217,Av Zaragoza - Blvd Bernardo Quintana - Av Universidad,3,6699cc,000000
+386,1,AIQ01,Alameda - Aeropuerto Internacional De Queretaro,3,00ffff,000000
+388,1,M218,Santa Rosa Jauregui - La Versolilla,3,6699cc,000000
+389,1,M219,Santa Rosa Jauregui - La Estacada,3,6699cc,000000
+390,1,M220,Santa Catarina - Palo Alto,3,6699cc,000000
+391,1,M221,Santa Catarina - La Gotera,3,6699cc,000000
+392,1,M222,Santa Catarina - La Cienega,3,6699cc,000000
+393,1,M223,Santa Catarina - La Palma,3,6699cc,000000
+394,1,M224,Santa Catarina - Ojo De Agua,3,6699cc,000000
+395,1,M225,Santa Catarina - La Cantera,3,6699cc,000000
+396,1,T16,Lagunillas - Alameda,3,e97936,000000
+397,1,C72,Fracc Viñedos - Prol Av Zaragoza,3,18b780,000000
+398,1,R301,Hacienda Mompani - Alameda,3,ff0000,000000
+399,1,R302,Uteq - Alameda,3,ff0000,000000
+402,1,T03X,Prados Del Sol - Fracc Vistana,3,e97936,000000
+403,1,T06X,Terminal De Autobuses (taq) - Juncos,3,e97936,000000
+405,1,T09X,Blvd Peña Flor - Terminal De Autobuses (taq),3,e97936,000000
+408,1,C73,Terminal Balvanera - Terminal De Autobuses (taq),3,18b780,000000
+409,1,L164,Socavon - Mercado De La Cruz,3,f2ac32,000000
+410,1,M214,Av De La Luz - Paseo San Miguel,3,6699cc,000000
+411,1,M215,Azteca - Alameda,3,6699cc,000000
+412,1,L112E,Bolaños - Lomas Del Marques,3,f2ac32,000000
+413,1,L162,Santa Rosa Jauregui - Pintillo,3,f2ac32,000000
+414,1,M226,La Tinaja De La Estancia - Tlacote El Bajo,3,6699cc,000000
+415,1,M227,El Zapote - Av De La Luz,3,6699cc,000000
+416,1,M228,Tlacote El Alto - Tlacote El Bajo,3,6699cc,000000
+417,1,M229,Las Lajitas - Fracc Hacienda Santa Rosa,3,6699cc,000000
+418,1,C74,Lagunillas - Huimilpan,3,18b780,000000
+419,1,M230,El Pie - La Tinaja De La Estancia,3,6699cc,000000
+420,1,M231,Cerro Prieto - La Tinaja De La Estancia,3,6699cc,000000
+421,1,M232,El Patol - Mompani,3,6699cc,000000
+422,1,L165,Blvd Villas Del Meson - Cumbres Del Lago,3,f2ac32,000000
+428,1,23,Tequisquiapan - Ezequiel Montes,3,555b5b,000000
+429,1,62,San Juan Del Rio - Tequisquiapan,3,555b5b,000000
+430,1,001,Pedregoso - Centro,3,a9745b,000000
+431,1,002,Pedregoso - Universidad Tecnologica (utsjr),3,a9745b,000000
+432,1,004,Col Industrial Nuevo San Juan - Centro,3,a9745b,000000
+433,1,008,Central De Autobuses - San Isidro,3,a9745b,000000
+434,1,009B,Fraccionamiento La Rueda - Centro,3,a9745b,000000
+435,1,011,Loma Alta - Central De Autobuses,3,a9745b,000000
+436,1,011B,Loma Alta - Centro,3,a9745b,000000
+437,1,015B,Solares Banthi - 5 De Mayo,3,a9745b,000000
+438,1,016,Infonavit La Paz - Centro,3,a9745b,000000
+439,1,018,Nuevo San Isidro - Centro,3,a9745b,000000
+440,1,022,Pedregoso - Centro,3,a9745b,000000
+441,1,023,Lomas Del Pedregal - Centro,3,a9745b,000000
+442,1,024C,Las Torres - Central De Autobuses,3,a9745b,000000
+443,1,025,Las Aguilas - Centro,3,a9745b,000000
+444,1,030,Infonavit La Paz - Central De Autobuses,3,a9745b,000000
+445,1,032,Vistha - Central De Autobuses,3,a9745b,000000
+446,1,039,Francisco Villa - Central De Autobuses,3,a9745b,000000
+447,1,042,Manantiales / Nogales - Centro,3,a9745b,000000
+448,1,046,Manantiales - Nogales - Imss,3,a9745b,000000
+449,1,047,La Rueda - Central De Autobuses,3,a9745b,000000
+450,1,M233,San Isidro El Alto - Mompani,3,6699cc,000000
+451,1,L153,El Calichar - Terminal Balvanera,3,f2ac32,000000
+452,1,L163,El Granjeno - Apapataro,3,f2ac32,000000
+453,1,L166,Huimilpan - Carranza,3,f2ac32,000000
+454,1,L167,Huimilpan - Entronque El Vegil,3,f2ac32,000000
+455,1,L168,San Antonio La Galera - Lagunillas,3,f2ac32,000000
+456,1,L169,Huitron - Entronque El Vegil,3,f2ac32,000000
+459,1,RA01,Plaza Del Parque - Ezequiel Montes (ruta De Apoyo Sin Costo),3,00ffff,000000
