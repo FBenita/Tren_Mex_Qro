@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_e2f2fde3d32e46987f3b5eb10253e1d7 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_e2f2fde3d32e46987f3b5eb10253e1d7" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_e2f2fde3d32e46987f3b5eb10253e1d7 = L.map(
+                "map_e2f2fde3d32e46987f3b5eb10253e1d7",
+                {
+                    center: [20.600611, -100.402184],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 13,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_28a4518f465901eae852474d9eb9a0de = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_28a4518f465901eae852474d9eb9a0de.addTo(map_e2f2fde3d32e46987f3b5eb10253e1d7);
+        
+    
+            var marker_456e61389423e1074a227cd41c3bf959 = L.marker(
+                [20.600611, -100.402184],
+                {
+}
+            ).addTo(map_e2f2fde3d32e46987f3b5eb10253e1d7);
+        
+    
+            var icon_a4ca0fc1f00bd8bf0b4b2761bfb4f104 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "flag",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_fb45a7225e4323849cc5e3d43adaa6df = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_f288ba80fcdf3646421a55f327088c41 = $(`<div id="html_f288ba80fcdf3646421a55f327088c41" style="width: 100.0%; height: 100.0%;"><b>Estación Corregidora</b><br>Parada GTFS cercana: Estío/Calle Dr. Manuel Domínguez<br>Distancia: 211 m</div>`)[0];
+                popup_fb45a7225e4323849cc5e3d43adaa6df.setContent(html_f288ba80fcdf3646421a55f327088c41);
+            
+        
+
+        marker_456e61389423e1074a227cd41c3bf959.bindPopup(popup_fb45a7225e4323849cc5e3d43adaa6df)
+        ;
+
+        
+    
+    
+            marker_456e61389423e1074a227cd41c3bf959.bindTooltip(
+                `<div>
+                     Estación Corregidora
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_456e61389423e1074a227cd41c3bf959.setIcon(icon_a4ca0fc1f00bd8bf0b4b2761bfb4f104);
+            
+    
+            var circle_marker_7fffa5c02e954cc9ac089129baff1c1d = L.circleMarker(
+                [20.599573, -100.400492],
+                {"bubblingMouseEvents": true, "color": "darkred", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "darkred", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5, "stroke": true, "weight": 3}
+            ).addTo(map_e2f2fde3d32e46987f3b5eb10253e1d7);
+        
+    
+            circle_marker_7fffa5c02e954cc9ac089129baff1c1d.bindTooltip(
+                `<div>
+                     Parada destino GTFS: Estío/Calle Dr. Manuel Domínguez
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var feature_group_8f71bb5d1e352b5509c66418d3ef7f39 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var circle_marker_0c1100d0b8750da3249bc866ad507e3e = L.circleMarker(
+                [20.60382854, -100.3994944],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_8f71bb5d1e352b5509c66418d3ef7f39);
+        
+    
+            circle_marker_0c1100d0b8750da3249bc866ad507e3e.bindTooltip(
+                `<div>
+                     Av. Felipe Ángeles/Av. San Roque | 6.9 min | C54
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_cb41e566e44bd19ae7aab5eda33c4bcf = L.circleMarker(
+                [20.60575258, -100.3994738],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_8f71bb5d1e352b5509c66418d3ef7f39);
+        
+    
+            circle_marker_cb41e566e44bd19ae7aab5eda33c4bcf.bindTooltip(
+                `<div>
+                     Felipe Ángeles/Fraternidad | 7.6 min | C54
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_4c6905e4ba3da16d39ec5b2722f4f3e6 = L.circleMarker(
+                [20.607203547483, -100.3994563094],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_8f71bb5d1e352b5509c66418d3ef7f39);
+        
+    
+            circle_marker_4c6905e4ba3da16d39ec5b2722f4f3e6.bindTooltip(
+                `<div>
+                     Av. Felipe Ángeles/Plan de Ayala Poniente | 8.1 min | C54
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_4ff388c7f3bb3ac8f8047ebbe995a1e7 = L.circleMarker(
+                [20.60958598, -100.3994269],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_8f71bb5d1e352b5509c66418d3ef7f39);
+        
+    
+            circle_marker_4ff388c7f3bb3ac8f8047ebbe995a1e7.bindTooltip(
+                `<div>
+                     Av. Felipe Ángeles/Calle del Porvenir | 8.9 min | C54
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_f66d3c2890617aad8ffdc2bd491b221b = L.circleMarker(
+                [20.61130038, -100.3996564],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_8f71bb5d1e352b5509c66418d3ef7f39);
+        
+    
+            circle_marker_f66d3c2890617aad8ffdc2bd491b221b.bindTooltip(
+                `<div>
+                     Av. Felipe Ángeles/Felipe Ángeles 225 | 9.6 min | C54
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_898d18dca245bfd3cfa92f6d27639cf5 = L.circleMarker(
+                [20.612683725801, -100.39982101305],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_8f71bb5d1e352b5509c66418d3ef7f39);
+        
+    
+            circle_marker_898d18dca245bfd3cfa92f6d27639cf5.bindTooltip(
+                `<div>
+                     Av. Felipe Ángeles/Estadística | 10.1 min | C54
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_3dfcb2a689772dbe8cec2577b88c2e5a = L.circleMarker(
+                [20.61253538, -100.4017958],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_8f71bb5d1e352b5509c66418d3ef7f39);
+        
+    
+            circle_marker_3dfcb2a689772dbe8cec2577b88c2e5a.bindTooltip(
+                `<div>
+                     Epigmenio González/Departamental Parques | 10.7 min | C54
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_aea60181c774f3ba065dfffe1ff483ad = L.circleMarker(
+                [20.61262157, -100.4098494],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_8f71bb5d1e352b5509c66418d3ef7f39);
+        
+    
+            circle_marker_aea60181c774f3ba065dfffe1ff483ad.bindTooltip(
+                `<div>
+                     Prol. Tecnológico/Calle San Joaquín | 13.4 min | C54
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_a68ad071f2d597952e1eab3f094cf155 = L.circleMarker(
+                [20.615897, -100.4101382],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_8f71bb5d1e352b5509c66418d3ef7f39);
+        
+    
+            circle_marker_a68ad071f2d597952e1eab3f094cf155.bindTooltip(
+                `<div>
+                     Prol. Tecnológico/Ford Citelis Querétaro | 14.6 min | C54
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_9b5de86a1bb4ddfa2a5081b331dedf07 = L.circleMarker(
+                [20.62166004, -100.4112608],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_8f71bb5d1e352b5509c66418d3ef7f39);
+        
+    
+            circle_marker_9b5de86a1bb4ddfa2a5081b331dedf07.bindTooltip(
+                `<div>
+                     Av. Cerro Sombrerete/Av. Playa Roqueta | 16.6 min | C54
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_c865bd669003e89e36c410e321abb9b4 = L.circleMarker(
+                [20.62348791, -100.41194],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_8f71bb5d1e352b5509c66418d3ef7f39);
+        
+    
+            circle_marker_c865bd669003e89e36c410e321abb9b4.bindTooltip(
+                `<div>
+                     Av. Cerro Sombrerete/Cerro del Peñón | 27.8 min | C54
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_0377a128b80cd550ca30772f769e41c4 = L.circleMarker(
+                [20.62617403, -100.4126216],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_8f71bb5d1e352b5509c66418d3ef7f39);
+        
+    
+            circle_marker_0377a128b80cd550ca30772f769e41c4.bindTooltip(
+                `<div>
+                     Av. Cerro Sombrerete/Fidel Velázquez | 28.8 min | C54
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_08372d3397eacc0083083a97d38ee3fc = L.circleMarker(
+                [20.62692366, -100.4127094],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_8f71bb5d1e352b5509c66418d3ef7f39);
+        
+    
+            circle_marker_08372d3397eacc0083083a97d38ee3fc.bindTooltip(
+                `<div>
+                     Av. Cerro Sombrerete/J. Elías Piña | 29.1 min | C54
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_c45620a276393f0744a1f96ab59b4869 = L.circleMarker(
+                [20.62540821, -100.4173307],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_8f71bb5d1e352b5509c66418d3ef7f39);
+        
+    
+            circle_marker_c45620a276393f0744a1f96ab59b4869.bindTooltip(
+                `<div>
+                     Prol. Ometecutli/Calle Luis Quintero | 20.2 min | C54
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_3ae1c9ebd4580b881016c6fadfff0fa0 = L.circleMarker(
+                [20.62453921, -100.4179384],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.75, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_8f71bb5d1e352b5509c66418d3ef7f39);
+        
+    
+            circle_marker_3ae1c9ebd4580b881016c6fadfff0fa0.bindTooltip(
+                `<div>
+                     Prol. Ometecutli/Cerro del Tezcaltzin | 20.5 min | C54
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            feature_group_8f71bb5d1e352b5509c66418d3ef7f39.addTo(map_e2f2fde3d32e46987f3b5eb10253e1d7);
+        
+    
+            var feature_group_b7d3bdf3f5661d720d934221f1acd2c5 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var circle_marker_02c7310053b64e18dd3f448c9e65348f = L.circleMarker(
+                [20.61597957, -100.4031612],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_b7d3bdf3f5661d720d934221f1acd2c5);
+        
+    
+            circle_marker_02c7310053b64e18dd3f448c9e65348f.bindTooltip(
+                `<div>
+                     Prol. Ezequiel Montes/Soriana Hiper | 23.0 min | T07 → C54 | 1 transbordo(s)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_8b07bb62d39e671cff5b436df389a84a = L.circleMarker(
+                [20.60799432, -100.4065914],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_b7d3bdf3f5661d720d934221f1acd2c5);
+        
+    
+            circle_marker_8b07bb62d39e671cff5b436df389a84a.bindTooltip(
+                `<div>
+                     Epigmenio González/Prol. Porvenir | 28.2 min | C33 → C54 | 1 transbordo(s)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_33c3debd7cc841c132abfef4e66c530a = L.circleMarker(
+                [20.606326873816, -100.40671834965],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_b7d3bdf3f5661d720d934221f1acd2c5);
+        
+    
+            circle_marker_33c3debd7cc841c132abfef4e66c530a.bindTooltip(
+                `<div>
+                     Ejido/Epigmenio González | 28.8 min | C33 → C54 | 1 transbordo(s)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_6232f02aad38f62e240d27efc5f0e616 = L.circleMarker(
+                [20.61981687, -100.4050703],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_b7d3bdf3f5661d720d934221f1acd2c5);
+        
+    
+            circle_marker_6232f02aad38f62e240d27efc5f0e616.bindTooltip(
+                `<div>
+                     Río Tuxpan | 25.2 min | T07 → C54 | 1 transbordo(s)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_29221a95ed6d4eef28d48cd6f9b2af36 = L.circleMarker(
+                [20.603042195486, -100.40655562462],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_b7d3bdf3f5661d720d934221f1acd2c5);
+        
+    
+            circle_marker_29221a95ed6d4eef28d48cd6f9b2af36.bindTooltip(
+                `<div>
+                     Ejido/Luis G. Urbina | 30.0 min | C33 → C54 | 1 transbordo(s)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_458b06c09b2c1c48f35f4e7ec1f723fe = L.circleMarker(
+                [20.61937229, -100.4113686],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_b7d3bdf3f5661d720d934221f1acd2c5);
+        
+    
+            circle_marker_458b06c09b2c1c48f35f4e7ec1f723fe.bindTooltip(
+                `<div>
+                     San Pablo/Loma de San Pablo | 25.5 min | C62 → C54 | 1 transbordo(s)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_b730aec8946b445b3d04a5607c2a5f7b = L.circleMarker(
+                [20.62289613, -100.4058467],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_b7d3bdf3f5661d720d934221f1acd2c5);
+        
+    
+            circle_marker_b730aec8946b445b3d04a5607c2a5f7b.bindTooltip(
+                `<div>
+                     Playa Roqueta | 24.5 min | T07 → C54 | 1 transbordo(s)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_2b5535b8f483f305a5d64bccf9b08664 = L.circleMarker(
+                [20.62096919, -100.4171309],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_b7d3bdf3f5661d720d934221f1acd2c5);
+        
+    
+            circle_marker_2b5535b8f483f305a5d64bccf9b08664.bindTooltip(
+                `<div>
+                     San Pablo/Cerro del Tambor | 27.8 min | C62 → C54 | 1 transbordo(s)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_f574e5c5c7138382a4feb99c62fec268 = L.circleMarker(
+                [20.60515042, -100.4096622],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_b7d3bdf3f5661d720d934221f1acd2c5);
+        
+    
+            circle_marker_f574e5c5c7138382a4feb99c62fec268.bindTooltip(
+                `<div>
+                     Epigmenio González/Ramiro de Maeztu | 24.2 min | L154 → C54 | 1 transbordo(s)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_276884d047678a4ee79f696d0863e55e = L.circleMarker(
+                [20.592562, -100.405659],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_b7d3bdf3f5661d720d934221f1acd2c5);
+        
+    
+            circle_marker_276884d047678a4ee79f696d0863e55e.bindTooltip(
+                `<div>
+                     Av. Tecnológico/Calle Mariano Escobedo | 28.1 min | C33 → C54 | 1 transbordo(s)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_f985204d3c5383dc95e8ee1b5dd06726 = L.circleMarker(
+                [20.62882395, -100.4065859],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_b7d3bdf3f5661d720d934221f1acd2c5);
+        
+    
+            circle_marker_f985204d3c5383dc95e8ee1b5dd06726.bindTooltip(
+                `<div>
+                     Constitución | 27.5 min | T07 → C54 | 1 transbordo(s)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_9e9af4ca25e139a2357d684fdef7bd50 = L.circleMarker(
+                [20.590732462797, -100.40488505147],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_b7d3bdf3f5661d720d934221f1acd2c5);
+        
+    
+            circle_marker_9e9af4ca25e139a2357d684fdef7bd50.bindTooltip(
+                `<div>
+                     Av Tecnológico/Miguel Hidalgo | 28.8 min | C33 → C54 | 1 transbordo(s)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_5ce914f33d01dfec039d775a5a5ac29c = L.circleMarker(
+                [20.61831958, -100.4081933],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_b7d3bdf3f5661d720d934221f1acd2c5);
+        
+    
+            circle_marker_5ce914f33d01dfec039d775a5a5ac29c.bindTooltip(
+                `<div>
+                     Blvd. Bernardo Quintana/Chedraui | 28.9 min | C63 → T07 → C54 | 2 transbordo(s)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_4f2345f89f7a9ca2bf17e293d49e540a = L.circleMarker(
+                [20.604665809191, -100.41144844237],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_b7d3bdf3f5661d720d934221f1acd2c5);
+        
+    
+            circle_marker_4f2345f89f7a9ca2bf17e293d49e540a.bindTooltip(
+                `<div>
+                     Epigmenio González/Bonafont Querétaro | 28.6 min | L154 → C54 | 1 transbordo(s)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_93c8a9a9fb040cc97b71aa3c656533b3 = L.circleMarker(
+                [20.61879935, -100.4216893],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_b7d3bdf3f5661d720d934221f1acd2c5);
+        
+    
+            circle_marker_93c8a9a9fb040cc97b71aa3c656533b3.bindTooltip(
+                `<div>
+                     Obrera | 29.8 min | C62 → C54 | 1 transbordo(s)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_e1245e4d7513b7aedb5b037df8a19795 = L.circleMarker(
+                [20.614823, -100.386397],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_b7d3bdf3f5661d720d934221f1acd2c5);
+        
+    
+            circle_marker_e1245e4d7513b7aedb5b037df8a19795.bindTooltip(
+                `<div>
+                     Blvd. Bernardo Quintana/Calle Mango | 27.8 min | C24 → C33 → C54 | 2 transbordo(s)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_19bc376237c4c7b4b84a59ddb84ec5c9 = L.circleMarker(
+                [20.59583114, -100.4151744],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 3}
+            ).addTo(feature_group_b7d3bdf3f5661d720d934221f1acd2c5);
+        
+    
+            circle_marker_19bc376237c4c7b4b84a59ddb84ec5c9.bindTooltip(
+                `<div>
+                     Río Querétaro | 28.6 min | C34 → C62 → C54 | 2 transbordo(s)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            feature_group_b7d3bdf3f5661d720d934221f1acd2c5.addTo(map_e2f2fde3d32e46987f3b5eb10253e1d7);
+        
+    
+            var feature_group_9202487bd6aa6f2e7bc7dac863e26325 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var poly_line_e99db6749f75e2d0c82ad1f844284a8d = L.polyline(
+                [[20.60382854, -100.3994944], [20.599573, -100.400492]],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.65, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_9202487bd6aa6f2e7bc7dac863e26325);
+        
+    
+            poly_line_e99db6749f75e2d0c82ad1f844284a8d.bindTooltip(
+                `<div>
+                     C54 | 6.9 min
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_35e876eede31f165db35e8829bfd8b56 = L.polyline(
+                [[20.61597957, -100.4031612], [20.612683725801, -100.39982101305], [20.61130038, -100.3996564], [20.60958598, -100.3994269], [20.607203547483, -100.3994563094], [20.60575258, -100.3994738], [20.60382854, -100.3994944], [20.599573, -100.400492]],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "orange", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.65, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_9202487bd6aa6f2e7bc7dac863e26325);
+        
+    
+            poly_line_35e876eede31f165db35e8829bfd8b56.bindTooltip(
+                `<div>
+                     T07 → C54 | 23.0 min
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_933446ed8dc962ec0ed05d70ab5f267d = L.polyline(
+                [[20.60515042, -100.4096622], [20.60799432, -100.4065914], [20.61253538, -100.4017958], [20.612683725801, -100.39982101305], [20.61130038, -100.3996564], [20.60958598, -100.3994269], [20.607203547483, -100.3994563094], [20.60575258, -100.3994738], [20.60382854, -100.3994944], [20.599573, -100.400492]],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "orange", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.65, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_9202487bd6aa6f2e7bc7dac863e26325);
+        
+    
+            poly_line_933446ed8dc962ec0ed05d70ab5f267d.bindTooltip(
+                `<div>
+                     L154 → C54 | 24.2 min
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_0d1f1d7a97d2234c3e748ffd90d7023a = L.polyline(
+                [[20.61937229, -100.4113686], [20.615897, -100.4101382], [20.61262157, -100.4098494], [20.61253538, -100.4017958], [20.612683725801, -100.39982101305], [20.61130038, -100.3996564], [20.60958598, -100.3994269], [20.607203547483, -100.3994563094], [20.60575258, -100.3994738], [20.60382854, -100.3994944], [20.599573, -100.400492]],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "orange", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.65, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_9202487bd6aa6f2e7bc7dac863e26325);
+        
+    
+            poly_line_0d1f1d7a97d2234c3e748ffd90d7023a.bindTooltip(
+                `<div>
+                     C62 → C54 | 25.5 min
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_3a76ce087a022e5b15cfab59f7a0c2b6 = L.polyline(
+                [[20.614823, -100.386397], [20.617882076716, -100.39017545266], [20.615545651003, -100.39014446414], [20.612683725801, -100.39982101305], [20.61130038, -100.3996564], [20.60958598, -100.3994269], [20.607203547483, -100.3994563094], [20.60575258, -100.3994738], [20.60382854, -100.3994944], [20.599573, -100.400492]],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "orange", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.65, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_9202487bd6aa6f2e7bc7dac863e26325);
+        
+    
+            poly_line_3a76ce087a022e5b15cfab59f7a0c2b6.bindTooltip(
+                `<div>
+                     C24 → C33 → C54 | 27.8 min
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_b36451e37bbc76c2e7f548976d90004d = L.polyline(
+                [[20.592562, -100.405659], [20.59517201, -100.4067738], [20.59854242, -100.4064978], [20.603042195486, -100.40655562462], [20.606326873816, -100.40671834965], [20.60799432, -100.4065914], [20.61253538, -100.4017958], [20.612683725801, -100.39982101305], [20.61130038, -100.3996564], [20.60958598, -100.3994269], [20.607203547483, -100.3994563094], [20.60575258, -100.3994738], [20.60382854, -100.3994944], [20.599573, -100.400492]],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "orange", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.65, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_9202487bd6aa6f2e7bc7dac863e26325);
+        
+    
+            poly_line_b36451e37bbc76c2e7f548976d90004d.bindTooltip(
+                `<div>
+                     C33 → C54 | 28.1 min
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_31a017535498f711171cc2a18e088080 = L.polyline(
+                [[20.59583114, -100.4151744], [20.60492664, -100.4177682], [20.61259758, -100.4199457], [20.61879935, -100.4216893], [20.62096919, -100.4171309], [20.61937229, -100.4113686], [20.615897, -100.4101382], [20.61262157, -100.4098494], [20.61253538, -100.4017958], [20.612683725801, -100.39982101305], [20.61130038, -100.3996564], [20.60958598, -100.3994269], [20.607203547483, -100.3994563094], [20.60575258, -100.3994738], [20.60382854, -100.3994944], [20.599573, -100.400492]],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "orange", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.65, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_9202487bd6aa6f2e7bc7dac863e26325);
+        
+    
+            poly_line_31a017535498f711171cc2a18e088080.bindTooltip(
+                `<div>
+                     C34 → C62 → C54 | 28.6 min
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_984e72d4bce361454abf6599d1ed028d = L.polyline(
+                [[20.61831958, -100.4081933], [20.61723191, -100.4047427], [20.61597957, -100.4031612], [20.612683725801, -100.39982101305], [20.61130038, -100.3996564], [20.60958598, -100.3994269], [20.607203547483, -100.3994563094], [20.60575258, -100.3994738], [20.60382854, -100.3994944], [20.599573, -100.400492]],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "orange", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.65, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_9202487bd6aa6f2e7bc7dac863e26325);
+        
+    
+            poly_line_984e72d4bce361454abf6599d1ed028d.bindTooltip(
+                `<div>
+                     C63 → T07 → C54 | 28.9 min
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            feature_group_9202487bd6aa6f2e7bc7dac863e26325.addTo(map_e2f2fde3d32e46987f3b5eb10253e1d7);
+        
+    
+            var layer_control_39051bc166bc63ffb0fa169a38ac9390_layers = {
+                base_layers : {
+                    "openstreetmap" : tile_layer_28a4518f465901eae852474d9eb9a0de,
+                },
+                overlays :  {
+                    "Paradas directas (15)" : feature_group_8f71bb5d1e352b5509c66418d3ef7f39,
+                    "Paradas con transbordo (17)" : feature_group_b7d3bdf3f5661d720d934221f1acd2c5,
+                    "Trayectos representativos (8)" : feature_group_9202487bd6aa6f2e7bc7dac863e26325,
+                },
+            };
+            let layer_control_39051bc166bc63ffb0fa169a38ac9390 = L.control.layers(
+                layer_control_39051bc166bc63ffb0fa169a38ac9390_layers.base_layers,
+                layer_control_39051bc166bc63ffb0fa169a38ac9390_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": false,
+  "autoZIndex": true,
+}
+            ).addTo(map_e2f2fde3d32e46987f3b5eb10253e1d7);
+
+        
+    
+            map_e2f2fde3d32e46987f3b5eb10253e1d7.fitBounds(
+                [[20.600611, -100.402184], [20.60382854, -100.3994944], [20.60575258, -100.3994738], [20.607203547483, -100.3994563094], [20.60958598, -100.3994269], [20.61130038, -100.3996564], [20.612683725801, -100.39982101305], [20.61253538, -100.4017958], [20.61262157, -100.4098494], [20.615897, -100.4101382], [20.62166004, -100.4112608], [20.62348791, -100.41194], [20.61597957, -100.4031612], [20.60799432, -100.4065914], [20.62617403, -100.4126216], [20.62692366, -100.4127094], [20.606326873816, -100.40671834965], [20.61981687, -100.4050703], [20.603042195486, -100.40655562462], [20.62540821, -100.4173307], [20.62453921, -100.4179384], [20.61937229, -100.4113686], [20.62289613, -100.4058467], [20.62096919, -100.4171309], [20.60515042, -100.4096622], [20.592562, -100.405659], [20.62882395, -100.4065859], [20.590732462797, -100.40488505147], [20.61831958, -100.4081933], [20.604665809191, -100.41144844237], [20.61879935, -100.4216893], [20.614823, -100.386397], [20.59583114, -100.4151744]],
+                {}
+            );
+        
+</script>
+</html>
