@@ -17,7 +17,8 @@ Tren_Mex_Qro/
 │   └── trips.txt
 ├── scripts/
 │   ├── PromedioRutas.ipynb
-│   └── RutasQroBus.ipynb
+│   ├── RutasQroBus.ipynb
+│   └── gtfs_network.py
 ├── .env.example
 ├── .gitignore
 ├── requirements.txt
@@ -35,25 +36,32 @@ Los archivos de `data/` forman el conjunto GTFS local:
 
 ### `RutasQroBus.ipynb`
 
-Es el análisis principal. Construye un grafo dirigido de la red GTFS y calcula el camino de menor tiempo hacia la parada más cercana a la estación Corregidora. El cálculo:
+Es el análisis y la visualización final. Carga los caminos mínimos que `PromedioRutas.ipynb` dejó en `data/rutas_base_gtfs.csv`, incorpora las correcciones disponibles y genera el mapa. No vuelve a ejecutar Dijkstra.
+
+El cálculo compartido:
 
 - conserva correctamente horarios GTFS superiores a `24:00:00`;
 - usa la mediana del tiempo programado de cada segmento;
 - agrega una penalización configurable por cada transbordo;
 - separa conexiones directas de recorridos con transbordos;
-- genera un único mapa interactivo;
+- genera un mapa interactivo principal sin visualizaciones duplicadas;
+- incluye todas las paradas que pueden llegar en menos de 30 minutos por el lado sur sin cruzar las vías, con un último tramo a pie de hasta 10 minutos;
 - consume las correcciones de Google si ya fueron generadas.
 
-Puede ejecutarse sin una API key y sin realizar solicitudes facturables.
+Puede ejecutarse sin una API key y sin realizar solicitudes facturables, pero requiere ejecutar primero `PromedioRutas.ipynb` con la API activada o desactivada.
+
+El escenario sin cruces genera `data/mapa_paradas_sur_vias_30_min.html`. Sus tiempos combinan la mediana programada del autobús con una caminata final aproximada en línea recta; no representan navegación ni tráfico en tiempo real.
 
 ### `PromedioRutas.ipynb`
 
-Complementa el cálculo GTFS mediante Google Maps Routes API. Consulta una matriz de rutas en transporte público desde las paradas candidatas hacia Corregidora y genera:
+Construye la red GTFS y ejecuta Dijkstra para dos problemas distintos: la red general y la red del lado sur después de retirar los segmentos que cruzan las vías. Guarda ambos resultados para que `RutasQroBus.ipynb` no repita los cálculos. De forma opcional, complementa el análisis mediante Google Maps Routes API. Genera:
 
 ```text
 data/google_maps_transit_observaciones.csv
 data/promedio_atrasos_google_por_ruta.csv
 data/tiempos_corregidos_google.csv
+data/rutas_base_gtfs.csv
+data/rutas_base_sur_vias.csv
 ```
 
 Las consultas están desactivadas de forma predeterminada. Este notebook solamente llama a Google cuando `EJECUTAR_GOOGLE_MAPS=true` en `.env`.
@@ -184,8 +192,8 @@ jupyter lab
 Esta opción no utiliza Google Maps ni genera cargos.
 
 1. Confirma que `EJECUTAR_GOOGLE_MAPS=false`.
-2. Abre `scripts/RutasQroBus.ipynb`.
-3. Selecciona **Run > Run All Cells**.
+2. Abre `scripts/PromedioRutas.ipynb` y ejecuta todas las celdas. Esto calcula los escenarios general y sin cruces, pero no consulta Google.
+3. Abre `scripts/RutasQroBus.ipynb` y ejecuta todas las celdas. Este notebook reutiliza el cálculo anterior.
 4. Revisa las tablas de paradas directas, paradas con transbordos e itinerarios dentro de 30 minutos.
 5. Usa el control de capas del mapa para mostrar u ocultar cada categoría.
 
@@ -210,13 +218,15 @@ Para obtener un promedio representativo, `PromedioRutas.ipynb` debe ejecutarse e
 ```text
 Archivos GTFS locales
         │
-        ├──> RutasQroBus.ipynb ──> cálculo GTFS, transbordos y mapa
-        │
-        └──> PromedioRutas.ipynb ──> Routes API
-                                      │
-                                      └──> tiempos_corregidos_google.csv
+        └──> PromedioRutas.ipynb ──> Dijkstra general ──> rutas_base_gtfs.csv
+                    │
+                    ├──> retirar cruces ferroviarios
+                    │             │
+                    │             └──> Dijkstra lado sur ──> rutas_base_sur_vias.csv
+                    └──> Routes API opcional ──> tiempos_corregidos_google.csv
                                                        │
-                                                       └──> RutasQroBus.ipynb
+                  archivos de rutas base ──────────────┤
+                                                       └──> RutasQroBus.ipynb ──> mapa
 ```
 
 ## Consideraciones del análisis
