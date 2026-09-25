@@ -1,0 +1,14 @@
+# Ejecución y kernel de los notebooks
+jupyterlab>=4.2,<5
+ipykernel>=6.29,<7
+ipython>=8.20,<10
+
+# Procesamiento y análisis de datos
+numpy>=1.26,<3
+pandas>=2.2,<3
+
+# Consulta de Google Maps Routes API
+requests>=2.31,<3
+
+# Mapa interactivo de resultados
+folium>=0.16,<1
