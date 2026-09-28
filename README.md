@@ -11,21 +11,27 @@ De manera opcional, el proyecto consulta Google Maps Routes API en modo transpor
 ```text
 Tren_Mex_Qro/
 ├── data/
-│   ├── routes.txt
-│   ├── stop_times.txt
-│   ├── stops.txt
-│   └── trips.txt
+│   ├── gtfs/                  # archivos fuente de QroBus
+│   ├── processed/             # CSV y JSON generados
+│   ├── cache/                 # descargas externas reutilizables
+│   └── README.md
+├── maps/                      # copias HTML de los mapas
 ├── scripts/
+│   ├── demanda_potencial_inegi.py
 │   ├── PromedioRutas.ipynb
+│   ├── qrobus_maps.py
 │   ├── RutasQroBus.ipynb
+│   ├── tiempos_totales_rutas_gtfs.py
 │   └── gtfs_network.py
+├── docs/
+│   └── soluciones_tiempos_rutas.md
 ├── .env.example
 ├── .gitignore
 ├── requirements.txt
 └── README.md
 ```
 
-Los archivos de `data/` forman el conjunto GTFS local:
+Los archivos de `data/gtfs/` forman el conjunto GTFS local:
 
 - `stops.txt`: paradas y coordenadas.
 - `routes.txt`: catálogo de rutas.
@@ -36,7 +42,7 @@ Los archivos de `data/` forman el conjunto GTFS local:
 
 ### `RutasQroBus.ipynb`
 
-Es el análisis y la visualización final. Carga los caminos mínimos que `PromedioRutas.ipynb` dejó en `data/rutas_base_gtfs.csv`, incorpora las correcciones disponibles y genera el mapa. No vuelve a ejecutar Dijkstra.
+Es el análisis y la visualización final. Carga los caminos mínimos que `PromedioRutas.ipynb` dejó en `data/processed/rutas_base_gtfs.csv`, incorpora las correcciones disponibles y genera el mapa. No vuelve a ejecutar Dijkstra.
 
 El cálculo compartido:
 
@@ -50,18 +56,40 @@ El cálculo compartido:
 
 Puede ejecutarse sin una API key y sin realizar solicitudes facturables, pero requiere ejecutar primero `PromedioRutas.ipynb` con la API activada o desactivada.
 
-El escenario sin cruces genera `data/mapa_paradas_sur_vias_30_min.html`. Sus tiempos combinan la mediana programada del autobús con una caminata final aproximada en línea recta; no representan navegación ni tráfico en tiempo real.
+El escenario sin cruces se muestra como mapa interactivo dentro de `RutasQroBus.ipynb` y también se guarda en `maps/`. Sus tiempos combinan la mediana programada del autobús con una caminata final aproximada en línea recta; no representan navegación ni tráfico en tiempo real.
+
+### Demanda potencial con INEGI
+
+`scripts/demanda_potencial_inegi.py` descarga las manzanas completas del estado de Querétaro desde el servicio oficial del INEGI y estima la población cubierta por buffers alrededor de las paradas que llegan a Corregidora dentro del umbral GTFS. El radio predeterminado es de 20 metros y puede modificarse:
+
+```bash
+python scripts/demanda_potencial_inegi.py --radio-m 20 --umbral-min 30
+```
+
+La respuesta de aproximadamente 50 MB se conserva en `data/cache/`, que Git ignora. Se generan el resumen `data/processed/demanda_potencial_resumen.json`, el detalle por manzana y `maps/mapa_demanda_potencial.html`. El resultado principal prorratea la población según la fracción del área de cada manzana cubierta; es una estimación y no localiza domicilios. El resumen distingue la población estatal total de la población numérica representada en manzanas, pues no todas las personas viven en áreas amanzanadas y existen valores protegidos. Para un estudio de acceso peatonal conviene comparar también radios de 400 o 500 metros.
+
+Este análisis también se ejecuta en una celda independiente al final de `RutasQroBus.ipynb`. Cada mapa queda integrado en la salida del notebook y conserva una copia HTML en `maps/`. Los mapas dibujan la unión deduplicada de todos los segmentos utilizados: una parada solo se muestra cuando tiene un tramo conectado hacia el destino. Cada ruta conserva un color estable en líneas, paradas y leyendas; los tramos finales a pie se muestran en gris discontinuo.
+
+### Tiempo total de todas las rutas sin Google
+
+`scripts/tiempos_totales_rutas_gtfs.py` calcula la duración programada de cada viaje completo y la resume por ruta y sentido:
+
+```bash
+python scripts/tiempos_totales_rutas_gtfs.py
+```
+
+Genera `data/processed/tiempos_totales_rutas_gtfs.csv` y `data/processed/duraciones_viajes_gtfs.csv` sin consumir la API de Google. Las alternativas para obtener tiempos observados y reducir costos están documentadas en `docs/soluciones_tiempos_rutas.md`.
 
 ### `PromedioRutas.ipynb`
 
 Construye la red GTFS y ejecuta Dijkstra para dos problemas distintos: la red general y la red del lado sur después de retirar los segmentos que cruzan las vías. Guarda ambos resultados para que `RutasQroBus.ipynb` no repita los cálculos. De forma opcional, complementa el análisis mediante Google Maps Routes API. Genera:
 
 ```text
-data/google_maps_transit_observaciones.csv
-data/promedio_atrasos_google_por_ruta.csv
-data/tiempos_corregidos_google.csv
-data/rutas_base_gtfs.csv
-data/rutas_base_sur_vias.csv
+data/processed/google_maps_transit_observaciones.csv
+data/processed/promedio_atrasos_google_por_ruta.csv
+data/processed/tiempos_corregidos_google.csv
+data/processed/rutas_base_gtfs.csv
+data/processed/rutas_base_sur_vias.csv
 ```
 
 Las consultas están desactivadas de forma predeterminada. Este notebook solamente llama a Google cuando `EJECUTAR_GOOGLE_MAPS=true` en `.env`.
@@ -127,6 +155,8 @@ GOOGLE_MAPS_API_KEY=pegue_aqui_su_api_key
 EJECUTAR_GOOGLE_MAPS=false
 UMBRAL_ANALISIS_MIN=30
 PENALIZACION_TRANSBORDO_MIN=5
+MAX_EDAD_ETA_HORAS=24
+RADIO_DEMANDA_M=20
 ```
 
 Variables disponibles:
@@ -137,6 +167,8 @@ Variables disponibles:
 | `EJECUTAR_GOOGLE_MAPS` | Habilita las solicitudes a Google. Mantener en `false` hasta revisar cuotas y facturación. |
 | `UMBRAL_ANALISIS_MIN` | Máximo de minutos utilizado para seleccionar paradas; por defecto, 30. |
 | `PENALIZACION_TRANSBORDO_MIN` | Minutos aproximados de espera o caminata agregados por cada cambio de ruta. |
+| `MAX_EDAD_ETA_HORAS` | Antigüedad máxima permitida para usar una ETA de Google en el mapa; por defecto, 24 horas. |
+| `RADIO_DEMANDA_M` | Radio en metros de los buffers usados para estimar demanda potencial; por defecto, 20. |
 
 El archivo `.env` está excluido mediante `.gitignore`. Nunca se debe copiar la API key al notebook, al README ni a un commit.
 
@@ -207,7 +239,7 @@ Esta opción no utiliza Google Maps ni genera cargos.
    ```
 
 3. Abre `scripts/PromedioRutas.ipynb` y ejecuta todas las celdas.
-4. Comprueba que se haya generado `data/tiempos_corregidos_google.csv` y revisa los errores o paradas sin cobertura reportados por el notebook.
+4. Comprueba que se haya generado `data/processed/tiempos_corregidos_google.csv` y revisa los errores o paradas sin cobertura reportados por el notebook.
 5. Vuelve a dejar `EJECUTAR_GOOGLE_MAPS=false` para evitar llamadas accidentales.
 6. Abre `scripts/RutasQroBus.ipynb` y ejecuta todas las celdas. El notebook detectará el archivo de correcciones y lo incorporará al tiempo estimado.
 

@@ -6,6 +6,9 @@ ipython>=8.20,<10
 # Procesamiento y análisis de datos
 numpy>=1.26,<3
 pandas>=2.2,<3
+geopandas>=1.0,<2
+shapely>=2.0,<3
+pyproj>=3.6,<4
 
 # Consulta de Google Maps Routes API
 requests>=2.31,<3
