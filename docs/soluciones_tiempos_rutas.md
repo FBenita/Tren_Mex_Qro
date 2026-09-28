@@ -12,13 +12,15 @@ No son intercambiables. Google Transit se aproxima a la tercera; el GTFS estáti
 
 ## Solución aplicada: horarios GTFS estáticos
 
-El archivo `scripts/tiempos_totales_rutas_gtfs.py` calcula, para cada `trip_id`:
+El notebook autosuficiente `scripts/TiemposTotalesRutasGTFS.ipynb` presenta el análisis completo. Para cada `trip_id` calcula:
 
 ```text
 duración = llegada de la última parada - salida de la primera parada
 ```
 
 Después agrupa por `route_id` y `direction_id` y entrega mínimo, percentil 10, mediana, promedio, percentil 90 y máximo. La mediana es el valor de referencia recomendado porque un mismo recorrido puede tener duraciones programadas distintas según el horario.
+
+La misma ejecución genera `maps/mapa_tiempos_totales_rutas_gtfs.html`. Cada ruta tiene un color estable distinto y cada sentido muestra su mediana (P50), el intervalo P10-P90 y el número de viajes utilizados. Como el conjunto GTFS local no contiene `shapes.txt`, el mapa toma el viaje más cercano a la mediana y une sus paradas consecutivas con líneas rectas; por ello representa la secuencia de paradas, no la geometría exacta sobre las calles.
 
 Las rutas presentes en `routes.txt` pero ausentes de `trips.txt` también aparecen en la salida con `estado_calculo = "sin viajes en trips.txt"` y duración vacía. Esto distingue correctamente “no hay datos” de una duración igual a cero.
 
@@ -28,6 +30,7 @@ Ventajas:
 - cubre todas las rutas y viajes presentes en el GTFS;
 - cálculo reproducible y rápido;
 - admite horas GTFS superiores a `24:00:00`.
+- permite revisar espacialmente todas las rutas calculadas y sus tiempos sin consumir Google.
 
 Limitaciones:
 

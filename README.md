@@ -17,11 +17,9 @@ Tren_Mex_Qro/
 │   └── README.md
 ├── maps/                      # copias HTML de los mapas
 ├── scripts/
-│   ├── demanda_potencial_inegi.py
 │   ├── PromedioRutas.ipynb
-│   ├── qrobus_maps.py
 │   ├── RutasQroBus.ipynb
-│   ├── tiempos_totales_rutas_gtfs.py
+│   ├── TiemposTotalesRutasGTFS.ipynb
 │   └── gtfs_network.py
 ├── docs/
 │   └── soluciones_tiempos_rutas.md
@@ -61,25 +59,21 @@ El escenario sin cruces se muestra como mapa interactivo dentro de `RutasQroBus.
 
 ### Demanda potencial con INEGI
 
-`scripts/demanda_potencial_inegi.py` descarga las manzanas completas del estado de Querétaro desde el servicio oficial del INEGI y estima la población cubierta por buffers alrededor de las paradas que llegan a Corregidora dentro del umbral GTFS. El radio predeterminado es de 20 metros y puede modificarse:
+La sección final de `scripts/RutasQroBus.ipynb` contiene las funciones para descargar las manzanas completas del estado de Querétaro desde el servicio oficial del INEGI y estimar la población cubierta por buffers alrededor de las paradas con acceso confiable a Corregidora. El radio predeterminado es de 20 metros y puede modificarse en `.env`:
 
-```bash
-python scripts/demanda_potencial_inegi.py --radio-m 20 --umbral-min 30
+```dotenv
+RADIO_DEMANDA_M=20
 ```
 
 La respuesta de aproximadamente 50 MB se conserva en `data/cache/`, que Git ignora. Se generan el resumen `data/processed/demanda_potencial_resumen.json`, el detalle por manzana y `maps/mapa_demanda_potencial.html`. El resultado principal prorratea la población según la fracción del área de cada manzana cubierta; es una estimación y no localiza domicilios. El resumen distingue la población estatal total de la población numérica representada en manzanas, pues no todas las personas viven en áreas amanzanadas y existen valores protegidos. Para un estudio de acceso peatonal conviene comparar también radios de 400 o 500 metros.
 
-Este análisis también se ejecuta en una celda independiente al final de `RutasQroBus.ipynb`. Cada mapa queda integrado en la salida del notebook y conserva una copia HTML en `maps/`. Los mapas dibujan la unión deduplicada de todos los segmentos utilizados: una parada solo se muestra cuando tiene un tramo conectado hacia el destino. Cada ruta conserva un color estable en líneas, paradas y leyendas; los tramos finales a pie se muestran en gris discontinuo.
+El análisis y las utilidades de mapas viven directamente en celdas independientes de `RutasQroBus.ipynb`; no requieren módulos auxiliares exclusivos del notebook. Cada mapa queda integrado en su salida y conserva una copia HTML en `maps/`. Los mapas dibujan la unión deduplicada de todos los segmentos utilizados: una parada solo se muestra cuando tiene un tramo conectado hacia el destino. Cada ruta conserva un color estable en líneas, paradas y leyendas; los tramos finales a pie se muestran en gris discontinuo.
 
 ### Tiempo total de todas las rutas sin Google
 
-`scripts/tiempos_totales_rutas_gtfs.py` calcula la duración programada de cada viaje completo y la resume por ruta y sentido:
+`scripts/TiemposTotalesRutasGTFS.ipynb` contiene todo el cálculo paso a paso, muestra la tabla resumida e integra el mapa. No depende de un script adicional: basta con abrirlo y ejecutar todas sus celdas.
 
-```bash
-python scripts/tiempos_totales_rutas_gtfs.py
-```
-
-Genera `data/processed/tiempos_totales_rutas_gtfs.csv` y `data/processed/duraciones_viajes_gtfs.csv` sin consumir la API de Google. Las alternativas para obtener tiempos observados y reducir costos están documentadas en `docs/soluciones_tiempos_rutas.md`.
+Genera `data/processed/tiempos_totales_rutas_gtfs.csv`, `data/processed/duraciones_viajes_gtfs.csv` y `maps/mapa_tiempos_totales_rutas_gtfs.html` sin consumir la API de Google. El mapa colorea cada ruta de forma distinta y muestra P50, P10-P90 y cantidad de viajes por sentido. Como el GTFS no incluye `shapes.txt`, las líneas unen paradas consecutivas y son aproximadas. Las alternativas para obtener tiempos observados y reducir costos están documentadas en `docs/soluciones_tiempos_rutas.md`.
 
 ### `PromedioRutas.ipynb`
 
