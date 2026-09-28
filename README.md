@@ -2,7 +2,7 @@
 
 Este repositorio analiza la accesibilidad en transporte público hacia la estación del tren Corregidora, en Querétaro. A partir de los archivos GTFS de QroBus se calculan los tiempos programados desde cada parada, se consideran transbordos y se identifican las paradas e itinerarios que pueden llegar en 30 minutos o menos.
 
-De manera opcional, el proyecto consulta Google Maps Routes API en modo transporte público para obtener estimaciones al momento de la ejecución. Esas observaciones se comparan con el tiempo programado del GTFS y se utilizan para construir una corrección promedio por ruta.
+De manera opcional, el proyecto consulta Google Maps Routes API en modo transporte público para obtener estimaciones al momento de la ejecución. El resultado principal agrega el histórico por parada mediante P50, P80, tamaño de muestra y proporción de ETAs de 30 minutos o menos. La última ETA se conserva como contexto actual; el promedio por ruta se exporta únicamente por compatibilidad.
 
 > Google Maps no proporciona en esta consulta el atraso GPS exacto de cada autobús. La diferencia entre su ETA y el tiempo GTFS se utiliza únicamente como una aproximación, ya que también puede incluir espera, caminata y transbordos. Para medir atrasos operativos reales se necesitaría un feed oficial GTFS-Realtime de QroBus.
 
@@ -42,7 +42,7 @@ Los archivos de `data/gtfs/` forman el conjunto GTFS local:
 
 ### `RutasQroBus.ipynb`
 
-Es el análisis y la visualización final. Carga los caminos mínimos que `PromedioRutas.ipynb` dejó en `data/processed/rutas_base_gtfs.csv`, incorpora las correcciones disponibles y genera el mapa. No vuelve a ejecutar Dijkstra.
+Es el análisis y la visualización final. Carga los caminos mínimos que `PromedioRutas.ipynb` dejó en `data/processed/rutas_base_gtfs.csv`, incorpora las estadísticas históricas por parada y genera el mapa. No vuelve a ejecutar Dijkstra.
 
 El cálculo compartido:
 
@@ -52,9 +52,10 @@ El cálculo compartido:
 - separa conexiones directas de recorridos con transbordos;
 - genera un mapa interactivo principal sin visualizaciones duplicadas;
 - incluye todas las paradas que pueden llegar en menos de 30 minutos por el lado sur sin cruzar las vías, con un último tramo a pie de hasta 10 minutos;
-- consume las correcciones de Google si ya fueron generadas.
+- clasifica las paradas como acceso confiable, acceso habitual variable o datos insuficientes usando P50/P80;
+- conserva la última ETA en una capa opcional y las columnas laboral/fin de semana como contexto futuro.
 
-Puede ejecutarse sin una API key y sin realizar solicitudes facturables, pero requiere ejecutar primero `PromedioRutas.ipynb` con la API activada o desactivada.
+Puede ejecutarse sin nuevas solicitudes facturables cuando ya existe el histórico local, pero requiere ejecutar primero `PromedioRutas.ipynb` para regenerar las estadísticas.
 
 El escenario sin cruces se muestra como mapa interactivo dentro de `RutasQroBus.ipynb` y también se guarda en `maps/`. Sus tiempos combinan la mediana programada del autobús con una caminata final aproximada en línea recta; no representan navegación ni tráfico en tiempo real.
 
@@ -86,6 +87,7 @@ Construye la red GTFS y ejecuta Dijkstra para dos problemas distintos: la red ge
 
 ```text
 data/processed/google_maps_transit_observaciones.csv
+data/processed/estadisticas_historicas_google_por_parada.csv
 data/processed/promedio_atrasos_google_por_ruta.csv
 data/processed/tiempos_corregidos_google.csv
 data/processed/rutas_base_gtfs.csv
@@ -156,6 +158,7 @@ EJECUTAR_GOOGLE_MAPS=false
 UMBRAL_ANALISIS_MIN=30
 PENALIZACION_TRANSBORDO_MIN=5
 MAX_EDAD_ETA_HORAS=24
+MIN_OBSERVACIONES_HISTORICAS=5
 RADIO_DEMANDA_M=20
 ```
 
@@ -168,6 +171,7 @@ Variables disponibles:
 | `UMBRAL_ANALISIS_MIN` | Máximo de minutos utilizado para seleccionar paradas; por defecto, 30. |
 | `PENALIZACION_TRANSBORDO_MIN` | Minutos aproximados de espera o caminata agregados por cada cambio de ruta. |
 | `MAX_EDAD_ETA_HORAS` | Antigüedad máxima permitida para usar una ETA de Google en el mapa; por defecto, 24 horas. |
+| `MIN_OBSERVACIONES_HISTORICAS` | Muestra mínima por parada para una clasificación P50/P80 preliminar; por defecto, 5. Diez o más se etiquetan como calidad alta. |
 | `RADIO_DEMANDA_M` | Radio en metros de los buffers usados para estimar demanda potencial; por defecto, 20. |
 
 El archivo `.env` está excluido mediante `.gitignore`. Nunca se debe copiar la API key al notebook, al README ni a un commit.
@@ -229,7 +233,7 @@ Esta opción no utiliza Google Maps ni genera cargos.
 4. Revisa las tablas de paradas directas, paradas con transbordos e itinerarios dentro de 30 minutos.
 5. Usa el control de capas del mapa para mostrar u ocultar cada categoría.
 
-### Opción 2: análisis con corrección de Google
+### Opción 2: análisis histórico con Google
 
 1. Verifica la clave, sus restricciones, las cuotas y la facturación.
 2. Cambia temporalmente en `.env`:
@@ -239,9 +243,9 @@ Esta opción no utiliza Google Maps ni genera cargos.
    ```
 
 3. Abre `scripts/PromedioRutas.ipynb` y ejecuta todas las celdas.
-4. Comprueba que se haya generado `data/processed/tiempos_corregidos_google.csv` y revisa los errores o paradas sin cobertura reportados por el notebook.
+4. Comprueba que se haya generado `data/processed/estadisticas_historicas_google_por_parada.csv` y revisa el tamaño de muestra reportado por parada.
 5. Vuelve a dejar `EJECUTAR_GOOGLE_MAPS=false` para evitar llamadas accidentales.
-6. Abre `scripts/RutasQroBus.ipynb` y ejecuta todas las celdas. El notebook detectará el archivo de correcciones y lo incorporará al tiempo estimado.
+6. Abre `scripts/RutasQroBus.ipynb` y ejecuta todas las celdas. El notebook utilizará P80 para acceso confiable, P50 para acceso habitual variable y mostrará la última ETA en una capa opcional.
 
 Para obtener un promedio representativo, `PromedioRutas.ipynb` debe ejecutarse en diferentes días y horarios. Una sola ejecución es una fotografía del momento, no un promedio histórico confiable.
 
@@ -255,10 +259,12 @@ Archivos GTFS locales
                     ├──> retirar cruces ferroviarios
                     │             │
                     │             └──> Dijkstra lado sur ──> rutas_base_sur_vias.csv
-                    └──> Routes API opcional ──> tiempos_corregidos_google.csv
+                    └──> Routes API opcional ──> observaciones históricas
                                                        │
-                  archivos de rutas base ──────────────┤
-                                                       └──> RutasQroBus.ipynb ──> mapa
+                                                       └──> P50 / P80 por parada
+                                                                  │
+                  archivos de rutas base ─────────────────────────┤
+                                                                  └──> RutasQroBus.ipynb ──> mapa
 ```
 
 ## Consideraciones del análisis
