@@ -1,0 +1,319 @@
+route_id,route_short_name,route_long_name,direction_id,numero_viajes,numero_servicios,duracion_min_min,duracion_p10_min,duracion_mediana_min,duracion_promedio_min,duracion_p90_min,duracion_max_min,paradas_mediana,estado_calculo,observaciones_google,rango_gtfs_observado_min,peso_modelo_ruta,constante_p50_min,factor_p50,constante_p80_min,factor_p80,fuente_modelo,tiempo_operativo_p50_min,tiempo_operativo_p80_min,tiempo_pasajero_p50_min,tiempo_pasajero_p80_min
+430,001,Pedregoso - Centro,,0,0,,,,,,,,sin viajes en trips.txt,0,0.0,0.0,0.0,1.0,6.16,1.0,global,,,,
+431,002,Pedregoso - Universidad Tecnologica (utsjr),,0,0,,,,,,,,sin viajes en trips.txt,0,0.0,0.0,0.0,1.0,6.16,1.0,global,,,,
+432,004,Col Industrial Nuevo San Juan - Centro,,0,0,,,,,,,,sin viajes en trips.txt,0,0.0,0.0,0.0,1.0,6.16,1.0,global,,,,
+1,005,Pedregoso 2a Sección - Central De Autobuses,,0,0,,,,,,,,sin viajes en trips.txt,0,0.0,0.0,0.0,1.0,6.16,1.0,global,,,,
+2,007,Central De Autobuses - Parque Industrial,,0,0,,,,,,,,sin viajes en trips.txt,0,0.0,0.0,0.0,1.0,6.16,1.0,global,,,,
+433,008,Central De Autobuses - San Isidro,,0,0,,,,,,,,sin viajes en trips.txt,0,0.0,0.0,0.0,1.0,6.16,1.0,global,,,,
+3,009,San Pedro Ahuacatlan - Central De Autobuses,,0,0,,,,,,,,sin viajes en trips.txt,0,0.0,0.0,0.0,1.0,6.16,1.0,global,,,,
+434,009B,Fraccionamiento La Rueda - Centro,,0,0,,,,,,,,sin viajes en trips.txt,0,0.0,0.0,0.0,1.0,6.16,1.0,global,,,,
+4,010,Cerro Gordo - 5 De Mayo,,0,0,,,,,,,,sin viajes en trips.txt,0,0.0,0.0,0.0,1.0,6.16,1.0,global,,,,
+435,011,Loma Alta - Central De Autobuses,,0,0,,,,,,,,sin viajes en trips.txt,0,0.0,0.0,0.0,1.0,6.16,1.0,global,,,,
+436,011B,Loma Alta - Centro,,0,0,,,,,,,,sin viajes en trips.txt,0,0.0,0.0,0.0,1.0,6.16,1.0,global,,,,
+5,012,Hospital General - Centro,,0,0,,,,,,,,sin viajes en trips.txt,0,0.0,0.0,0.0,1.0,6.16,1.0,global,,,,
+6,013,Carrizo - 5 De Mayo,,0,0,,,,,,,,sin viajes en trips.txt,0,0.0,0.0,0.0,1.0,6.16,1.0,global,,,,
+7,014,Granjas Banthi - Centro,,0,0,,,,,,,,sin viajes en trips.txt,0,0.0,0.0,0.0,1.0,6.16,1.0,global,,,,
+437,015B,Solares Banthi - 5 De Mayo,,0,0,,,,,,,,sin viajes en trips.txt,0,0.0,0.0,0.0,1.0,6.16,1.0,global,,,,
+438,016,Infonavit La Paz - Centro,,0,0,,,,,,,,sin viajes en trips.txt,0,0.0,0.0,0.0,1.0,6.16,1.0,global,,,,
+8,017,Barrio De La Cruz - Centro,,0,0,,,,,,,,sin viajes en trips.txt,0,0.0,0.0,0.0,1.0,6.16,1.0,global,,,,
+439,018,Nuevo San Isidro - Centro,,0,0,,,,,,,,sin viajes en trips.txt,0,0.0,0.0,0.0,1.0,6.16,1.0,global,,,,
+9,019,Pedregoso - Valle Real,,0,0,,,,,,,,sin viajes en trips.txt,0,0.0,0.0,0.0,1.0,6.16,1.0,global,,,,
+10,020,Valle Real - Central De Autobuses,,0,0,,,,,,,,sin viajes en trips.txt,0,0.0,0.0,0.0,1.0,6.16,1.0,global,,,,
+440,022,Pedregoso - Centro,,0,0,,,,,,,,sin viajes en trips.txt,0,0.0,0.0,0.0,1.0,6.16,1.0,global,,,,
+441,023,Lomas Del Pedregal - Centro,,0,0,,,,,,,,sin viajes en trips.txt,0,0.0,0.0,0.0,1.0,6.16,1.0,global,,,,
+12,024,Praderas Del Sol - Centro,,0,0,,,,,,,,sin viajes en trips.txt,0,0.0,0.0,0.0,1.0,6.16,1.0,global,,,,
+442,024C,Las Torres - Central De Autobuses,,0,0,,,,,,,,sin viajes en trips.txt,0,0.0,0.0,0.0,1.0,6.16,1.0,global,,,,
+443,025,Las Aguilas - Centro,,0,0,,,,,,,,sin viajes en trips.txt,0,0.0,0.0,0.0,1.0,6.16,1.0,global,,,,
+14,028,Rancho De En Medio - Central De Autobuses,,0,0,,,,,,,,sin viajes en trips.txt,0,0.0,0.0,0.0,1.0,6.16,1.0,global,,,,
+444,030,Infonavit La Paz - Central De Autobuses,,0,0,,,,,,,,sin viajes en trips.txt,0,0.0,0.0,0.0,1.0,6.16,1.0,global,,,,
+17,031,Pedregoso - Pitsa,,0,0,,,,,,,,sin viajes en trips.txt,0,0.0,0.0,0.0,1.0,6.16,1.0,global,,,,
+445,032,Vistha - Central De Autobuses,,0,0,,,,,,,,sin viajes en trips.txt,0,0.0,0.0,0.0,1.0,6.16,1.0,global,,,,
+19,036,Vistha (cereso) - 5 De Mayo (paradero),,0,0,,,,,,,,sin viajes en trips.txt,0,0.0,0.0,0.0,1.0,6.16,1.0,global,,,,
+20,037,La Peña - Centro,,0,0,,,,,,,,sin viajes en trips.txt,0,0.0,0.0,0.0,1.0,6.16,1.0,global,,,,
+21,038,La Peña - Central De Autobuses,,0,0,,,,,,,,sin viajes en trips.txt,0,0.0,0.0,0.0,1.0,6.16,1.0,global,,,,
+446,039,Francisco Villa - Central De Autobuses,,0,0,,,,,,,,sin viajes en trips.txt,0,0.0,0.0,0.0,1.0,6.16,1.0,global,,,,
+22,040,Las Aguilas - Universidad Tecnológica (utsjr),,0,0,,,,,,,,sin viajes en trips.txt,0,0.0,0.0,0.0,1.0,6.16,1.0,global,,,,
+23,041,Francisco Villa - Centro,,0,0,,,,,,,,sin viajes en trips.txt,0,0.0,0.0,0.0,1.0,6.16,1.0,global,,,,
+447,042,Manantiales / Nogales - Centro,,0,0,,,,,,,,sin viajes en trips.txt,0,0.0,0.0,0.0,1.0,6.16,1.0,global,,,,
+24,043,Valle Dorado I - Central De Autobuses,,0,0,,,,,,,,sin viajes en trips.txt,0,0.0,0.0,0.0,1.0,6.16,1.0,global,,,,
+25,044,Valle Dorado Ii - Centro,,0,0,,,,,,,,sin viajes en trips.txt,0,0.0,0.0,0.0,1.0,6.16,1.0,global,,,,
+448,046,Manantiales - Nogales - Imss,,0,0,,,,,,,,sin viajes en trips.txt,0,0.0,0.0,0.0,1.0,6.16,1.0,global,,,,
+449,047,La Rueda - Central De Autobuses,,0,0,,,,,,,,sin viajes en trips.txt,0,0.0,0.0,0.0,1.0,6.16,1.0,global,,,,
+428,23,Tequisquiapan - Ezequiel Montes,,0,0,,,,,,,,sin viajes en trips.txt,0,0.0,0.0,0.0,1.0,6.16,1.0,global,,,,
+429,62,San Juan Del Rio - Tequisquiapan,,0,0,,,,,,,,sin viajes en trips.txt,0,0.0,0.0,0.0,1.0,6.16,1.0,global,,,,
+386,AIQ01,Alameda - Aeropuerto Internacional De Queretaro,0.0,33,3,55.3,55.3,73.73,67.7,73.73,73.73,21.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,73.73,73.73,73.73,79.89
+386,AIQ01,Alameda - Aeropuerto Internacional De Queretaro,1.0,33,3,52.63,52.63,70.02,63.7,70.02,70.02,28.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,70.02,70.02,70.02,76.18
+96,C21,Las Flores - Fracc Fray Junipero Serra,0.0,204,3,93.22,93.22,104.88,102.89,109.3,109.3,69.0,calculado,126,15.849999999999987,0.4418362831858403,2.05,1.0,6.82,1.0,ruta suavizada con global,104.88,104.88,106.93,111.7
+96,C21,Las Flores - Fracc Fray Junipero Serra,1.0,204,3,93.73,93.73,98.28,98.95,103.87,103.87,64.0,calculado,126,15.849999999999987,0.4418362831858403,2.05,1.0,6.82,1.0,ruta suavizada con global,98.28,98.28,100.33,105.1
+97,C22,Fracc Santuarios - Penal,0.0,160,3,76.47,79.98,90.67,89.11,95.12,95.12,67.0,calculado,130,23.391666666666666,0.5652173913043478,0.0,1.0,2.68,1.0,ruta suavizada con global,90.67,90.67,90.67,93.35
+97,C22,Fracc Santuarios - Penal,1.0,160,3,79.73,85.18,94.78,93.83,101.6,101.6,70.0,calculado,130,23.391666666666666,0.5652173913043478,0.0,1.0,2.68,1.0,ruta suavizada con global,94.78,94.78,94.78,97.46
+98,C23,Lomas De La Cruz - Terminal De Autobuses (taq),0.0,188,3,91.78,91.78,98.15,96.74,99.87,99.87,69.0,calculado,117,23.016666666666673,0.5391705069124424,0.0,1.0,2.84,1.0,ruta suavizada con global,98.15,98.15,98.15,100.99
+98,C23,Lomas De La Cruz - Terminal De Autobuses (taq),1.0,188,3,80.47,80.47,90.95,88.05,91.85,91.85,65.0,calculado,117,23.016666666666673,0.5391705069124424,0.0,1.0,2.84,1.0,ruta suavizada con global,90.95,90.95,90.95,93.79
+319,C24,La Pradera - Bosques Del Cimatario,0.0,173,3,65.08,65.08,69.65,69.93,74.2,74.2,58.0,calculado,164,18.833333333333336,0.5849747474747475,0.0,1.0,2.56,1.0,ruta suavizada con global,69.65,69.65,69.65,72.21
+319,C24,La Pradera - Bosques Del Cimatario,1.0,175,3,60.77,60.77,73.45,69.54,73.45,73.45,51.0,calculado,164,18.833333333333336,0.5849747474747475,0.0,1.0,2.56,1.0,ruta suavizada con global,73.45,73.45,73.45,76.01
+320,C25,El Pozo - Cecati 17,0.0,2,2,26.82,26.82,26.82,26.82,26.82,26.82,16.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,26.82,26.82,26.82,32.98
+320,C25,El Pozo - Cecati 17,1.0,161,3,20.45,37.6,41.15,40.18,41.9,41.9,15.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,41.15,41.15,41.15,47.31
+134,C26,Terminal De Autobuses (taq) - Av Zaragoza,0.0,172,3,29.85,36.0,38.68,38.11,41.37,44.9,35.0,calculado,65,12.649999999999999,0.24916666666666665,0.0,1.0,5.4,1.0,ruta suavizada con global,38.68,38.68,38.68,44.08
+134,C26,Terminal De Autobuses (taq) - Av Zaragoza,1.0,171,3,31.1,35.45,39.78,40.74,45.88,45.88,35.0,calculado,65,12.649999999999999,0.24916666666666665,0.0,1.0,5.4,1.0,ruta suavizada con global,39.78,39.78,39.78,45.18
+321,C27,Vista Azul - Paseos Del Pedregal,0.0,248,3,69.33,69.33,72.97,72.79,75.77,75.77,62.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,72.97,72.97,72.97,79.13
+321,C27,Vista Azul - Paseos Del Pedregal,1.0,248,3,63.77,63.77,70.08,68.48,70.97,70.97,59.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,70.08,70.08,70.08,76.24
+136,C28,Av Del Parque - Av Zaragoza,0.0,175,3,33.15,33.15,37.85,37.11,42.62,43.57,27.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,37.85,37.85,37.85,44.01
+136,C28,Av Del Parque - Av Zaragoza,1.0,176,3,25.23,31.85,33.45,34.07,37.57,37.57,25.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,33.45,33.45,33.45,39.61
+322,C29,Terminal De Autobuses (taq) - Los Olvera,0.0,147,3,45.72,45.72,49.73,51.06,61.72,61.72,52.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,49.73,49.73,49.73,55.89
+322,C29,Terminal De Autobuses (taq) - Los Olvera,1.0,147,3,46.53,46.53,50.62,51.42,58.93,58.93,42.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,50.62,50.62,50.62,56.78
+138,C30,Alameda - Cto Moises Solana,0.0,137,3,4.83,8.03,8.03,9.11,12.05,12.05,9.0,calculado,39,12.566666666666656,0.17629496402877678,0.0,1.0,5.07,1.0,ruta suavizada con global,8.03,8.03,8.03,13.1
+138,C30,Alameda - Cto Moises Solana,1.0,137,3,10.52,12.72,14.92,14.68,18.55,18.55,12.0,calculado,39,12.566666666666656,0.17629496402877678,0.0,1.0,5.07,1.0,ruta suavizada con global,14.92,14.92,14.92,19.99
+323,C31,Paseos De San Miguel - Independencia,0.0,176,3,54.23,58.72,67.58,66.55,71.92,76.43,49.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,67.58,67.58,67.58,73.74
+323,C31,Paseos De San Miguel - Independencia,1.0,180,3,61.17,61.17,75.05,74.51,89.0,93.65,50.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,75.05,75.05,75.05,81.21
+139,C32,Blvd De Los Gobernadores - Av Tecnologico,0.0,156,3,33.9,33.9,37.98,36.79,37.98,42.17,29.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,37.98,37.98,37.98,44.14
+139,C32,Blvd De Los Gobernadores - Av Tecnologico,1.0,162,3,34.8,34.8,39.08,37.29,39.08,39.08,27.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,39.08,39.08,39.08,45.24
+324,C33,Fracc Fray Junipero Serra - Independencia,0.0,10,3,53.38,53.38,57.72,56.42,57.72,57.72,49.0,calculado,303,34.39999999999999,0.7518610421836228,0.0,1.02,1.53,1.14,ruta suavizada con global,58.66,66.04,58.66,67.57
+324,C33,Fracc Fray Junipero Serra - Independencia,1.0,198,3,59.07,112.2,121.03,116.11,123.09,130.85,67.0,calculado,303,34.39999999999999,0.7518610421836228,0.0,1.02,1.53,1.14,ruta suavizada con global,122.99,138.48,122.99,140.01
+325,C34,Terminal De Autobuses (taq) - La Pradera,0.0,189,3,63.93,70.7,77.38,76.89,82.47,82.47,61.0,calculado,411,20.46666666666667,0.8043052837573386,0.0,1.0,1.21,1.11,ruta suavizada con global,77.38,85.83,77.38,87.04
+325,C34,Terminal De Autobuses (taq) - La Pradera,1.0,190,3,62.75,63.65,69.05,70.25,76.17,76.17,68.0,calculado,411,20.46666666666667,0.8043052837573386,0.0,1.0,1.21,1.11,ruta suavizada con global,69.05,76.59,69.05,77.8
+326,C35,Blvd De Las Americas - Fracc Fray Junipero Serra,0.0,182,3,66.23,66.23,66.23,67.79,70.53,70.53,66.0,calculado,312,23.666666666666664,0.7572815533980582,0.0,1.0,2.52,1.02,ruta suavizada con global,66.23,67.3,66.23,69.82
+326,C35,Blvd De Las Americas - Fracc Fray Junipero Serra,1.0,181,3,71.13,71.13,71.13,72.68,75.38,75.38,71.0,calculado,312,23.666666666666664,0.7572815533980582,0.0,1.0,2.52,1.02,ruta suavizada con global,71.13,72.28,71.13,74.8
+327,C36,Bolaños - Ciudad Del Sol,0.0,105,3,57.85,62.25,75.28,73.76,79.73,79.73,54.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,75.28,75.28,75.28,81.44
+327,C36,Bolaños - Ciudad Del Sol,1.0,106,3,59.13,68.08,81.57,79.39,85.93,85.93,53.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,81.57,81.57,81.57,87.73
+328,C37,Bolaños Ii - Cecati 17,0.0,217,3,8.07,11.42,12.53,12.52,13.67,13.67,7.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,12.53,12.53,12.53,18.69
+328,C37,Bolaños Ii - Cecati 17,1.0,217,3,11.42,15.7,17.13,16.51,17.13,17.13,7.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,17.13,17.13,17.13,23.29
+329,C38,Rancho San Antonio - Alameda,0.0,218,3,14.35,19.03,19.82,19.64,20.55,20.55,15.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,19.82,19.82,19.82,25.98
+329,C38,Rancho San Antonio - Alameda,1.0,218,3,14.73,18.14,20.53,20.35,22.68,22.68,10.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,20.53,20.53,20.53,26.69
+330,C39,Blvd De Las Americas - Av De Las Torres,0.0,142,3,40.0,43.5,44.37,46.93,53.13,53.13,29.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,44.37,44.37,44.37,50.53
+330,C39,Blvd De Las Americas - Av De Las Torres,1.0,149,3,35.28,38.77,39.65,41.17,43.98,48.35,31.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,39.65,39.65,39.65,45.81
+331,C40,Blvd De Las Americas - Las Teresas,0.0,95,3,54.65,54.65,68.2,64.15,68.2,77.1,37.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,68.2,68.2,68.2,74.36
+331,C40,Blvd De Las Americas - Las Teresas,1.0,106,3,65.03,74.25,83.42,80.19,83.42,87.95,51.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,83.42,83.42,83.42,89.58
+332,C41,Blvd De Las Americas - Cerrito Colorado,0.0,248,3,71.3,71.3,80.25,78.08,81.17,81.17,47.0,calculado,98,14.36666666666666,0.35553872053872043,0.39,1.0,3.97,1.05,ruta suavizada con global,80.25,84.01,80.64,87.98
+332,C41,Blvd De Las Americas - Cerrito Colorado,1.0,248,3,82.83,82.83,88.35,87.56,90.33,90.33,49.0,calculado,98,14.36666666666666,0.35553872053872043,0.39,1.0,3.97,1.05,ruta suavizada con global,88.35,92.49,88.74,96.46
+333,C42,Hacienda La Gloria - Colinas De La Piedad,0.0,147,3,72.02,75.67,83.78,82.08,85.6,85.6,38.0,calculado,32,12.300000000000011,0.14909090909090922,0.0,1.0,5.24,1.0,ruta suavizada con global,83.78,83.79,83.78,89.03
+333,C42,Hacienda La Gloria - Colinas De La Piedad,1.0,147,3,74.43,80.55,85.72,84.78,87.47,87.47,50.0,calculado,32,12.300000000000011,0.14909090909090922,0.0,1.0,5.24,1.0,ruta suavizada con global,85.72,85.73,85.72,90.97
+334,C43,Col Sergio Villaseñor - Candiles,0.0,210,3,65.45,73.5,84.33,83.22,89.7,89.7,73.0,calculado,133,10.983333333333341,0.3134728183118743,0.0,1.0,6.68,1.0,ruta suavizada con global,84.33,84.33,84.33,91.01
+334,C43,Col Sergio Villaseñor - Candiles,1.0,210,3,75.08,76.98,89.0,83.92,89.0,89.0,64.0,calculado,133,10.983333333333341,0.3134728183118743,0.0,1.0,6.68,1.0,ruta suavizada con global,89.0,89.0,89.0,95.68
+335,C44,San Pablo - El Portico,0.0,214,3,49.98,60.2,72.08,68.89,77.17,77.17,62.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,72.08,72.08,72.08,78.24
+335,C44,San Pablo - El Portico,1.0,214,3,52.95,54.7,62.87,62.51,68.28,68.28,46.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,62.87,62.87,62.87,69.03
+336,C46,Los Olvera - Uteq,0.0,192,3,59.28,62.87,73.8,72.24,84.68,84.68,66.0,calculado,426,24.31666666666667,0.8098859315589354,0.0,1.0,3.52,1.0,ruta suavizada con global,73.8,73.8,73.8,77.32
+336,C46,Los Olvera - Uteq,1.0,191,3,58.02,61.47,72.05,73.73,87.03,87.03,68.0,calculado,426,24.31666666666667,0.8098859315589354,0.0,1.0,3.52,1.0,ruta suavizada con global,72.05,72.05,72.05,75.57
+337,C47,Terminal De Autobuses (taq) - Cam Corregidora,0.0,122,3,59.82,63.3,70.4,68.96,73.95,73.95,64.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,70.4,70.4,70.4,76.56
+337,C47,Terminal De Autobuses (taq) - Cam Corregidora,1.0,126,3,56.6,60.37,67.78,66.68,71.5,71.5,56.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,67.78,67.78,67.78,73.94
+338,C48,Blvd De Las Americas - Fracc Vistana,0.0,190,3,71.87,78.73,82.18,81.7,85.6,85.6,60.0,calculado,183,25.683333333333344,0.6466431095406361,0.0,1.0,2.24,1.0,ruta suavizada con global,82.18,82.18,82.18,84.42
+338,C48,Blvd De Las Americas - Fracc Vistana,1.0,196,3,44.72,53.37,60.23,60.06,63.75,63.75,57.0,calculado,183,25.683333333333344,0.6466431095406361,0.0,1.0,2.24,1.0,ruta suavizada con global,60.23,60.23,60.23,62.47
+339,C49,Fracc Vistana - Independencia,0.0,7,3,48.88,48.88,48.88,50.13,53.25,53.25,37.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,48.88,48.88,48.88,55.04
+339,C49,Fracc Vistana - Independencia,1.0,273,3,39.67,102.92,102.92,103.02,112.23,112.23,44.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,102.92,102.92,102.92,109.08
+340,C50,Col 10 De Abril - Mercado La Cruz,0.0,105,3,73.02,80.18,99.75,94.38,104.23,104.23,73.0,calculado,123,18.333333333333336,0.5056053811659194,1.6,1.0,5.39,1.01,ruta suavizada con global,99.75,101.24,101.35,106.63
+340,C50,Col 10 De Abril - Mercado La Cruz,1.0,105,3,77.6,83.92,107.2,100.01,108.92,108.92,81.0,calculado,123,18.333333333333336,0.5056053811659194,1.6,1.0,5.39,1.01,ruta suavizada con global,107.2,108.8,108.8,114.19
+341,C51,Blvd De Las Americas - Rancho San Pedro,0.0,241,3,73.72,82.97,93.15,92.56,101.48,101.48,75.0,calculado,312,23.53333333333334,0.7572815533980582,0.0,1.0,9.14,1.0,ruta suavizada con global,93.15,93.15,93.15,102.29
+341,C51,Blvd De Las Americas - Rancho San Pedro,1.0,242,3,75.38,84.32,99.6,95.97,103.18,103.18,84.0,calculado,312,23.53333333333334,0.7572815533980582,0.0,1.0,9.14,1.0,ruta suavizada con global,99.6,99.6,99.6,108.74
+342,C52,Paseos De San Miguel - Fracc Vistana,0.0,207,3,75.67,80.1,99.05,94.49,101.73,101.73,85.0,calculado,195,24.99999999999998,0.6610169491525424,0.0,1.0,2.09,1.0,ruta suavizada con global,99.05,99.05,99.05,101.14
+342,C52,Paseos De San Miguel - Fracc Vistana,1.0,205,3,74.87,78.28,93.17,91.63,99.22,99.22,80.0,calculado,195,24.99999999999998,0.6610169491525424,0.0,1.0,2.09,1.0,ruta suavizada con global,93.17,93.17,93.17,95.26
+343,C53,Paseos Del Pedregal - Alameda,0.0,230,3,45.13,45.13,49.68,48.92,51.5,51.5,28.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,49.68,49.68,49.68,55.84
+343,C53,Paseos Del Pedregal - Alameda,1.0,230,3,47.32,47.32,51.9,51.14,53.77,53.77,37.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,51.9,51.9,51.9,58.06
+344,C54,Las Americas - Independencia,0.0,128,3,33.08,33.08,43.38,40.0,43.38,43.38,27.0,calculado,122,41.28333333333333,0.5495495495495496,2.66,1.0,6.18,1.0,ruta suavizada con global,43.38,43.38,46.04,49.56
+344,C54,Las Americas - Independencia,1.0,128,3,25.72,25.72,30.07,29.19,32.72,32.72,27.0,calculado,122,41.28333333333333,0.5495495495495496,2.66,1.0,6.18,1.0,ruta suavizada con global,30.07,30.07,32.73,36.25
+345,C55,Col Sergio Villaseñor - Rancho Bellavista,0.0,223,3,54.57,56.42,59.05,58.1,61.78,61.78,61.0,calculado,309,25.883333333333344,0.7555012224938875,0.0,1.0,5.31,1.0,ruta suavizada con global,59.05,59.05,59.05,64.36
+345,C55,Col Sergio Villaseñor - Rancho Bellavista,1.0,223,3,51.73,53.58,57.13,57.12,60.82,60.82,56.0,calculado,309,25.883333333333344,0.7555012224938875,0.0,1.0,5.31,1.0,ruta suavizada con global,57.13,57.13,57.13,62.44
+346,C56,Paseos De San Miguel - San Pedrito Peñuelas,0.0,151,3,54.3,63.12,71.87,68.63,71.87,76.23,69.0,calculado,234,27.816666666666656,0.7005988023952096,2.66,1.0,7.73,1.0,ruta suavizada con global,71.87,71.87,74.53,79.6
+346,C56,Paseos De San Miguel - San Pedrito Peñuelas,1.0,150,3,64.47,68.95,74.4,74.63,77.98,82.52,61.0,calculado,234,27.816666666666656,0.7005988023952096,2.66,1.0,7.73,1.0,ruta suavizada con global,74.4,74.4,77.06,82.13
+347,C57,Terminal De Autobuses (taq) - San Pedrito Peñuelas,0.0,18,1,37.85,37.85,37.85,37.85,37.85,37.85,21.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,37.85,37.85,37.85,44.01
+347,C57,Terminal De Autobuses (taq) - San Pedrito Peñuelas,1.0,331,3,28.08,28.08,37.48,54.61,81.18,81.18,30.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,37.48,37.48,37.48,43.64
+245,C58,Fracc Vistana - Puerta Navarra,0.0,187,3,34.3,34.3,38.48,37.19,38.48,42.75,28.0,calculado,49,19.68333333333333,0.32365212527964204,3.06,1.0,7.8,1.0,ruta suavizada con global,38.48,38.48,41.54,46.28
+245,C58,Fracc Vistana - Puerta Navarra,1.0,191,3,32.85,32.85,36.82,35.55,36.82,36.82,26.0,calculado,49,19.68333333333333,0.32365212527964204,3.06,1.0,7.8,1.0,ruta suavizada con global,36.82,36.82,39.88,44.62
+348,C60,La Pradera - Plaza Patio,0.0,15,3,76.2,76.2,95.55,89.1,95.55,95.55,55.0,calculado,80,24.166666666666668,0.4444444444444444,0.0,1.0,3.42,1.0,ruta suavizada con global,95.55,95.55,95.55,98.97
+348,C60,La Pradera - Plaza Patio,1.0,246,3,53.97,124.88,140.17,131.27,144.23,144.23,50.0,calculado,80,24.166666666666668,0.4444444444444444,0.0,1.0,3.42,1.0,ruta suavizada con global,140.17,140.17,140.17,143.59
+349,C61,Jardines De Azucenas - Mercado La Cruz,0.0,107,3,54.98,54.98,54.98,59.54,73.17,77.63,44.0,calculado,147,15.450000000000003,0.45974696356275313,0.0,1.0,3.33,1.05,ruta suavizada con global,54.98,57.66,54.98,60.98
+349,C61,Jardines De Azucenas - Mercado La Cruz,1.0,105,3,55.32,55.32,55.32,60.76,73.5,82.6,41.0,calculado,147,15.450000000000003,0.45974696356275313,0.0,1.0,3.33,1.05,ruta suavizada con global,55.32,58.01,55.32,61.34
+350,C62,Col Che Guevara - Paseos Del Pedregal,0.0,118,3,51.72,54.42,65.02,68.02,78.42,88.07,57.0,calculado,245,37.05,0.7101449275362319,3.99,1.0,10.82,1.0,ruta suavizada con global,65.02,65.02,69.01,75.84
+350,C62,Col Che Guevara - Paseos Del Pedregal,1.0,120,3,58.08,73.77,82.58,81.97,95.77,95.77,52.0,calculado,245,37.05,0.7101449275362319,3.99,1.0,10.82,1.0,ruta suavizada con global,82.58,82.58,86.57,93.4
+351,C63,Ciudad Del Sol - Mercado De La Cruz,0.0,184,3,59.23,63.72,68.22,71.18,81.78,81.78,41.0,calculado,97,22.18333333333333,0.49238578680203043,2.1,1.0,7.49,1.0,ruta suavizada con global,68.22,68.22,70.32,75.71
+351,C63,Ciudad Del Sol - Mercado De La Cruz,1.0,182,3,58.1,62.53,71.37,70.69,80.13,80.13,44.0,calculado,97,22.18333333333333,0.49238578680203043,2.1,1.0,7.49,1.0,ruta suavizada con global,71.37,71.37,73.47,78.86
+352,C64,Alameda - El Colorado,0.0,240,3,29.37,29.37,31.2,31.15,32.15,32.15,19.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,31.2,31.2,31.2,37.36
+352,C64,Alameda - El Colorado,1.0,240,3,48.2,48.2,52.03,53.47,60.65,60.65,41.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,52.03,52.03,52.03,58.19
+353,C65,Las Teresas - Hospital Sagrado Corazon De Jesus,0.0,197,3,21.8,23.53,29.65,28.55,32.2,36.57,15.0,calculado,72,10.099999999999994,0.21139534883720917,0.0,1.0,4.86,1.0,ruta suavizada con global,29.65,29.65,29.65,34.51
+353,C65,Las Teresas - Hospital Sagrado Corazon De Jesus,1.0,198,3,24.8,24.8,29.18,29.85,34.47,39.73,18.0,calculado,72,10.099999999999994,0.21139534883720917,0.0,1.0,4.86,1.0,ruta suavizada con global,29.18,29.18,29.18,34.04
+257,C66,Santa Rosa Jauregui - Av De La Luz,0.0,235,3,56.17,69.83,73.87,72.04,75.78,75.78,55.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,73.87,73.87,73.87,80.03
+257,C66,Santa Rosa Jauregui - Av De La Luz,1.0,229,3,51.32,60.2,73.48,70.42,75.22,75.22,52.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,73.48,73.48,73.48,79.64
+283,C67,Jardines De Jurica - La Obrera,0.0,13,3,39.6,39.6,54.02,50.95,58.48,58.48,42.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,54.02,54.02,54.02,60.18
+283,C67,Jardines De Jurica - La Obrera,1.0,236,3,74.07,87.28,100.45,99.15,107.2,107.2,43.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,100.45,100.45,100.45,106.61
+354,C68,Terminal De Autobuses (taq) - Fracc Eduardo Loarca,0.0,172,3,64.47,68.98,82.45,81.0,91.5,91.5,65.0,calculado,191,21.3,0.6563573883161512,0.0,1.06,3.49,1.09,ruta suavizada con global,87.01,89.95,87.01,93.45
+354,C68,Terminal De Autobuses (taq) - Fracc Eduardo Loarca,1.0,173,3,62.83,67.2,80.33,78.6,89.12,93.5,60.0,calculado,191,21.3,0.6563573883161512,0.0,1.06,3.49,1.09,ruta suavizada con global,84.77,87.64,84.77,91.13
+355,C69,Terminal De Autobuses (taq) - Santa Rosa Jauregui,0.0,184,3,87.68,87.68,92.22,91.04,93.13,93.13,61.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,92.22,92.22,92.22,98.38
+355,C69,Terminal De Autobuses (taq) - Santa Rosa Jauregui,1.0,184,3,80.05,80.05,86.3,86.08,91.57,91.57,63.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,86.3,86.3,86.3,92.46
+314,C70,Santa Rosa Jauregui - La Pradera,0.0,98,2,108.75,108.75,114.18,111.85,114.18,114.18,26.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,114.18,114.18,114.18,120.34
+314,C70,Santa Rosa Jauregui - La Pradera,1.0,67,1,50.82,97.25,97.25,94.48,97.25,97.25,39.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,97.25,97.25,97.25,103.41
+316,C71,Av De La Luz - Parque Industrial Queretaro,0.0,6,3,191.18,191.18,222.7,213.07,225.32,225.32,31.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,222.7,222.7,222.7,228.86
+316,C71,Av De La Luz - Parque Industrial Queretaro,1.0,125,3,52.35,117.68,123.82,119.79,128.53,128.53,32.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,123.82,123.82,123.82,129.98
+397,C72,Fracc Viñedos - Prol Av Zaragoza,1.0,210,3,32.48,64.63,64.63,67.06,72.72,72.72,17.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,64.63,64.63,64.63,70.79
+408,C73,Terminal Balvanera - Terminal De Autobuses (taq),0.0,2,2,30.92,31.45,33.57,33.57,35.69,36.22,21.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,33.57,33.57,33.57,39.73
+408,C73,Terminal Balvanera - Terminal De Autobuses (taq),1.0,154,3,36.5,63.82,71.12,69.12,72.0,72.0,17.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,71.12,71.12,71.12,77.28
+418,C74,Lagunillas - Huimilpan,0.0,4,3,27.15,27.15,27.92,27.92,28.7,28.7,25.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,27.92,27.92,27.92,34.08
+418,C74,Lagunillas - Huimilpan,1.0,103,3,24.22,30.98,49.75,43.6,52.73,52.73,11.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,49.75,49.75,49.75,55.91
+128,L100,Av De La Luz - Terminal Balvanera,0.0,2,2,29.93,29.93,29.93,29.93,29.93,29.93,27.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,29.93,29.93,29.93,36.09
+128,L100,Av De La Luz - Terminal Balvanera,1.0,128,3,34.42,64.35,64.35,63.41,64.35,64.35,11.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,64.35,64.35,64.35,70.51
+129,L101,Terminal Blavanera - Imss H Gral No 1,0.0,2,2,40.85,40.85,40.85,40.85,40.85,40.85,33.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,40.85,40.85,40.85,47.01
+129,L101,Terminal Blavanera - Imss H Gral No 1,1.0,106,3,40.82,82.13,82.13,80.57,82.13,82.13,25.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,82.13,82.13,82.13,88.29
+130,L102,Valle Dorado - Terminal Balvanera,1.0,141,3,27.07,27.07,27.07,27.07,27.07,27.07,10.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,27.07,27.07,27.07,33.23
+112,L103,El Pozo - Uaq Aeropuerto,1.0,92,3,35.47,35.47,35.47,35.47,35.47,35.47,23.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,35.47,35.47,35.47,41.63
+113,L104,La Pradera - Zibata,0.0,5,3,9.17,9.17,10.57,11.26,14.33,16.83,8.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,10.57,10.57,10.57,16.73
+113,L104,La Pradera - Zibata,1.0,190,3,25.02,34.23,35.6,36.16,40.87,40.87,13.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,35.6,35.6,35.6,41.76
+114,L105,Penal - Zibata,1.0,94,3,30.12,30.12,30.12,30.12,30.12,30.12,8.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,30.12,30.12,30.12,36.28
+131,L106,La Pradera - Zakia,,0,0,,,,,,,,sin viajes en trips.txt,0,0.0,0.0,0.0,1.0,6.16,1.0,global,,,,
+140,L107,Lazaro Cardenas - Criq Queretaro,1.0,85,3,65.73,65.73,65.73,65.73,65.73,65.73,36.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,65.73,65.73,65.73,71.89
+356,L108,Santa Maria Magdalena - La Comer Zaragoza,0.0,4,3,20.87,21.35,22.47,22.07,22.47,22.47,20.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,22.47,22.47,22.47,28.63
+356,L108,Santa Maria Magdalena - La Comer Zaragoza,1.0,160,3,29.3,53.77,57.92,56.4,61.98,61.98,26.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,57.92,57.92,57.92,64.08
+162,L109,Socavon - Alameda,0.0,2,2,30.4,30.49,30.88,30.88,31.26,31.35,26.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,30.88,30.88,30.88,37.04
+162,L109,Socavon - Alameda,1.0,145,3,30.53,60.1,64.9,63.76,66.78,66.78,26.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,64.9,64.9,64.9,71.06
+163,L110,Corporativo Santander - Colinas De Menchaca,0.0,76,3,35.65,35.65,38.95,37.83,38.95,45.73,23.0,calculado,161,11.383333333333326,0.3510951468710087,1.84,1.0,6.68,1.0,ruta suavizada con global,38.95,38.95,40.79,45.63
+163,L110,Corporativo Santander - Colinas De Menchaca,1.0,125,3,29.83,29.83,29.83,50.54,80.3,80.3,34.0,calculado,161,11.383333333333326,0.3510951468710087,1.84,1.0,6.68,1.0,ruta suavizada con global,29.83,29.83,31.67,36.51
+164,L111,Victoria Popular - Prepa Norte Uaq,1.0,61,3,34.07,34.07,34.07,34.07,34.07,34.07,12.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,34.07,34.07,34.07,40.23
+357,L112,Lomas Del Marques - Plaza Del Parque,0.0,8,2,8.18,8.18,10.19,10.19,12.2,12.2,9.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,10.19,10.19,10.19,16.35
+357,L112,Lomas Del Marques - Plaza Del Parque,1.0,262,3,35.8,46.62,51.62,50.83,54.12,64.1,10.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,51.62,51.62,51.62,57.78
+412,L112E,Bolaños - Lomas Del Marques,,0,0,,,,,,,,sin viajes en trips.txt,0,0.0,0.0,0.0,1.0,6.16,1.0,global,,,,
+233,L113,Blvd De Las Americas - El Santuario Del Pueblito,1.0,126,3,43.9,43.9,46.48,45.99,46.48,46.48,38.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,46.48,46.48,46.48,52.64
+280,L114,Santa Rosa Jauregui - Cecyteq 09 Montenegro,0.0,22,3,11.15,11.15,12.0,11.84,13.5,13.67,17.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,12.0,12.0,12.0,18.16
+280,L114,Santa Rosa Jauregui - Cecyteq 09 Montenegro,1.0,516,3,11.73,24.12,26.75,31.48,41.78,41.78,21.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,26.75,26.75,26.75,32.91
+318,L114E,Santa Rosa Jauregui - Cecyteq 09 Montenegro,,0,0,,,,,,,,sin viajes en trips.txt,0,0.0,0.0,0.0,1.0,6.16,1.0,global,,,,
+281,L115,Leyes De Reforma - Corporativo Santander,1.0,131,3,44.67,44.67,44.67,44.67,44.67,44.67,12.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,44.67,44.67,44.67,50.83
+234,L117,Reforma Agraria - Niños Heroes,1.0,95,3,37.82,37.82,37.82,37.82,37.82,37.82,12.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,37.82,37.82,37.82,43.98
+358,L118,El Salitre - Plaza Del Parque,0.0,3,3,30.65,30.65,30.65,31.55,32.81,33.35,46.0,calculado,99,18.333333333333336,0.45603015075376885,0.0,1.03,3.35,1.1,ruta suavizada con global,31.68,33.69,31.68,37.04
+358,L118,El Salitre - Plaza Del Parque,1.0,161,3,66.87,66.87,66.87,67.57,69.52,69.52,46.0,calculado,99,18.333333333333336,0.45603015075376885,0.0,1.03,3.35,1.1,ruta suavizada con global,69.12,73.49,69.12,76.84
+273,L119,Santa Rosa Jauregui - Buenavista,0.0,10,3,29.75,29.75,36.42,33.75,36.42,36.42,31.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,36.42,36.42,36.42,42.58
+273,L119,Santa Rosa Jauregui - Buenavista,1.0,177,3,34.82,58.75,63.58,70.5,81.85,81.85,31.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,63.58,63.58,63.58,69.74
+276,L120,Santa Rosa Jauregui - La Cantera,0.0,8,3,32.53,32.53,35.15,34.5,35.15,35.15,22.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,35.15,35.15,35.15,41.31
+276,L120,Santa Rosa Jauregui - La Cantera,1.0,80,3,33.62,69.45,75.77,71.76,75.77,75.77,29.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,75.77,75.77,75.77,81.93
+277,L121,Santa Rosa Jauregui - Cañada De La Monja,0.0,5,2,30.97,30.97,30.97,30.97,30.97,30.97,15.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,30.97,30.97,30.97,37.13
+277,L121,Santa Rosa Jauregui - Cañada De La Monja,1.0,89,3,30.07,61.63,64.3,63.66,67.0,67.0,29.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,64.3,64.3,64.3,70.46
+278,L122,Santa Rosa Jauregui - Casa Blanca,0.0,2,2,1.35,1.35,1.35,1.35,1.35,1.35,4.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,1.35,1.35,1.35,7.51
+278,L122,Santa Rosa Jauregui - Casa Blanca,1.0,66,3,1.38,2.42,2.42,2.39,2.42,2.42,4.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,2.42,2.42,2.42,8.58
+279,L123,Santa Rosa Jauregui - San Miguelito,0.0,4,2,2.55,2.55,2.55,2.55,2.55,2.55,4.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,2.55,2.55,2.55,8.71
+279,L123,Santa Rosa Jauregui - San Miguelito,1.0,94,3,4.1,4.1,4.1,4.1,4.1,4.1,4.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,4.1,4.1,4.1,10.26
+275,L124,Santa Rosa Jauregui - La Solana,0.0,8,3,17.57,17.57,17.57,18.25,20.28,20.28,16.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,17.57,17.57,17.57,23.73
+275,L124,Santa Rosa Jauregui - La Solana,1.0,186,3,27.33,43.72,46.2,45.64,47.02,47.02,18.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,46.2,46.2,46.2,52.36
+274,L150,Mompani - La Obrera,1.0,107,3,38.73,90.95,90.95,90.64,94.8,94.8,32.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,90.95,90.95,90.95,97.11
+359,L151,Santa Maria Magdalena - Tanque,0.0,3,3,35.23,35.23,35.23,35.81,36.62,36.97,21.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,35.23,35.23,35.23,41.39
+359,L151,Santa Maria Magdalena - Tanque,1.0,119,3,37.15,71.84,77.33,76.02,79.02,79.02,23.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,77.33,77.33,77.33,83.49
+360,L152,Ejido Modelo - Alameda,0.0,70,3,14.42,15.33,16.27,16.23,17.17,17.17,10.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,16.27,16.27,16.27,22.43
+360,L152,Ejido Modelo - Alameda,1.0,70,3,16.65,17.47,18.3,17.97,18.3,18.3,11.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,18.3,18.3,18.3,24.46
+451,L153,El Calichar - Terminal Balvanera,,0,0,,,,,,,,sin viajes en trips.txt,0,0.0,0.0,0.0,1.0,6.16,1.0,global,,,,
+380,L154,El Tintero - Plaza Del Parque,1.0,183,3,45.52,45.52,47.33,47.19,49.13,49.13,22.0,calculado,82,20.15,0.45054945054945056,0.0,1.0,3.38,1.0,ruta suavizada con global,47.33,47.33,47.33,50.71
+381,L155,Rancho Bellavista - Tanque,1.0,135,3,78.28,82.55,97.73,92.85,98.55,98.55,32.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,97.73,97.73,97.73,103.89
+361,L156,Valle De Santiago - Corporativo Santander,0.0,5,3,24.12,24.42,24.88,25.35,26.43,26.43,24.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,24.88,24.88,24.88,31.04
+361,L156,Valle De Santiago - Corporativo Santander,1.0,187,3,38.78,65.08,82.87,78.2,87.12,87.12,30.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,82.87,82.87,82.87,89.03
+362,L157,Col Che Guevara - La Obrera,1.0,186,3,45.68,49.77,56.22,54.87,61.1,61.1,18.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,56.22,56.22,56.22,62.38
+363,L158,Juriquilla (km 15) - La Obrera,0.0,6,3,38.98,38.98,38.98,46.11,60.35,60.35,32.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,38.98,38.98,38.98,45.14
+363,L158,Juriquilla (km 15) - La Obrera,1.0,113,3,67.67,87.87,104.45,104.29,110.9,110.9,39.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,104.45,104.45,104.45,110.61
+364,L159,El Nabo - La Obrera,0.0,118,3,26.37,27.93,39.1,39.16,48.68,48.68,28.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,39.1,39.1,39.1,45.26
+364,L159,El Nabo - La Obrera,1.0,116,3,29.83,29.83,39.57,37.07,42.85,42.85,30.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,39.57,39.57,39.57,45.73
+365,L160,Valle De Santiago - La Obrera,1.0,133,3,66.32,82.58,85.2,92.8,110.05,110.05,42.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,85.2,85.2,85.2,91.36
+315,L161,Cipres Iv - Av De La Luz,0.0,2,2,21.2,21.2,21.2,21.2,21.2,21.2,14.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,21.2,21.2,21.2,27.36
+315,L161,Cipres Iv - Av De La Luz,1.0,109,3,25.82,52.47,52.47,51.98,52.47,52.47,17.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,52.47,52.47,52.47,58.63
+413,L162,Santa Rosa Jauregui - Pintillo,0.0,3,3,26.25,26.25,26.25,31.05,37.77,40.65,13.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,26.25,26.25,26.25,32.41
+413,L162,Santa Rosa Jauregui - Pintillo,1.0,77,3,43.55,43.55,43.55,48.39,55.58,55.58,17.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,43.55,43.55,43.55,49.71
+452,L163,El Granjeno - Apapataro,,0,0,,,,,,,,sin viajes en trips.txt,0,0.0,0.0,0.0,1.0,6.16,1.0,global,,,,
+409,L164,Socavon - Mercado De La Cruz,1.0,70,3,66.77,66.77,66.77,68.94,74.38,74.38,24.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,66.77,66.77,66.77,72.93
+422,L165,Blvd Villas Del Meson - Cumbres Del Lago,0.0,4,3,12.3,12.3,13.49,13.49,14.68,14.68,18.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,13.49,13.49,13.49,19.65
+422,L165,Blvd Villas Del Meson - Cumbres Del Lago,1.0,136,3,15.35,37.5,37.5,37.75,39.93,39.93,25.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,37.5,37.5,37.5,43.66
+453,L166,Huimilpan - Carranza,,0,0,,,,,,,,sin viajes en trips.txt,0,0.0,0.0,0.0,1.0,6.16,1.0,global,,,,
+454,L167,Huimilpan - Entronque El Vegil,,0,0,,,,,,,,sin viajes en trips.txt,0,0.0,0.0,0.0,1.0,6.16,1.0,global,,,,
+455,L168,San Antonio La Galera - Lagunillas,,0,0,,,,,,,,sin viajes en trips.txt,0,0.0,0.0,0.0,1.0,6.16,1.0,global,,,,
+456,L169,Huitron - Entronque El Vegil,,0,0,,,,,,,,sin viajes en trips.txt,0,0.0,0.0,0.0,1.0,6.16,1.0,global,,,,
+90,L51,Alameda - Santa Barbara,0.0,168,3,33.3,33.3,33.3,33.84,34.22,37.22,54.0,calculado,254,13.783333333333324,0.49448681732580013,0.0,1.0,3.11,1.02,ruta suavizada con global,33.3,33.82,33.3,36.94
+90,L51,Alameda - Santa Barbara,1.0,168,3,31.35,31.35,31.35,31.98,33.3,34.22,54.0,calculado,254,13.783333333333324,0.49448681732580013,0.0,1.0,3.11,1.02,ruta suavizada con global,31.35,31.84,31.35,34.95
+91,L52,Segundo Barrio De Dolores - El Mirador,0.0,220,3,5.97,5.97,5.97,6.24,6.75,6.75,5.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,5.97,5.97,5.97,12.13
+91,L52,Segundo Barrio De Dolores - El Mirador,1.0,220,3,4.9,4.9,4.9,5.11,5.52,5.52,4.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,4.9,4.9,4.9,11.06
+92,L53,Terminal Balvanera - Lourdes,0.0,243,3,16.03,19.57,19.57,21.59,26.65,26.65,13.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,19.57,19.57,19.57,25.73
+92,L53,Terminal Balvanera - Lourdes,1.0,243,3,10.27,11.93,13.63,13.97,15.3,15.3,13.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,13.63,13.63,13.63,19.79
+93,L54,Terminal Balvanera - Col 20 De Enero,0.0,257,3,13.92,17.37,20.83,20.22,23.42,23.42,13.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,20.83,20.83,20.83,26.99
+93,L54,Terminal Balvanera - Col 20 De Enero,1.0,257,3,13.53,16.87,19.37,18.52,20.2,20.2,14.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,19.37,19.37,19.37,25.53
+94,L55,Terminal Balvanera - Los Angeles,0.0,122,3,10.6,12.1,13.58,13.35,13.58,13.58,9.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,13.58,13.58,13.58,19.74
+94,L55,Terminal Balvanera - Los Angeles,1.0,122,3,8.73,11.33,11.97,12.17,13.28,13.28,9.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,11.97,11.97,11.97,18.13
+95,L56,Terminal Balvanera - Fracc Piramides,0.0,153,3,4.1,5.45,6.83,6.18,6.83,6.83,6.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,6.83,6.83,6.83,12.99
+95,L56,Terminal Balvanera - Fracc Piramides,1.0,153,3,11.0,13.96,16.52,16.91,18.35,18.35,16.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,16.52,16.52,16.52,22.68
+366,L57,Alameda - Santa Barbara,0.0,195,3,34.52,34.52,34.52,34.52,34.52,34.52,22.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,34.52,34.52,34.52,40.68
+366,L57,Alameda - Santa Barbara,1.0,195,3,33.95,33.95,33.95,33.95,33.95,33.95,25.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,33.95,33.95,33.95,40.11
+160,L59,San Pedrito El Alto - Linda Vista,0.0,108,3,18.42,20.73,23.07,23.01,25.37,25.37,31.0,calculado,222,18.966666666666672,0.6538198757763977,2.78,1.0,2.78,1.24,ruta suavizada con global,23.07,28.7,25.85,31.48
+160,L59,San Pedrito El Alto - Linda Vista,1.0,108,3,17.72,20.15,21.4,22.62,26.28,26.28,30.0,calculado,222,18.966666666666672,0.6538198757763977,2.78,1.0,2.78,1.24,ruta suavizada con global,21.4,26.63,24.18,29.41
+367,L60,Juncos - La Obrera,0.0,96,3,34.67,34.67,44.56,43.93,52.17,54.43,38.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,44.56,44.56,44.56,50.72
+367,L60,Juncos - La Obrera,1.0,96,3,34.45,34.45,51.23,45.68,51.23,55.48,34.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,51.23,51.23,51.23,57.39
+368,L61,Bosques Del Cimatario - Av De Las Torres,0.0,164,3,21.45,26.77,31.97,31.54,35.53,35.53,27.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,31.97,31.97,31.97,38.13
+368,L61,Bosques Del Cimatario - Av De Las Torres,1.0,164,3,23.47,27.54,32.28,32.47,35.83,35.83,30.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,32.28,32.28,32.28,38.44
+369,L62,Socavon - Alameda,0.0,125,3,10.68,12.65,14.03,14.08,15.95,16.62,17.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,14.03,14.03,14.03,20.19
+369,L62,Socavon - Alameda,1.0,127,3,9.88,12.95,13.9,13.92,15.23,15.23,14.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,13.9,13.9,13.9,20.06
+410,M214,Av De La Luz - Paseo San Miguel,,0,0,,,,,,,,sin viajes en trips.txt,0,0.0,0.0,0.0,1.0,6.16,1.0,global,,,,
+411,M215,Azteca - Alameda,,0,0,,,,,,,,sin viajes en trips.txt,0,0.0,0.0,0.0,1.0,6.16,1.0,global,,,,
+384,M216,Av Pie De La Cuesta - Av Sombrerete - Av Zaragoza,,0,0,,,,,,,,sin viajes en trips.txt,0,0.0,0.0,0.0,1.0,6.16,1.0,global,,,,
+385,M217,Av Zaragoza - Blvd Bernardo Quintana - Av Universidad,,0,0,,,,,,,,sin viajes en trips.txt,0,0.0,0.0,0.0,1.0,6.16,1.0,global,,,,
+388,M218,Santa Rosa Jauregui - La Versolilla,,0,0,,,,,,,,sin viajes en trips.txt,0,0.0,0.0,0.0,1.0,6.16,1.0,global,,,,
+389,M219,Santa Rosa Jauregui - La Estacada,,0,0,,,,,,,,sin viajes en trips.txt,0,0.0,0.0,0.0,1.0,6.16,1.0,global,,,,
+390,M220,Santa Catarina - Palo Alto,,0,0,,,,,,,,sin viajes en trips.txt,0,0.0,0.0,0.0,1.0,6.16,1.0,global,,,,
+391,M221,Santa Catarina - La Gotera,,0,0,,,,,,,,sin viajes en trips.txt,0,0.0,0.0,0.0,1.0,6.16,1.0,global,,,,
+392,M222,Santa Catarina - La Cienega,,0,0,,,,,,,,sin viajes en trips.txt,0,0.0,0.0,0.0,1.0,6.16,1.0,global,,,,
+393,M223,Santa Catarina - La Palma,,0,0,,,,,,,,sin viajes en trips.txt,0,0.0,0.0,0.0,1.0,6.16,1.0,global,,,,
+394,M224,Santa Catarina - Ojo De Agua,,0,0,,,,,,,,sin viajes en trips.txt,0,0.0,0.0,0.0,1.0,6.16,1.0,global,,,,
+395,M225,Santa Catarina - La Cantera,,0,0,,,,,,,,sin viajes en trips.txt,0,0.0,0.0,0.0,1.0,6.16,1.0,global,,,,
+414,M226,La Tinaja De La Estancia - Tlacote El Bajo,,0,0,,,,,,,,sin viajes en trips.txt,0,0.0,0.0,0.0,1.0,6.16,1.0,global,,,,
+415,M227,El Zapote - Av De La Luz,,0,0,,,,,,,,sin viajes en trips.txt,0,0.0,0.0,0.0,1.0,6.16,1.0,global,,,,
+416,M228,Tlacote El Alto - Tlacote El Bajo,,0,0,,,,,,,,sin viajes en trips.txt,0,0.0,0.0,0.0,1.0,6.16,1.0,global,,,,
+417,M229,Las Lajitas - Fracc Hacienda Santa Rosa,,0,0,,,,,,,,sin viajes en trips.txt,0,0.0,0.0,0.0,1.0,6.16,1.0,global,,,,
+419,M230,El Pie - La Tinaja De La Estancia,,0,0,,,,,,,,sin viajes en trips.txt,0,0.0,0.0,0.0,1.0,6.16,1.0,global,,,,
+420,M231,Cerro Prieto - La Tinaja De La Estancia,,0,0,,,,,,,,sin viajes en trips.txt,0,0.0,0.0,0.0,1.0,6.16,1.0,global,,,,
+421,M232,El Patol - Mompani,,0,0,,,,,,,,sin viajes en trips.txt,0,0.0,0.0,0.0,1.0,6.16,1.0,global,,,,
+450,M233,San Isidro El Alto - Mompani,,0,0,,,,,,,,sin viajes en trips.txt,0,0.0,0.0,0.0,1.0,6.16,1.0,global,,,,
+118,MV-R01,La Negreta,,0,0,,,,,,,,sin viajes en trips.txt,0,0.0,0.0,0.0,1.0,6.16,1.0,global,,,,
+119,MV-R02,El Pueblito - Paseos Del Bosque,,0,0,,,,,,,,sin viajes en trips.txt,0,0.0,0.0,0.0,1.0,6.16,1.0,global,,,,
+120,MV-R03,Lourdes - Camino Al Cerrito,,0,0,,,,,,,,sin viajes en trips.txt,0,0.0,0.0,0.0,1.0,6.16,1.0,global,,,,
+235,MV-R04,Vista Hermosa - Candiles,,0,0,,,,,,,,sin viajes en trips.txt,0,0.0,0.0,0.0,1.0,6.16,1.0,global,,,,
+122,MV-R05,El Pueblito - Mision Candiles,,0,0,,,,,,,,sin viajes en trips.txt,0,0.0,0.0,0.0,1.0,6.16,1.0,global,,,,
+123,MV-R06,Santa Barbara - La Poza,,0,0,,,,,,,,sin viajes en trips.txt,0,0.0,0.0,0.0,1.0,6.16,1.0,global,,,,
+124,MV-R07,Arroyo Hondo - Presa De Bravo,,0,0,,,,,,,,sin viajes en trips.txt,0,0.0,0.0,0.0,1.0,6.16,1.0,global,,,,
+125,MV-R08,413 Camino A Coroneo - El Jaral,,0,0,,,,,,,,sin viajes en trips.txt,0,0.0,0.0,0.0,1.0,6.16,1.0,global,,,,
+126,MV-R09,Los Angeles - El Pueblito,,0,0,,,,,,,,sin viajes en trips.txt,0,0.0,0.0,0.0,1.0,6.16,1.0,global,,,,
+127,MV-R10,Los Altos Del Pueblito - Industrial El Pueblito,,0,0,,,,,,,,sin viajes en trips.txt,0,0.0,0.0,0.0,1.0,6.16,1.0,global,,,,
+303,QV-R01,Agua Fria - Jalpan De Serra,,0,0,,,,,,,,sin viajes en trips.txt,0,0.0,0.0,0.0,1.0,6.16,1.0,global,,,,
+304,QV-R02,Mohonera - Jalpan De Serra,,0,0,,,,,,,,sin viajes en trips.txt,0,0.0,0.0,0.0,1.0,6.16,1.0,global,,,,
+305,QV-R03,La Arena - Jalpan De Serra,,0,0,,,,,,,,sin viajes en trips.txt,0,0.0,0.0,0.0,1.0,6.16,1.0,global,,,,
+306,QV-R04,Tancoyol - Jalpan De Serra,,0,0,,,,,,,,sin viajes en trips.txt,0,0.0,0.0,0.0,1.0,6.16,1.0,global,,,,
+307,QV-R05,Lagunita De San Diego - Jalpan De Serra,,0,0,,,,,,,,sin viajes en trips.txt,0,0.0,0.0,0.0,1.0,6.16,1.0,global,,,,
+308,QV-R06,El Rodezno - Jalpan De Serra,,0,0,,,,,,,,sin viajes en trips.txt,0,0.0,0.0,0.0,1.0,6.16,1.0,global,,,,
+309,QV-R07,Santa Agueda (sentido Sur) - Jalpan De Serra,,0,0,,,,,,,,sin viajes en trips.txt,0,0.0,0.0,0.0,1.0,6.16,1.0,global,,,,
+310,QV-R08,Santa Agueda (sentido Norte) - Jalpan De Serra,,0,0,,,,,,,,sin viajes en trips.txt,0,0.0,0.0,0.0,1.0,6.16,1.0,global,,,,
+311,QV-R09,Aguacate De San Pedro - Jalpan De Serra,,0,0,,,,,,,,sin viajes en trips.txt,0,0.0,0.0,0.0,1.0,6.16,1.0,global,,,,
+312,QV-R10,Sauz De Guadalupe - Jalpan De Serra,,0,0,,,,,,,,sin viajes en trips.txt,0,0.0,0.0,0.0,1.0,6.16,1.0,global,,,,
+313,QV-R11,Pie De La Cuesta - Jalpan De Serra,,0,0,,,,,,,,sin viajes en trips.txt,0,0.0,0.0,0.0,1.0,6.16,1.0,global,,,,
+398,R301,Hacienda Mompani - Alameda,,0,0,,,,,,,,sin viajes en trips.txt,0,0.0,0.0,0.0,1.0,6.16,1.0,global,,,,
+399,R302,Uteq - Alameda,,0,0,,,,,,,,sin viajes en trips.txt,0,0.0,0.0,0.0,1.0,6.16,1.0,global,,,,
+459,RA01,Plaza Del Parque - Ezequiel Montes (ruta De Apoyo Sin Costo),,0,0,,,,,,,,sin viajes en trips.txt,0,0.0,0.0,0.0,1.0,6.16,1.0,global,,,,
+99,T01,Terminal Balvanera - Los Heroes,0.0,218,3,54.12,63.02,63.02,62.69,63.02,63.02,41.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,63.02,63.02,63.02,69.18
+99,T01,Terminal Balvanera - Los Heroes,1.0,218,3,52.87,61.52,61.52,61.18,61.52,61.52,38.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,61.52,61.52,61.52,67.68
+370,T02,La Pradera - San Jose De Los Olvera,0.0,191,3,51.32,60.6,69.73,72.39,83.52,83.52,57.0,calculado,170,15.983333333333341,0.5031790123456793,0.0,1.0,3.06,1.0,ruta suavizada con global,69.73,69.73,69.73,72.79
+370,T02,La Pradera - San Jose De Los Olvera,1.0,191,3,51.08,51.08,75.85,68.56,75.85,90.85,47.0,calculado,170,15.983333333333341,0.5031790123456793,0.0,1.0,3.06,1.0,ruta suavizada con global,75.85,75.85,75.85,78.91
+371,T03,Prados Del Sol - Fracc Vistana,0.0,198,3,74.88,84.22,93.45,91.6,93.45,93.45,61.0,calculado,143,28.03333333333333,0.588477366255144,3.61,1.0,11.83,1.0,ruta suavizada con global,93.45,93.45,97.06,105.28
+371,T03,Prados Del Sol - Fracc Vistana,1.0,200,3,75.95,85.37,94.78,92.91,94.78,94.78,59.0,calculado,143,28.03333333333333,0.588477366255144,3.61,1.0,11.83,1.0,ruta suavizada con global,94.78,94.78,98.39,106.61
+402,T03X,Prados Del Sol - Fracc Vistana,,0,0,,,,,,,,sin viajes en trips.txt,0,0.0,0.0,0.0,1.0,6.16,1.0,global,,,,
+372,T04,Desarrollo Familiar - Terminal De Autobuses (taq),0.0,213,3,55.55,69.25,77.42,77.86,87.45,93.82,54.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,77.42,77.42,77.42,83.58
+372,T04,Desarrollo Familiar - Terminal De Autobuses (taq),1.0,213,3,55.22,68.8,82.27,79.66,88.68,94.12,53.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,82.27,82.27,82.27,88.43
+373,T05,La Cañada - Los Olvera,0.0,180,3,67.17,81.28,81.28,81.87,86.03,86.03,65.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,81.28,81.28,81.28,87.44
+373,T05,La Cañada - Los Olvera,1.0,180,3,69.98,79.18,79.18,79.93,83.8,83.8,60.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,79.18,79.18,79.18,85.34
+374,T06,Terminal De Autobuses (taq) - Juncos,0.0,244,3,50.63,50.63,59.7,57.26,68.87,68.87,34.0,calculado,100,14.333333333333336,0.3583333333333334,0.37,1.09,3.95,1.15,ruta suavizada con global,65.01,68.95,65.37,72.9
+374,T06,Terminal De Autobuses (taq) - Juncos,1.0,244,3,51.5,51.5,56.17,59.15,70.2,70.2,32.0,calculado,100,14.333333333333336,0.3583333333333334,0.37,1.09,3.95,1.15,ruta suavizada con global,61.16,64.87,61.53,68.82
+403,T06X,Terminal De Autobuses (taq) - Juncos,,0,0,,,,,,,,sin viajes en trips.txt,0,0.0,0.0,0.0,1.0,6.16,1.0,global,,,,
+375,T07,Blvd De Las Americas - Fracc Vistana,0.0,228,3,58.15,82.2,91.7,93.33,96.45,747.92,66.0,calculado,177,35.71666666666666,0.6389891696750902,3.83,1.0,8.87,1.0,ruta suavizada con global,91.7,91.7,95.53,100.57
+375,T07,Blvd De Las Americas - Fracc Vistana,1.0,228,3,55.42,77.9,87.02,88.71,91.53,706.3,60.0,calculado,177,35.71666666666666,0.6389891696750902,3.83,1.0,8.87,1.0,ruta suavizada con global,87.02,87.02,90.85,95.89
+376,T08,Santa Rosa Jauregui - Terminal De Autobuses Taq,0.0,275,3,85.18,89.9,89.9,89.73,89.9,89.9,56.0,calculado,157,13.833333333333325,0.4225356679636833,0.0,1.0,3.56,1.0,ruta suavizada con global,89.9,89.9,89.9,93.46
+376,T08,Santa Rosa Jauregui - Terminal De Autobuses Taq,1.0,275,3,86.87,91.67,91.67,91.51,91.67,91.67,55.0,calculado,157,13.833333333333325,0.4225356679636833,0.0,1.0,3.56,1.0,ruta suavizada con global,91.67,91.67,91.67,95.23
+377,T09,Blvd Peña Flor - Terminal De Autobuses (taq),0.0,304,3,55.07,72.98,77.55,80.55,90.97,90.97,58.0,calculado,63,12.666666666666664,0.24478527607361958,2.78,1.0,8.36,1.0,ruta suavizada con global,77.55,77.55,80.33,85.91
+377,T09,Blvd Peña Flor - Terminal De Autobuses (taq),1.0,310,3,66.82,81.03,85.78,86.7,90.5,99.93,56.0,calculado,63,12.666666666666664,0.24478527607361958,2.78,1.0,8.36,1.0,ruta suavizada con global,85.78,85.78,88.56,94.14
+405,T09X,Blvd Peña Flor - Terminal De Autobuses (taq),,0,0,,,,,,,,sin viajes en trips.txt,0,0.0,0.0,0.0,1.0,6.16,1.0,global,,,,
+378,T10,Hacienda Mompani - Criq Queretaro,0.0,232,3,89.05,93.68,98.35,98.41,102.92,102.92,75.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,98.35,98.35,98.35,104.51
+378,T10,Hacienda Mompani - Criq Queretaro,1.0,236,3,93.58,98.13,98.13,99.15,102.75,102.75,71.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,98.13,98.13,98.13,104.29
+255,T11,Terminal Balvanera - Parque Industrial Queretaro,0.0,195,3,70.77,70.77,90.47,88.83,96.99,98.83,56.0,calculado,95,20.433333333333344,0.48717948717948717,0.0,1.05,3.16,1.08,ruta suavizada con global,95.31,97.83,95.31,100.99
+255,T11,Terminal Balvanera - Parque Industrial Queretaro,1.0,197,3,77.72,77.72,77.72,82.18,87.32,87.32,48.0,calculado,95,20.433333333333344,0.48717948717948717,0.0,1.05,3.16,1.08,ruta suavizada con global,81.88,84.04,81.88,87.2
+256,T12,Av De La Luz - Real Solare,0.0,230,3,33.67,43.12,95.45,90.52,104.9,114.42,45.0,calculado,81,10.233333333333327,0.22897790055248607,0.0,1.04,4.75,1.05,ruta suavizada con global,99.16,100.42,99.16,105.17
+256,T12,Av De La Luz - Real Solare,1.0,232,3,73.97,92.37,92.37,91.89,92.37,92.37,46.0,calculado,81,10.233333333333327,0.22897790055248607,0.0,1.04,4.75,1.05,ruta suavizada con global,95.96,97.18,95.96,101.93
+379,T13,La Loma Ix - Alameda,0.0,210,3,62.92,67.32,67.32,69.73,80.62,80.62,43.0,calculado,77,29.13333333333334,0.4350282485875706,0.0,1.0,6.59,1.0,ruta suavizada con global,67.32,67.32,67.32,73.91
+379,T13,La Loma Ix - Alameda,1.0,210,3,62.75,62.75,67.27,70.05,80.57,80.57,37.0,calculado,77,29.13333333333334,0.4350282485875706,0.0,1.0,6.59,1.0,ruta suavizada con global,67.27,67.27,67.27,73.86
+382,T14,Terminal De Autobuses (taq) - Pedro Escobedo - La Lira,0.0,12,3,69.2,69.2,74.57,75.93,82.68,82.68,43.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,74.57,74.57,74.57,80.73
+382,T14,Terminal De Autobuses (taq) - Pedro Escobedo - La Lira,1.0,118,3,70.48,131.89,175.33,159.34,178.12,178.12,36.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,175.33,175.33,175.33,181.49
+383,T15,Terminal Balvanera - Huimilpan,1.0,172,3,88.37,88.37,88.37,89.1,90.35,90.35,41.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,88.37,88.37,88.37,94.53
+396,T16,Lagunillas - Alameda,0.0,121,3,36.87,36.87,42.08,41.12,43.85,43.85,23.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,42.08,42.08,42.08,48.24
+396,T16,Lagunillas - Alameda,1.0,121,3,39.27,39.27,46.02,44.29,46.87,46.87,27.0,calculado,0,0.0,0.0,0.0,1.0,6.16,1.0,global,46.02,46.02,46.02,52.18
+288,UAQ1,Uaq: Centro Universitario - Uaq: Campus Juriquilla,,0,0,,,,,,,,sin viajes en trips.txt,0,0.0,0.0,0.0,1.0,6.16,1.0,global,,,,
+289,UAQ2,Uaq: Centro Universitario - Uaq: Campus Aeropuerto,,0,0,,,,,,,,sin viajes en trips.txt,0,0.0,0.0,0.0,1.0,6.16,1.0,global,,,,

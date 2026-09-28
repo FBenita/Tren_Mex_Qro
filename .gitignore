@@ -220,3 +220,6 @@ __marimo__/
 # MACOS
 # General
 .DS_Store
+
+# Descargas reproducibles y pesadas de servicios externos
+data/cache/
