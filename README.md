@@ -22,6 +22,7 @@ Tren_Mex_Qro/
 │   ├── TiemposTotalesRutasGTFS.ipynb
 │   └── gtfs_network.py
 ├── docs/
+│   ├── reporte_demanda_accesibilidad_corregidora.md
 │   └── soluciones_tiempos_rutas.md
 ├── .env.example
 ├── .gitignore
@@ -65,15 +66,15 @@ La sección final de `scripts/RutasQroBus.ipynb` contiene las funciones para des
 RADIO_DEMANDA_M=20
 ```
 
-La respuesta de aproximadamente 50 MB se conserva en `data/cache/`, que Git ignora. Se generan el resumen `data/processed/demanda_potencial_resumen.json`, el detalle por manzana y `maps/mapa_demanda_potencial.html`. El resultado principal prorratea la población según la fracción del área de cada manzana cubierta; es una estimación y no localiza domicilios. El resumen distingue la población estatal total de la población numérica representada en manzanas, pues no todas las personas viven en áreas amanzanadas y existen valores protegidos. Para un estudio de acceso peatonal conviene comparar también radios de 400 o 500 metros.
+La respuesta de aproximadamente 50 MB se conserva en `data/cache/`, que Git ignora. Se generan el resumen `data/processed/demanda_potencial_resumen.json`, el detalle por manzana, las tablas reproducibles de paradas, rutas e itinerarios hacia Corregidora y `maps/mapa_demanda_potencial.html`. El resultado principal prorratea la población según la fracción del área de cada manzana cubierta; es una estimación y no localiza domicilios. El resumen distingue la población estatal total de la población numérica representada en manzanas, pues no todas las personas viven en áreas amanzanadas y existen valores protegidos. Para un estudio de acceso peatonal conviene comparar también radios de 400 o 500 metros. La metodología y los resultados actuales están explicados en `docs/reporte_demanda_accesibilidad_corregidora.md`.
 
 El análisis y las utilidades de mapas viven directamente en celdas independientes de `RutasQroBus.ipynb`; no requieren módulos auxiliares exclusivos del notebook. Cada mapa queda integrado en su salida y conserva una copia HTML en `maps/`. Los mapas dibujan la unión deduplicada de todos los segmentos utilizados: una parada solo se muestra cuando tiene un tramo conectado hacia el destino. Cada ruta conserva un color estable en líneas, paradas y leyendas; los tramos finales a pie se muestran en gris discontinuo.
 
 ### Tiempo total de todas las rutas sin Google
 
-`scripts/TiemposTotalesRutasGTFS.ipynb` contiene todo el cálculo paso a paso, muestra la tabla resumida e integra el mapa. No depende de un script adicional: basta con abrirlo y ejecutar todas sus celdas.
+`scripts/TiemposTotalesRutasGTFS.ipynb` contiene todo el cálculo paso a paso, muestra la tabla resumida e integra el mapa. Además aprende del histórico local una calibración robusta `constante + factor × GTFS`, construye escenarios P50/P80 y acumula los segmentos corregidos hacia atrás desde la última parada. No realiza llamadas nuevas a Google ni depende de un script adicional.
 
-Genera `data/processed/tiempos_totales_rutas_gtfs.csv`, `data/processed/duraciones_viajes_gtfs.csv` y `maps/mapa_tiempos_totales_rutas_gtfs.html` sin consumir la API de Google. El mapa colorea cada ruta de forma distinta y muestra P50, P10-P90 y cantidad de viajes por sentido. Como el GTFS no incluye `shapes.txt`, las líneas unen paradas consecutivas y son aproximadas. Las alternativas para obtener tiempos observados y reducir costos están documentadas en `docs/soluciones_tiempos_rutas.md`.
+Genera `data/processed/tiempos_totales_rutas_gtfs.csv`, `data/processed/duraciones_viajes_gtfs.csv`, `data/processed/calibracion_tiempos_rutas_google.csv`, `data/processed/tiempos_acumulados_paradas_rutas.csv` y `maps/mapa_tiempos_totales_rutas_gtfs.html`. El mapa colorea cada ruta de forma distinta y compara GTFS con P50/P80 por sentido. Como el GTFS no incluye `shapes.txt`, las líneas unen paradas consecutivas y son aproximadas. Las alternativas, fórmulas y limitaciones están documentadas en `docs/soluciones_tiempos_rutas.md`.
 
 ### `PromedioRutas.ipynb`
 
