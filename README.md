@@ -60,13 +60,13 @@ El escenario sin cruces se muestra como mapa interactivo dentro de `RutasQroBus.
 
 ### Demanda potencial con INEGI
 
-La sección final de `scripts/RutasQroBus.ipynb` contiene las funciones para descargar las manzanas completas del estado de Querétaro desde el servicio oficial del INEGI y estimar la población cubierta por buffers alrededor de las paradas con acceso confiable a Corregidora. El radio predeterminado es de 20 metros y puede modificarse en `.env`:
+La sección final de `scripts/RutasQroBus.ipynb` consulta las manzanas del estado de Querétaro desde el servicio oficial del INEGI y estima la población cubierta por buffers alrededor de las paradas con acceso confiable a Corregidora. Si un buffer toca una manzana, se incluye la población de toda esa manzana. El radio predeterminado es de 20 metros y puede modificarse en `.env`:
 
 ```dotenv
 RADIO_DEMANDA_M=20
 ```
 
-La respuesta de aproximadamente 50 MB se conserva en `data/cache/`, que Git ignora. Se generan el resumen `data/processed/demanda_potencial_resumen.json`, el detalle por manzana, las tablas reproducibles de paradas, rutas e itinerarios hacia Corregidora y `maps/mapa_demanda_potencial.html`. El resultado principal prorratea la población según la fracción del área de cada manzana cubierta; es una estimación y no localiza domicilios. El resumen distingue la población estatal total de la población numérica representada en manzanas, pues no todas las personas viven en áreas amanzanadas y existen valores protegidos. Para un estudio de acceso peatonal conviene comparar también radios de 400 o 500 metros. La metodología y los resultados actuales están explicados en `docs/reporte_demanda_accesibilidad_corregidora.md`.
+La respuesta se conserva en `data/cache/`, que Git ignora. `ACTUALIZAR_DATOS_INEGI=true` fuerza una descarga nueva de geometrías al ejecutar el notebook. Se generan CSV de manzanas y paradas, comparaciones acumuladas para P80 de 5, 15 y 30 minutos y `maps/mapa_demanda_potencial.html`. La población por manzana proviene del Censo 2020, el último censo nacional disponible; el servicio de geometría puede refrescarse, pero no actualiza el año de referencia censal. El servicio geográfico usado en este notebook solo expone población total, población por sexo y viviendas habitadas. Los indicadores de edad, discapacidad, escolaridad, actividad económica, salud y vivienda del `FD_CPV2020.xlsx` requieren una tabla censal adicional por `CVEGEO`; no deben sustituirse con indicadores agregados de localidad o malla.
 
 El análisis y las utilidades de mapas viven directamente en celdas independientes de `RutasQroBus.ipynb`; no requieren módulos auxiliares exclusivos del notebook. Cada mapa queda integrado en su salida y conserva una copia HTML en `maps/`. Los mapas dibujan la unión deduplicada de todos los segmentos utilizados: una parada solo se muestra cuando tiene un tramo conectado hacia el destino. Cada ruta conserva un color estable en líneas, paradas y leyendas; los tramos finales a pie se muestran en gris discontinuo.
 
@@ -168,6 +168,8 @@ Variables disponibles:
 | `MAX_EDAD_ETA_HORAS` | Antigüedad máxima permitida para usar una ETA de Google en el mapa; por defecto, 24 horas. |
 | `MIN_OBSERVACIONES_HISTORICAS` | Muestra mínima por parada para una clasificación P50/P80 preliminar; por defecto, 5. Diez o más se etiquetan como calidad alta. |
 | `RADIO_DEMANDA_M` | Radio en metros de los buffers usados para estimar demanda potencial; por defecto, 20. |
+| `ACTUALIZAR_DATOS_INEGI` | Si es `true`, vuelve a descargar las geometrías de manzana del servicio del INEGI en vez de usar la caché. |
+| `RETENCION_HISTORICO_DIAS` | Ventana de retención para las observaciones de Google; por defecto, 365 días. |
 
 El archivo `.env` está excluido mediante `.gitignore`. Nunca se debe copiar la API key al notebook, al README ni a un commit.
 

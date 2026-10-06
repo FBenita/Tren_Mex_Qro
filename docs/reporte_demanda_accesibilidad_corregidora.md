@@ -1,14 +1,14 @@
 # Reporte de demanda potencial y accesibilidad QroBus hacia Corregidora
 
-Fecha de actualización: 28 de septiembre de 2026.
+Fecha de actualización: 5 de octubre de 2026.
 
 ## Resumen ejecutivo
 
 El análisis identifica **329 paradas** clasificadas actualmente como acceso confiable hacia la estación Corregidora, porque cuentan con al menos cinco observaciones históricas y su ETA P80 de Google es menor o igual a 30 minutos. De estas paradas, 15 tienen una conexión directa en el camino GTFS calculado y 314 requieren uno o más transbordos.
 
-Alrededor de las 329 paradas se construyó la unión de buffers de 20 metros. Esta cobertura intersecta 395 manzanas del Censo de Población y Vivienda 2020 y produce una demanda potencial estimada de **1,428.19 personas**, equivalente al 0.0603 % de la población estatal reportada por el INEGI.
+Alrededor de las 329 paradas se construyó la unión de buffers de 20 metros. Esta cobertura intersecta 395 manzanas del Censo de Población y Vivienda 2020. Al contar toda la población de cada manzana tocada por los buffers, la cobertura suma **42,149 personas**, equivalente al 1.7796 % de la población estatal reportada por el INEGI.
 
-Este resultado debe interpretarse como una aproximación espacial. No significa que 1,428 personas utilicen actualmente QroBus o el tren. Representa la población estimada dentro del área de los buffers de las paradas clasificadas como accesibles según el criterio vigente.
+Este resultado debe interpretarse como una aproximación espacial. No significa que 42,149 personas utilicen actualmente QroBus o el tren. Representa la población censada en las manzanas que intersectan los buffers de las paradas clasificadas como accesibles según el criterio vigente.
 
 ## Fuentes de información
 
@@ -178,21 +178,20 @@ Las paradas se proyectaron a `EPSG:32614`, un sistema métrico apropiado para Qu
 
 ### 3. Cruce con las manzanas del INEGI
 
-Se descargaron 44,827 manzanas de Querétaro. Para cada manzana intersectada se calculó:
+Se descargaron 44,827 manzanas de Querétaro. Para cada manzana intersectada se conserva la fracción de área cubierta como referencia y se cuenta la población completa de la manzana:
 
 ```text
 fracción cubierta = área de la manzana dentro del buffer / área total de la manzana
 ```
 
-La población estimada de la manzana fue:
+La medida principal sigue la regla solicitada: si el buffer toca la manzana, se incluye toda su población. El prorrateo anterior se conserva en una columna separada para comparación:
 
 ```text
-población estimada = población de la manzana × fracción cubierta
+población incluida = población total de la manzana intersectada
+población prorrateada = población de la manzana × fracción cubierta
 ```
 
-Finalmente se sumó la población estimada de todas las manzanas intersectadas.
-
-Este método supone que la población está distribuida uniformemente dentro de cada manzana. No identifica domicilios ni la posición real de las personas.
+Finalmente se sumó la población incluida de todas las manzanas intersectadas. Es un conteo de bloques censales completos, no una localización de domicilios.
 
 ## Resultado de demanda potencial
 
@@ -205,19 +204,31 @@ Este método supone que la población está distribuida uniformemente dentro de 
 | Manzanas sin población numérica | 3,248 |
 | Población numérica representada en manzanas | 1,854,152 |
 | Población estatal reportada por INEGI | 2,368,467 |
-| Población estimada mediante prorrateo de área | **1,428.19** |
-| Porcentaje sobre población en manzanas | 0.077027 % |
-| Porcentaje sobre población estatal | 0.0603 % |
-| Población total de manzanas intersectadas, cota alta | 42,149 |
+| Población de manzanas completas intersectadas | **42,149** |
+| Porcentaje sobre población en manzanas | 2.2731 % |
+| Porcentaje sobre población estatal | 1.7796 % |
+| Estimación prorrateada conservada para comparación | 1,428.19 |
 | Población mediante punto representativo | 229 |
 
-Los tres valores de población responden a supuestos distintos:
+Los valores responden a supuestos espaciales distintos:
 
-- **1,428.19:** estimación principal mediante fracción de área;
+- **42,149:** población de todas las manzanas tocadas por los buffers;
+- **1,428.19:** prorrateo por fracción de área, conservado para comparación;
 - **229:** solo cuenta manzanas cuyo punto representativo cae dentro de la cobertura;
-- **42,149:** asigna toda la población de cualquier manzana tocada por un buffer y funciona únicamente como cota alta.
 
-La diferencia entre ellos muestra la incertidumbre espacial que produce un buffer de apenas 20 metros sobre manzanas completas.
+La diferencia refleja el cambio de unidad de análisis: el buffer cubre una fracción pequeña de varias manzanas, pero la medida principal incluye bloques completos.
+
+### Comparación por umbral de tiempo
+
+Los escenarios usan acceso confiable cuando hay al menos cinco observaciones y P80 histórico menor o igual al umbral. Son acumulados, no intervalos excluyentes.
+
+| P80 máximo | Paradas | Manzanas tocadas | Población de manzanas completas |
+|---:|---:|---:|---:|
+| 5 min | 1 | 4 | 617 |
+| 15 min | 64 | 76 | 11,498 |
+| 30 min | 329 | 395 | 42,149 |
+
+Los resultados detallados se exportan en `resumen_acceso_5_15_30_min.csv`, `paradas_acceso_5_15_30_min.csv` y `manzanas_acceso_{5,15,30}_min.csv`.
 
 ## Advertencias de interpretación
 
@@ -227,7 +238,7 @@ De las 329 paradas clasificadas como confiables por P80, 222 tienen un tiempo de
 
 Esto no significa que los autobuses circulen 39 minutos más rápido que el horario. Probablemente Google eligió otro itinerario, otra parada, una combinación de rutas diferente o una caminata que la matriz actual no permite identificar. La columna `route_id_principal` procede del camino GTFS, no de una confirmación de la línea utilizada por Google.
 
-Por tanto, la cifra de 1,428 personas debe describirse como **demanda potencial bajo el criterio P80 vigente**, no como una medición definitiva de cobertura operativa.
+Por tanto, la cifra de 42,149 personas debe describirse como **población censada en manzanas tocadas bajo el criterio P80 vigente**, no como una medición definitiva de cobertura operativa.
 
 Para una estimación conservadora se recomienda recalcular un segundo escenario que exija simultáneamente:
 
