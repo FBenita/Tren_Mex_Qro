@@ -21,7 +21,7 @@ Se utilizaron los siguientes archivos locales:
 - `trips.txt`: relación entre viajes y rutas;
 - `stop_times.txt`: orden y horario programado de las paradas.
 
-El conjunto no contiene `calendar.txt`, `calendar_dates.txt` ni `shapes.txt`. Por ello no se determina qué servicios operan en una fecha concreta y las líneas del mapa unen paradas consecutivas, sin reproducir exactamente la geometría de las calles.
+El conjunto no contiene `calendar.txt`, `calendar_dates.txt` ni `shapes.txt`. Por ello no se determina qué servicios operan en una fecha concreta y las líneas del mapa unen paradas consecutivas por el camino más probable sobre la red vial de OpenStreetMap, que puede diferir del derrotero oficial.
 
 ### Histórico de Google Routes API
 
@@ -94,6 +94,8 @@ El criterio actual de acceso confiable es:
 ```text
 observaciones >= 5 y P80 de Google <= 30 minutos
 ```
+
+El uso de percentiles en lugar del promedio sigue la práctica de la Federal Highway Administration de Estados Unidos: su medida oficial de confiabilidad, *Level of Travel Time Reliability* (LOTTR), es el tiempo de viaje del percentil 80 dividido entre el tiempo "normal" del percentil 50 ([23 CFR § 490.511](https://www.law.cornell.edu/cfr/text/23/490.511); [preguntas frecuentes de la FHWA](https://www.fhwa.dot.gov/tpm/faq.cfm)), y su guía [*Travel Time Reliability: Making It There On Time, All The Time*](https://ops.fhwa.dot.gov/publications/tt_reliability/TTR_Report.htm) explica por qué un promedio no describe la confiabilidad. Esa norma se diseñó para tramos carreteros con muchas mediciones; aquí se adopta por analogía para ETA de transporte público con muestras de entre 1 y 9 observaciones por parada, por lo que el P80 es preliminar.
 
 Las clasificaciones laboral y fin de semana se conservan como contexto, pero no se filtran todavía porque la muestra de algunos grupos es pequeña.
 
@@ -263,9 +265,9 @@ La penalización fija de cinco minutos aproxima espera y conexión. No garantiza
 
 ## Archivos reproducibles
 
-- [`RutasQroBus.ipynb`](../scripts/RutasQroBus.ipynb): caminos, clasificación, mapas y demanda.
-- [`PromedioRutas.ipynb`](../scripts/PromedioRutas.ipynb): GTFS, Dijkstra e histórico de Google.
-- [`TiemposTotalesRutasGTFS.ipynb`](../scripts/TiemposTotalesRutasGTFS.ipynb): duración total y calibración P50/P80 por segmentos.
+- [`02_RutasQroBus.ipynb`](../notebooks/02_RutasQroBus.ipynb): caminos, clasificación, mapas y demanda.
+- [`01_PromedioRutas.ipynb`](../notebooks/01_PromedioRutas.ipynb): GTFS, Dijkstra e histórico de Google.
+- [`03_TiemposTotalesRutasGTFS.ipynb`](../notebooks/03_TiemposTotalesRutasGTFS.ipynb): duración total y calibración P50/P80 por segmentos.
 - [`demanda_potencial_resumen.json`](../data/processed/demanda_potencial_resumen.json): indicadores de demanda.
 - [`demanda_potencial_manzanas.csv`](../data/processed/demanda_potencial_manzanas.csv): detalle de manzanas intersectadas.
 - [`paradas_acceso_corregidora.csv`](../data/processed/paradas_acceso_corregidora.csv): detalle completo de paradas.

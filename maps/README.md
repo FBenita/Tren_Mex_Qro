@@ -1,6 +1,6 @@
 # Mapas generados
 
-`RutasQroBus.ipynb` muestra los mapas dentro de sus celdas y además guarda aquí copias HTML independientes:
+`02_RutasQroBus.ipynb` muestra los mapas dentro de sus celdas y además guarda aquí copias HTML independientes:
 
 - `mapa_rutas_qrobus.html`
 - `mapa_paradas_sur_vias_30_min.html`

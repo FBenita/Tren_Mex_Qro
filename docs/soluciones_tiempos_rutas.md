@@ -12,7 +12,7 @@ No son intercambiables. Google Transit se aproxima a la tercera; el GTFS estáti
 
 ## Solución aplicada: GTFS más calibración histórica P50/P80
 
-El notebook autosuficiente `scripts/TiemposTotalesRutasGTFS.ipynb` presenta el análisis completo. No realiza llamadas nuevas a Google: utiliza el GTFS y, si existe, el histórico local creado previamente por `PromedioRutas.ipynb`.
+El notebook autosuficiente `notebooks/03_TiemposTotalesRutasGTFS.ipynb` presenta el análisis completo. No realiza llamadas nuevas a Google: utiliza el GTFS y, si existe, el histórico local creado previamente por `01_PromedioRutas.ipynb`.
 
 Para cada `trip_id` calcula primero la línea base programada:
 
@@ -80,7 +80,7 @@ El notebook genera:
 - `data/processed/duraciones_viajes_gtfs.csv`: duración programada por viaje;
 - `maps/mapa_tiempos_totales_rutas_gtfs.html`: mapa integrado y copia HTML.
 
-Cada ruta tiene un color estable distinto y cada sentido compara la mediana GTFS con P50 y P80 calibrados. Como el conjunto GTFS local no contiene `shapes.txt`, el mapa toma el viaje más cercano a la mediana y une sus paradas consecutivas con líneas rectas; por ello representa la secuencia de paradas, no la geometría exacta sobre las calles.
+Cada ruta tiene un color estable distinto y cada sentido compara la mediana GTFS con P50 y P80 calibrados. Como el conjunto GTFS local no contiene `shapes.txt`, el mapa toma el viaje más cercano a la mediana y une sus paradas consecutivas siguiendo la red vial de OpenStreetMap; por ello representa el recorrido más probable por calles, no el derrotero oficial.
 
 Las rutas presentes en `routes.txt` pero ausentes de `trips.txt` también aparecen en la salida con `estado_calculo = "sin viajes en trips.txt"` y duración vacía. Esto distingue correctamente “no hay datos” de una duración igual a cero.
 
