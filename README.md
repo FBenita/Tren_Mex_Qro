@@ -17,17 +17,18 @@ Tren_Mex_Qro/
 │   ├── InegiMalla/            # malla geoestadística del INEGI (nivel 9)
 │   └── README.md
 ├── maps/                      # copias HTML de los mapas
-├── notebooks/                 # análisis, numerados en orden de ejecución
-│   ├── 01_PromedioRutas.ipynb
-│   ├── 02_RutasQroBus.ipynb
-│   └── 03_TiemposTotalesRutasGTFS.ipynb
-├── scripts/                   # módulos de Python que importan los notebooks
-│   ├── config.py
-│   ├── geo.py
-│   ├── google_routes.py
-│   ├── gtfs_network.py
-│   ├── malla_inegi.py
-│   └── street_network.py
+├── src/                       # todo el código del proyecto
+│   ├── notebooks/             # análisis, numerados en orden de ejecución
+│   │   ├── 01_PromedioRutas.ipynb
+│   │   ├── 02_RutasQroBus.ipynb
+│   │   └── 03_TiemposTotalesRutasGTFS.ipynb
+│   └── scripts/               # módulos de Python que importan los notebooks
+│       ├── config.py
+│       ├── geo.py
+│       ├── google_routes.py
+│       ├── gtfs_network.py
+│       ├── malla_inegi.py
+│       └── street_network.py
 ├── docs/
 │   ├── reporte_demanda_accesibilidad_corregidora.md
 │   └── soluciones_tiempos_rutas.md
@@ -67,7 +68,7 @@ El escenario sin cruces se muestra como mapa interactivo dentro de `02_RutasQroB
 
 ### Demanda potencial con INEGI
 
-La sección final de `notebooks/02_RutasQroBus.ipynb` consulta las manzanas del estado de Querétaro desde el servicio oficial del INEGI y estima la población cubierta por buffers alrededor de las paradas con acceso confiable a Corregidora. Si un buffer toca una manzana, se incluye la población de toda esa manzana. Cada buffer mide 100 metros de diámetro; la variable guarda el radio (50 m) y puede modificarse en `.env`:
+La sección final de `src/notebooks/02_RutasQroBus.ipynb` consulta las manzanas del estado de Querétaro desde el servicio oficial del INEGI y estima la población cubierta por buffers alrededor de las paradas con acceso confiable a Corregidora. Si un buffer toca una manzana, se incluye la población de toda esa manzana. Cada buffer mide 100 metros de diámetro; la variable guarda el radio (50 m) y puede modificarse en `.env`:
 
 ```dotenv
 RADIO_DEMANDA_M=50
@@ -79,7 +80,7 @@ El análisis y las utilidades de mapas viven directamente en celdas independient
 
 ### Tiempo total de todas las rutas sin Google
 
-`notebooks/03_TiemposTotalesRutasGTFS.ipynb` contiene todo el cálculo paso a paso, muestra la tabla resumida e integra el mapa. Además aprende del histórico local una calibración robusta `constante + factor × GTFS`, construye escenarios P50/P80 y acumula los segmentos corregidos hacia atrás desde la última parada. No realiza llamadas nuevas a Google ni depende de un script adicional.
+`src/notebooks/03_TiemposTotalesRutasGTFS.ipynb` contiene todo el cálculo paso a paso, muestra la tabla resumida e integra el mapa. Además aprende del histórico local una calibración robusta `constante + factor × GTFS`, construye escenarios P50/P80 y acumula los segmentos corregidos hacia atrás desde la última parada. No realiza llamadas nuevas a Google ni depende de un script adicional.
 
 Genera `data/processed/tiempos_totales_rutas_gtfs.csv`, `data/processed/duraciones_viajes_gtfs.csv`, `data/processed/calibracion_tiempos_rutas_google.csv`, `data/processed/tiempos_acumulados_paradas_rutas.csv` y `maps/mapa_tiempos_totales_rutas_gtfs.html`. El mapa colorea cada ruta de forma distinta y compara GTFS con P50/P80 por sentido. Como el GTFS no incluye `shapes.txt`, las líneas unen paradas consecutivas siguiendo la red vial de OpenStreetMap: son el recorrido más probable por calles, no el derrotero oficial. Las alternativas, fórmulas y limitaciones están documentadas en `docs/soluciones_tiempos_rutas.md`.
 
@@ -114,7 +115,7 @@ Genera `data/processed/personas_acceso_malla_inegi_5_15_30_45_60_min.csv` y `map
 - Los valores negativos de los CSV (`-6`, `-7`, `-9`) son códigos de dato reservado o no disponible, no cantidades; se tratan como vacíos.
 - La malla trae población de 60 años o más (`P_60YMAS`), no de 65 o más como las manzanas.
 - Mujeres y hombres no vienen por separado; se estiman con la relación hombres-mujeres (`REL_H_M`) de cada celda.
-- Los CSV no incluyen geometría. `scripts/malla_inegi.py` reconstruye cada celda desde su código, que sigue el estándar rHEALPix (una letra y un dígito por nivel). La posición que da el estándar queda unos 4.7 km al norte de la real, así que el módulo aplica una corrección de latitud calibrada contra las manzanas del censo: con ella, la población de cada celda y la de las manzanas que contiene tienen una correlación de 0.99, y las seis celdas filtradas quedan alrededor de la estación. Es una reconstrucción validada con datos, no la geometría oficial; si se consigue el shapefile de la malla, conviene sustituirla.
+- Los CSV no incluyen geometría. `src/scripts/malla_inegi.py` reconstruye cada celda desde su código, que sigue el estándar rHEALPix (una letra y un dígito por nivel). La posición que da el estándar queda unos 4.7 km al norte de la real, así que el módulo aplica una corrección de latitud calibrada contra las manzanas del censo: con ella, la población de cada celda y la de las manzanas que contiene tienen una correlación de 0.99, y las seis celdas filtradas quedan alrededor de la estación. Es una reconstrucción validada con datos, no la geometría oficial; si se consigue el shapefile de la malla, conviene sustituirla.
 
 Las dos fuentes no dan la misma cifra ni deben darla: con manzanas se cuenta la manzana completa cuando el buffer la toca, y con la malla solo la fracción de celda cubierta.
 
@@ -122,9 +123,9 @@ Las dos fuentes no dan la misma cifra ni deben darla: con manzanas se cuenta la 
 
 Cada tramo de ruta muestra, al pasar el cursor, su distancia por calles y el P50 y P80 histórico hacia Corregidora desde la parada donde inicia. La leyenda resume el rango P50 y P80 de cada ruta. El par P50/P80 sigue la medida de confiabilidad *Level of Travel Time Reliability* de la Federal Highway Administration (percentil 80 entre percentil 50, [23 CFR § 490.511](https://www.law.cornell.edu/cfr/text/23/490.511)), adoptada aquí por analogía para transporte público con muestras pequeñas; la justificación completa está en la sección 9 de `02_RutasQroBus.ipynb`.
 
-### Módulos compartidos en `scripts/`
+### Módulos compartidos en `src/scripts/`
 
-Los notebooks no repiten configuración ni lógica: la importan de estos módulos. Cada notebook agrega `scripts/` a la ruta de importación en su primera celda de código, así que funciona al abrirlo desde `notebooks/` o desde la raíz.
+Los notebooks no repiten configuración ni lógica: la importan de estos módulos. Cada notebook agrega `src/scripts/` a la ruta de importación en su primera celda de código, así que funciona al abrirlo desde `src/notebooks/` o desde la raíz.
 
 | Módulo | Contenido | Lo usan |
 |---|---|---|
@@ -290,8 +291,8 @@ jupyter lab
 Esta opción no utiliza Google Maps ni genera cargos.
 
 1. Confirma que `EJECUTAR_GOOGLE_MAPS=false`.
-2. Abre `notebooks/01_PromedioRutas.ipynb` y ejecuta todas las celdas. Esto calcula los escenarios general y sin cruces, pero no consulta Google.
-3. Abre `notebooks/02_RutasQroBus.ipynb` y ejecuta todas las celdas. Este notebook reutiliza el cálculo anterior.
+2. Abre `src/notebooks/01_PromedioRutas.ipynb` y ejecuta todas las celdas. Esto calcula los escenarios general y sin cruces, pero no consulta Google.
+3. Abre `src/notebooks/02_RutasQroBus.ipynb` y ejecuta todas las celdas. Este notebook reutiliza el cálculo anterior.
 4. Revisa las tablas de paradas directas, paradas con transbordos e itinerarios dentro de 30 minutos.
 5. Usa el control de capas del mapa para mostrar u ocultar cada categoría.
 
@@ -304,10 +305,10 @@ Esta opción no utiliza Google Maps ni genera cargos.
    EJECUTAR_GOOGLE_MAPS=true
    ```
 
-3. Abre `notebooks/01_PromedioRutas.ipynb` y ejecuta todas las celdas.
+3. Abre `src/notebooks/01_PromedioRutas.ipynb` y ejecuta todas las celdas.
 4. Comprueba que se haya generado `data/processed/estadisticas_historicas_google_por_parada.csv` y revisa el tamaño de muestra reportado por parada.
 5. Vuelve a dejar `EJECUTAR_GOOGLE_MAPS=false` para evitar llamadas accidentales.
-6. Abre `notebooks/02_RutasQroBus.ipynb` y ejecuta todas las celdas. El notebook utilizará P80 para acceso confiable, P50 para acceso habitual variable y mostrará la última ETA en una capa opcional.
+6. Abre `src/notebooks/02_RutasQroBus.ipynb` y ejecuta todas las celdas. El notebook utilizará P80 para acceso confiable, P50 para acceso habitual variable y mostrará la última ETA en una capa opcional.
 
 Para obtener un promedio representativo, `01_PromedioRutas.ipynb` debe ejecutarse en diferentes días y horarios. Una sola ejecución es una fotografía del momento, no un promedio histórico confiable.
 
@@ -333,7 +334,7 @@ Archivos GTFS locales
 
 - El tiempo GTFS representa programación, no la posición real de los vehículos.
 - La penalización de transbordo es una aproximación configurable.
-- Las distancias entre paradas se miden sobre la red vial de OpenStreetMap (`scripts/street_network.py`), no en línea recta. Sin `shapes.txt` el trazo es el camino más probable, no el derrotero oficial; los pares sin camino razonable conservan la línea recta y quedan marcados en la columna `metodo_trazo`. La primera ejecución descarga la red y necesita conexión a internet.
+- Las distancias entre paradas se miden sobre la red vial de OpenStreetMap (`src/scripts/street_network.py`), no en línea recta. Sin `shapes.txt` el trazo es el camino más probable, no el derrotero oficial; los pares sin camino razonable conservan la línea recta y quedan marcados en la columna `metodo_trazo`. La primera ejecución descarga la red y necesita conexión a internet.
 - Google Transit puede incorporar información actualizada cuando el operador la comparte, pero no garantiza un campo de atraso de QroBus.
 - Los datos locales actuales no incluyen `calendar.txt` ni `calendar_dates.txt`, por lo que el análisis no valida qué servicio opera en una fecha específica.
 - Las coordenadas y horarios deben actualizarse cuando se publique una versión nueva del GTFS de QroBus.

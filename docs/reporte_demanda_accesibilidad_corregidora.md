@@ -265,9 +265,9 @@ La penalización fija de cinco minutos aproxima espera y conexión. No garantiza
 
 ## Archivos reproducibles
 
-- [`02_RutasQroBus.ipynb`](../notebooks/02_RutasQroBus.ipynb): caminos, clasificación, mapas y demanda.
-- [`01_PromedioRutas.ipynb`](../notebooks/01_PromedioRutas.ipynb): GTFS, Dijkstra e histórico de Google.
-- [`03_TiemposTotalesRutasGTFS.ipynb`](../notebooks/03_TiemposTotalesRutasGTFS.ipynb): duración total y calibración P50/P80 por segmentos.
+- [`02_RutasQroBus.ipynb`](../src/notebooks/02_RutasQroBus.ipynb): caminos, clasificación, mapas y demanda.
+- [`01_PromedioRutas.ipynb`](../src/notebooks/01_PromedioRutas.ipynb): GTFS, Dijkstra e histórico de Google.
+- [`03_TiemposTotalesRutasGTFS.ipynb`](../src/notebooks/03_TiemposTotalesRutasGTFS.ipynb): duración total y calibración P50/P80 por segmentos.
 - [`demanda_potencial_resumen.json`](../data/processed/demanda_potencial_resumen.json): indicadores de demanda.
 - [`demanda_potencial_manzanas.csv`](../data/processed/demanda_potencial_manzanas.csv): detalle de manzanas intersectadas.
 - [`paradas_acceso_corregidora.csv`](../data/processed/paradas_acceso_corregidora.csv): detalle completo de paradas.

@@ -12,7 +12,7 @@ No son intercambiables. Google Transit se aproxima a la tercera; el GTFS estáti
 
 ## Solución aplicada: GTFS más calibración histórica P50/P80
 
-El notebook autosuficiente `notebooks/03_TiemposTotalesRutasGTFS.ipynb` presenta el análisis completo. No realiza llamadas nuevas a Google: utiliza el GTFS y, si existe, el histórico local creado previamente por `01_PromedioRutas.ipynb`.
+El notebook autosuficiente `src/notebooks/03_TiemposTotalesRutasGTFS.ipynb` presenta el análisis completo. No realiza llamadas nuevas a Google: utiliza el GTFS y, si existe, el histórico local creado previamente por `01_PromedioRutas.ipynb`.
 
 Para cada `trip_id` calcula primero la línea base programada:
 

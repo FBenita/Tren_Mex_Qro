@@ -4,7 +4,8 @@ import os
 from pathlib import Path
 
 
-PROJECT_ROOT = Path(__file__).resolve().parent.parent
+# Este archivo vive en src/scripts/, dos niveles por debajo de la raíz.
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
 DATA_ROOT = PROJECT_ROOT / "data"
 GTFS_DIR = DATA_ROOT / "gtfs"
 PROCESSED_DIR = DATA_ROOT / "processed"
