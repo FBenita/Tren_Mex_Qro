@@ -9,6 +9,7 @@ DATA_ROOT = PROJECT_ROOT / "data"
 GTFS_DIR = DATA_ROOT / "gtfs"
 PROCESSED_DIR = DATA_ROOT / "processed"
 CACHE_DIR = DATA_ROOT / "cache"
+MALLA_INEGI_DIR = DATA_ROOT / "InegiMalla"
 MAPS_DIR = PROJECT_ROOT / "maps"
 ENV_PATH = PROJECT_ROOT / ".env"
 
@@ -67,7 +68,8 @@ PENALIZACION_TRANSBORDO_MIN = float(os.getenv("PENALIZACION_TRANSBORDO_MIN", "5"
 MAX_EDAD_ETA_HORAS = float(os.getenv("MAX_EDAD_ETA_HORAS", "24"))
 MIN_OBSERVACIONES_HISTORICAS = int(os.getenv("MIN_OBSERVACIONES_HISTORICAS", "5"))
 RETENCION_HISTORICO_DIAS = int(os.getenv("RETENCION_HISTORICO_DIAS", "365"))
-RADIO_DEMANDA_M = float(os.getenv("RADIO_DEMANDA_M", "20"))
+# Radio del buffer de cada parada: 50 m equivalen a un diámetro de 100 m.
+RADIO_DEMANDA_M = float(os.getenv("RADIO_DEMANDA_M", "50"))
 ACTUALIZAR_DATOS_INEGI = _booleano("ACTUALIZAR_DATOS_INEGI")
 ACTUALIZAR_RED_OSM = _booleano("ACTUALIZAR_RED_OSM")
 

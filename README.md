@@ -14,6 +14,7 @@ Tren_Mex_Qro/
 │   ├── gtfs/                  # archivos fuente de QroBus
 │   ├── processed/             # CSV y JSON generados
 │   ├── cache/                 # descargas externas reutilizables
+│   ├── InegiMalla/            # malla geoestadística del INEGI (nivel 9)
 │   └── README.md
 ├── maps/                      # copias HTML de los mapas
 ├── notebooks/                 # análisis, numerados en orden de ejecución
@@ -25,6 +26,7 @@ Tren_Mex_Qro/
 │   ├── geo.py
 │   ├── google_routes.py
 │   ├── gtfs_network.py
+│   ├── malla_inegi.py
 │   └── street_network.py
 ├── docs/
 │   ├── reporte_demanda_accesibilidad_corregidora.md
@@ -65,10 +67,10 @@ El escenario sin cruces se muestra como mapa interactivo dentro de `02_RutasQroB
 
 ### Demanda potencial con INEGI
 
-La sección final de `notebooks/02_RutasQroBus.ipynb` consulta las manzanas del estado de Querétaro desde el servicio oficial del INEGI y estima la población cubierta por buffers alrededor de las paradas con acceso confiable a Corregidora. Si un buffer toca una manzana, se incluye la población de toda esa manzana. El radio predeterminado es de 20 metros y puede modificarse en `.env`:
+La sección final de `notebooks/02_RutasQroBus.ipynb` consulta las manzanas del estado de Querétaro desde el servicio oficial del INEGI y estima la población cubierta por buffers alrededor de las paradas con acceso confiable a Corregidora. Si un buffer toca una manzana, se incluye la población de toda esa manzana. Cada buffer mide 100 metros de diámetro; la variable guarda el radio (50 m) y puede modificarse en `.env`:
 
 ```dotenv
-RADIO_DEMANDA_M=20
+RADIO_DEMANDA_M=50
 ```
 
 La respuesta se conserva en `data/cache/`, que Git ignora. `ACTUALIZAR_DATOS_INEGI=true` fuerza una descarga nueva de geometrías al ejecutar el notebook. Se generan CSV de manzanas y paradas, comparaciones acumuladas para P80 de 5, 15, 30, 45 y 60 minutos y `maps/mapa_demanda_potencial.html`. La población por manzana proviene del Censo 2020, el último censo nacional disponible; el servicio de geometría puede refrescarse, pero no actualiza el año de referencia censal. El servicio geográfico usado en este notebook solo expone población total, población por sexo y viviendas habitadas. Los indicadores de edad, discapacidad, escolaridad, actividad económica, salud y vivienda del `FD_CPV2020.xlsx` requieren una tabla censal adicional por `CVEGEO`; no deben sustituirse con indicadores agregados de localidad o malla.
@@ -98,6 +100,24 @@ El INEGI oculta con `*` los valores de manzanas con muy poca población. Esas ma
 
 El escenario de 60 minutos depende de que Google se haya consultado para paradas con hasta 60 minutos de tiempo GTFS (`UMBRAL_CONSULTA_GOOGLE_MIN=60`). Una parada recién incorporada no cuenta como acceso confiable hasta acumular el mínimo de observaciones, así que el escenario de una hora crece conforme se repiten las consultas en distintos días y horarios.
 
+### Ejemplo con la malla geoestadística del INEGI
+
+La sección 14 de `02_RutasQroBus.ipynb` repite la estimación de demanda con la malla geoestadística del INEGI de nivel 9, guardada en `data/InegiMalla/`:
+
+- `Datos totales.csv`: 38,937 celdas de Querétaro y zonas vecinas con indicadores del Censo 2020.
+- `Datos filtrados.csv`: las seis celdas que rodean la estación Corregidora (11,548 personas).
+
+Cada celda es un cuadro de unos 468 m por lado (0.219 km², unas 22 hectáreas). No son manzanas: la cuadrícula es uniforme y mucho más gruesa. Por eso el resultado principal del ejemplo es el **prorrateo por área** (de cada celda se cuenta la proporción de su superficie dentro de los buffers, suponiendo población uniforme) y la suma de celdas completas se muestra solo como techo.
+
+Genera `data/processed/personas_acceso_malla_inegi_5_15_30_45_60_min.csv` y `maps/mapa_demanda_malla_inegi.html`. Para leer los resultados hay que tener en cuenta:
+
+- Los valores negativos de los CSV (`-6`, `-7`, `-9`) son códigos de dato reservado o no disponible, no cantidades; se tratan como vacíos.
+- La malla trae población de 60 años o más (`P_60YMAS`), no de 65 o más como las manzanas.
+- Mujeres y hombres no vienen por separado; se estiman con la relación hombres-mujeres (`REL_H_M`) de cada celda.
+- Los CSV no incluyen geometría. `scripts/malla_inegi.py` reconstruye cada celda desde su código, que sigue el estándar rHEALPix (una letra y un dígito por nivel). La posición que da el estándar queda unos 4.7 km al norte de la real, así que el módulo aplica una corrección de latitud calibrada contra las manzanas del censo: con ella, la población de cada celda y la de las manzanas que contiene tienen una correlación de 0.99, y las seis celdas filtradas quedan alrededor de la estación. Es una reconstrucción validada con datos, no la geometría oficial; si se consigue el shapefile de la malla, conviene sustituirla.
+
+Las dos fuentes no dan la misma cifra ni deben darla: con manzanas se cuenta la manzana completa cuando el buffer la toca, y con la malla solo la fracción de celda cubierta.
+
 ### Tiempos P50/P80 en los mapas
 
 Cada tramo de ruta muestra, al pasar el cursor, su distancia por calles y el P50 y P80 histórico hacia Corregidora desde la parada donde inicia. La leyenda resume el rango P50 y P80 de cada ruta. El par P50/P80 sigue la medida de confiabilidad *Level of Travel Time Reliability* de la Federal Highway Administration (percentil 80 entre percentil 50, [23 CFR § 490.511](https://www.law.cornell.edu/cfr/text/23/490.511)), adoptada aquí por analogía para transporte público con muestras pequeñas; la justificación completa está en la sección 9 de `02_RutasQroBus.ipynb`.
@@ -112,6 +132,7 @@ Los notebooks no repiten configuración ni lógica: la importan de estos módulo
 | `geo.py` | Distancia Haversine, polilínea de la vía férrea, criterio de "mismo lado de la vía" y lectura o escritura de los trazos por calles. No depende de OSMnx. | Los tres notebooks y los otros módulos |
 | `gtfs_network.py` | Horarios GTFS, filtro de segmentos que cruzan la vía y Dijkstra con transbordos. | `01` y `02` |
 | `street_network.py` | Descarga de la red de OpenStreetMap y enrutamiento de pares de paradas por calles. | `01` |
+| `malla_inegi.py` | Lectura de los CSV de la malla geoestadística del INEGI, reconstrucción de la geometría de cada celda desde su código y cruce con los buffers. | `02` |
 | `google_routes.py` | Llamadas a Google Maps Routes API (`computeRouteMatrix`) por lotes, con reintentos. | `01` |
 
 Las variables de `.env` se leen una sola vez en `config.py`; una variable definida en el entorno del sistema tiene prioridad sobre el archivo. Para agregar un parámetro nuevo basta declararlo ahí e importarlo en el notebook.
@@ -195,7 +216,7 @@ UMBRAL_ANALISIS_MIN=30
 PENALIZACION_TRANSBORDO_MIN=5
 MAX_EDAD_ETA_HORAS=24
 MIN_OBSERVACIONES_HISTORICAS=5
-RADIO_DEMANDA_M=20
+RADIO_DEMANDA_M=50
 UMBRAL_CONSULTA_GOOGLE_MIN=60
 ```
 
@@ -210,7 +231,7 @@ Variables disponibles:
 | `UMBRAL_CONSULTA_GOOGLE_MIN` | Tiempo GTFS máximo de las paradas que se consultan en Google; por defecto igual a `UMBRAL_ANALISIS_MIN`. Con 60 se alimenta el escenario de una hora (unas 1,700 paradas por ejecución en lugar de unas 400). |
 | `MAX_EDAD_ETA_HORAS` | Antigüedad máxima permitida para usar una ETA de Google en el mapa; por defecto, 24 horas. |
 | `MIN_OBSERVACIONES_HISTORICAS` | Muestra mínima por parada para una clasificación P50/P80 preliminar; por defecto, 5. Diez o más se etiquetan como calidad alta. |
-| `RADIO_DEMANDA_M` | Radio en metros de los buffers usados para estimar demanda potencial; por defecto, 20. |
+| `RADIO_DEMANDA_M` | Radio en metros del buffer de cada parada para estimar demanda potencial; por defecto, 50, es decir, 100 m de diámetro. |
 | `ACTUALIZAR_DATOS_INEGI` | Si es `true`, vuelve a descargar las geometrías de manzana del servicio del INEGI en vez de usar la caché. |
 | `ACTUALIZAR_RED_OSM` | Si es `true`, vuelve a descargar las redes vial y peatonal de OpenStreetMap en vez de usar `data/cache/`. |
 | `RETENCION_HISTORICO_DIAS` | Ventana de retención para las observaciones de Google; por defecto, 365 días. |
