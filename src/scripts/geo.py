@@ -106,3 +106,29 @@ def cargar_trazos(path):
         }
         for fila in trazos.itertuples(index=False)
     }
+
+
+def tabla_con_coordenadas(capa):
+    """Convierte una capa en tabla plana con columnas X, Y y WKT para QGIS.
+
+    X es la longitud y Y la latitud en EPSG:4326 (WGS 84). En capas de puntos
+    son las coordenadas del punto; en polígonos, las de un punto interior
+    representativo, y además se agrega la columna WKT con el contorno completo.
+    """
+    capa = capa.to_crs("EPSG:4326")
+    puntos = capa.geometry.representative_point()
+    tabla = pd.DataFrame(capa.drop(columns=capa.geometry.name))
+    tabla["X"] = puntos.x.to_numpy()
+    tabla["Y"] = puntos.y.to_numpy()
+    if not capa.geom_type.eq("Point").all():
+        tabla["WKT"] = capa.geometry.to_wkt(rounding_precision=7).to_numpy()
+    return tabla
+
+
+def guardar_capa_qgis(capa, path, nombre_capa):
+    """Agrega una capa a un GeoPackage, que QGIS abre con geometría y CRS."""
+    capa = capa.to_crs("EPSG:4326")
+    for columna in capa.columns.difference([capa.geometry.name]):
+        if capa[columna].map(lambda valor: isinstance(valor, (list, tuple))).any():
+            capa[columna] = capa[columna].map(str)
+    capa.to_file(Path(path), layer=nombre_capa, driver="GPKG")

@@ -101,6 +101,17 @@ El INEGI oculta con `*` los valores de manzanas con muy poca población. Esas ma
 
 El escenario de 60 minutos depende de que Google se haya consultado para paradas con hasta 60 minutos de tiempo GTFS (`UMBRAL_CONSULTA_GOOGLE_MIN=60`). Una parada recién incorporada no cuenta como acceso confiable hasta acumular el mínimo de observaciones, así que el escenario de una hora crece conforme se repiten las consultas en distintos días y horarios.
 
+### Abrir los resultados en QGIS
+
+Los archivos de paradas y manzanas se pueden cargar como capas, no solo como tablas:
+
+- **Opción recomendada:** arrastra a QGIS `data/processed/acceso_corregidora_qgis.gpkg`. Es un GeoPackage con una capa de paradas (puntos) y otra de manzanas (polígonos) por cada escenario de 5, 15, 30, 45 y 60 minutos, ya con su sistema de coordenadas.
+- **Desde los CSV:** usa *Capa > Añadir capa > Añadir capa de texto delimitado* y elige EPSG:4326 (WGS 84) como SRC.
+  - `paradas_acceso_5_15_30_45_60_min.csv` y `paradas_demanda_potencial.csv`: *Coordenadas de punto*, con `X` (longitud) y `Y` (latitud). Para ver un solo escenario, filtra por la columna `umbral_min`.
+  - `manzanas_acceso_<minutos>_min.csv` y `demanda_potencial_manzanas.csv`: *Texto bien conocido (WKT)* con la columna `WKT` para ver el contorno de cada manzana, o `X` y `Y` para ver solo un punto interior.
+
+Las columnas `X`, `Y` y `WKT` van al final de cada CSV. Algunos contornos superan el límite de 32,767 caracteres por celda de Excel: si el CSV se abre y se vuelve a guardar desde Excel, esa columna se trunca. Para trabajar en QGIS conviene usar el GeoPackage.
+
 ### Ejemplo con la malla geoestadística del INEGI
 
 La sección 14 de `02_RutasQroBus.ipynb` repite la estimación de demanda con la malla geoestadística del INEGI de nivel 9, guardada en `data/InegiMalla/`:
