@@ -69,8 +69,9 @@ PENALIZACION_TRANSBORDO_MIN = float(os.getenv("PENALIZACION_TRANSBORDO_MIN", "5"
 MAX_EDAD_ETA_HORAS = float(os.getenv("MAX_EDAD_ETA_HORAS", "24"))
 MIN_OBSERVACIONES_HISTORICAS = int(os.getenv("MIN_OBSERVACIONES_HISTORICAS", "5"))
 RETENCION_HISTORICO_DIAS = int(os.getenv("RETENCION_HISTORICO_DIAS", "365"))
-# Radio del buffer de cada parada: 50 m equivalen a un diámetro de 100 m.
-RADIO_DEMANDA_M = float(os.getenv("RADIO_DEMANDA_M", "50"))
+# Radio del buffer de cada parada: 400 m equivalen a un diámetro de 800 m,
+# unos cinco minutos caminando.
+RADIO_DEMANDA_M = float(os.getenv("RADIO_DEMANDA_M", "400"))
 ACTUALIZAR_DATOS_INEGI = _booleano("ACTUALIZAR_DATOS_INEGI")
 ACTUALIZAR_RED_OSM = _booleano("ACTUALIZAR_RED_OSM")
 

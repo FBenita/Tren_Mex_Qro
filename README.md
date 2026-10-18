@@ -68,10 +68,10 @@ El escenario sin cruces se muestra como mapa interactivo dentro de `02_RutasQroB
 
 ### Demanda potencial con INEGI
 
-La sección final de `src/notebooks/02_RutasQroBus.ipynb` consulta las manzanas del estado de Querétaro desde el servicio oficial del INEGI y estima la población cubierta por buffers alrededor de las paradas con acceso confiable a Corregidora. Si un buffer toca una manzana, se incluye la población de toda esa manzana. Cada buffer mide 100 metros de diámetro; la variable guarda el radio (50 m) y puede modificarse en `.env`:
+La sección final de `src/notebooks/02_RutasQroBus.ipynb` consulta las manzanas del estado de Querétaro desde el servicio oficial del INEGI y estima la población cubierta por buffers alrededor de las paradas con acceso confiable a Corregidora. Si un buffer toca una manzana, se incluye la población de toda esa manzana. Cada buffer mide 800 metros de diámetro, unos cinco minutos caminando; la variable guarda el radio (400 m) y puede modificarse en `.env`:
 
 ```dotenv
-RADIO_DEMANDA_M=50
+RADIO_DEMANDA_M=400
 ```
 
 La respuesta se conserva en `data/cache/`, que Git ignora. `ACTUALIZAR_DATOS_INEGI=true` fuerza una descarga nueva de geometrías al ejecutar el notebook. Se generan CSV de manzanas y paradas, comparaciones acumuladas para P80 de 5, 15, 30, 45 y 60 minutos y `maps/mapa_demanda_potencial.html`. La población por manzana proviene del Censo 2020, el último censo nacional disponible; el servicio de geometría puede refrescarse, pero no actualiza el año de referencia censal. El servicio geográfico usado en este notebook solo expone población total, población por sexo y viviendas habitadas. Los indicadores de edad, discapacidad, escolaridad, actividad económica, salud y vivienda del `FD_CPV2020.xlsx` requieren una tabla censal adicional por `CVEGEO`; no deben sustituirse con indicadores agregados de localidad o malla.
@@ -91,6 +91,8 @@ La sección de demanda repite el cálculo para paradas con acceso confiable (P80
 ```text
 data/processed/paradas_acceso_5_15_30_45_60_min.csv    # paradas de cada escenario
 data/processed/resumen_acceso_5_15_30_45_60_min.csv    # paradas, manzanas y población
+data/processed/paradas_acceso_5_15_30[_45]_min.csv     # los mismos datos, solo hasta 30 o 45 min
+data/processed/resumen_acceso_5_15_30[_45]_min.csv
 data/processed/personas_acceso_5_15_30_45_60_min.csv   # tabla de resumen por sexo y edad
 data/processed/manzanas_acceso_<minutos>_min.csv       # manzanas de cada escenario
 ```
@@ -228,7 +230,7 @@ UMBRAL_ANALISIS_MIN=30
 PENALIZACION_TRANSBORDO_MIN=5
 MAX_EDAD_ETA_HORAS=24
 MIN_OBSERVACIONES_HISTORICAS=5
-RADIO_DEMANDA_M=50
+RADIO_DEMANDA_M=400
 UMBRAL_CONSULTA_GOOGLE_MIN=60
 ```
 
@@ -243,7 +245,7 @@ Variables disponibles:
 | `UMBRAL_CONSULTA_GOOGLE_MIN` | Tiempo GTFS máximo de las paradas que se consultan en Google; por defecto igual a `UMBRAL_ANALISIS_MIN`. Con 60 se alimenta el escenario de una hora (unas 1,700 paradas por ejecución en lugar de unas 400). |
 | `MAX_EDAD_ETA_HORAS` | Antigüedad máxima permitida para usar una ETA de Google en el mapa; por defecto, 24 horas. |
 | `MIN_OBSERVACIONES_HISTORICAS` | Muestra mínima por parada para una clasificación P50/P80 preliminar; por defecto, 5. Diez o más se etiquetan como calidad alta. |
-| `RADIO_DEMANDA_M` | Radio en metros del buffer de cada parada para estimar demanda potencial; por defecto, 50, es decir, 100 m de diámetro. |
+| `RADIO_DEMANDA_M` | Radio en metros del buffer de cada parada para estimar demanda potencial; por defecto, 400, es decir, 800 m de diámetro. |
 | `ACTUALIZAR_DATOS_INEGI` | Si es `true`, vuelve a descargar las geometrías de manzana del servicio del INEGI en vez de usar la caché. |
 | `ACTUALIZAR_RED_OSM` | Si es `true`, vuelve a descargar las redes vial y peatonal de OpenStreetMap en vez de usar `data/cache/`. |
 | `RETENCION_HISTORICO_DIAS` | Ventana de retención para las observaciones de Google; por defecto, 365 días. |
