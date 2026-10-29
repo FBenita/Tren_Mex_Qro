@@ -10,6 +10,13 @@ geopandas>=1.0,<2
 shapely>=2.0,<3
 pyproj>=3.6,<4
 
+# Red vial de OpenStreetMap para distancias y trazos por calles
+osmnx>=2.0,<3
+networkx>=3.2,<4
+
+# Geometría de las celdas de la malla geoestadística del INEGI (rHEALPix)
+rhealpixdggs>=0.11,<1
+
 # Consulta de Google Maps Routes API
 requests>=2.31,<3
 

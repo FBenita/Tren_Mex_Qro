@@ -9,29 +9,10 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
+from geo import distancia_firmada_a_via
+
 
 LIST_COLUMNS = ("camino_stop_ids", "rutas_por_segmento")
-
-# Línea Juárez simplificada en el entorno de los caminos de 30 minutos.
-# Fuente: OpenStreetMap, consulta del 24 de septiembre de 2026 (ODbL).
-VIA_FERREA_CORREGIDORA_LATLON = (
-    (20.5995317, -100.4489310),
-    (20.5995818, -100.4476439),
-    (20.6001097, -100.4332137),
-    (20.6004068, -100.4251777),
-    (20.6006149, -100.4195559),
-    (20.6009997, -100.4087681),
-    (20.6013683, -100.3992262),
-    (20.6015191, -100.3952324),
-    (20.6018730, -100.3897692),
-    (20.6029540, -100.3829217),
-    (20.6034681, -100.3802003),
-    (20.6036738, -100.3767069),
-    (20.6034556, -100.3739630),
-    (20.6030643, -100.3705949),
-    (20.6043119, -100.3660711),
-    (20.6035799, -100.3624753),
-)
 
 
 def gtfs_time_to_seconds(series):
@@ -65,28 +46,11 @@ def filtrar_segmentos_mismo_lado_vias(
     if muestras_por_segmento < 2:
         raise ValueError("muestras_por_segmento debe ser al menos 2.")
 
-    via = np.asarray(via_latlon, dtype=float)
-    if via.ndim != 2 or via.shape[1] != 2 or len(via) < 2:
-        raise ValueError("via_latlon debe contener al menos dos pares (lat, lon).")
-    orden = np.argsort(via[:, 1])
-    via_lat = via[orden, 0]
-    via_lon = via[orden, 1]
-    if np.any(np.diff(via_lon) <= 0):
-        raise ValueError("Las longitudes de la vía deben ser únicas.")
-
     stops_coords = stops[["stop_id", "stop_lat", "stop_lon"]].copy()
     coincidencia = stops_coords["stop_id"].astype(str).eq(str(referencia_stop_id))
     if coincidencia.sum() != 1:
         raise ValueError("La parada de referencia debe existir exactamente una vez.")
     referencia = stops_coords.loc[coincidencia].iloc[0]
-    lat_via_referencia = np.interp(
-        float(referencia["stop_lon"]), via_lon, via_lat
-    )
-    signo_referencia = np.sign(
-        float(referencia["stop_lat"]) - lat_via_referencia
-    )
-    if signo_referencia == 0:
-        raise ValueError("La parada de referencia quedó exactamente sobre la vía.")
 
     origen = stops_coords.rename(
         columns={"stop_lat": "origen_lat", "stop_lon": "origen_lon"}
@@ -124,12 +88,13 @@ def filtrar_segmentos_mismo_lado_vias(
             - trabajo["origen_lon"].to_numpy()
         )[:, None]
     )
-    lat_via_muestras = np.interp(lon_muestras, via_lon, via_lat)
-    margen_lat = float(margen_m) / 111_320.0
-    distancia_firmada = (
-        lat_muestras - lat_via_muestras
-    ) * signo_referencia
-    validos = (distancia_firmada >= margen_lat).all(axis=1)
+    distancia = distancia_firmada_a_via(
+        lat_muestras,
+        lon_muestras,
+        via_latlon,
+        (referencia["stop_lat"], referencia["stop_lon"]),
+    )
+    validos = (distancia >= float(margen_m)).all(axis=1)
 
     columnas_originales = list(segmentos.columns)
     return trabajo.loc[validos, columnas_originales].reset_index(drop=True)
