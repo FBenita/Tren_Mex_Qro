@@ -223,3 +223,6 @@ __marimo__/
 
 # Descargas reproducibles y pesadas de servicios externos
 data/cache/
+
+#VSCode
+.vscode/
