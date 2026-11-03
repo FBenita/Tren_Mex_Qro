@@ -69,9 +69,20 @@ PENALIZACION_TRANSBORDO_MIN = float(os.getenv("PENALIZACION_TRANSBORDO_MIN", "5"
 MAX_EDAD_ETA_HORAS = float(os.getenv("MAX_EDAD_ETA_HORAS", "24"))
 MIN_OBSERVACIONES_HISTORICAS = int(os.getenv("MIN_OBSERVACIONES_HISTORICAS", "5"))
 RETENCION_HISTORICO_DIAS = int(os.getenv("RETENCION_HISTORICO_DIAS", "365"))
-# Radio del buffer de cada parada: 400 m equivalen a un diámetro de 800 m,
-# unos cinco minutos caminando.
+# Radio del buffer de cada parada: 400 m en línea recta (800 m de diámetro),
+# unos 500 m por calles con el factor de desvío y 7.5 minutos a 4 km/h.
 RADIO_DEMANDA_M = float(os.getenv("RADIO_DEMANDA_M", "400"))
+# Caminata. Las fuentes de cada valor están en el README ("Parámetros de caminata").
+# 4 km/h (1.11 m/s): valor conservador, debajo del promedio adulto de 1.34 m/s
+# (Weidmann, 1993) y del 1.2 m/s de los semáforos, arriba de los adultos mayores.
+VELOCIDAD_CAMINATA_KMH = float(os.getenv("VELOCIDAD_CAMINATA_KMH", "4"))
+VELOCIDAD_CAMINATA_M_MIN = VELOCIDAD_CAMINATA_KMH * 1000 / 60
+# Distancia por calles / distancia en línea recta. Medido ~1.21-1.24 en caminatas
+# a estaciones (O'Sullivan y Morrall, 1996); la literatura usa entre 1.2 y 1.5.
+FACTOR_DESVIO_CAMINATA = float(os.getenv("FACTOR_DESVIO_CAMINATA", "1.25"))
+# Paradas candidatas alrededor de un punto del mapa de demanda: 800 m en línea
+# recta, unos 1,000 m por calles (ITDP México; percentil 95 de caminatas medidas).
+RADIO_BUSQUEDA_PARADA_M = float(os.getenv("RADIO_BUSQUEDA_PARADA_M", "800"))
 ACTUALIZAR_RED_OSM = _booleano("ACTUALIZAR_RED_OSM")
 
 if EJECUTAR_GOOGLE_MAPS and not GOOGLE_MAPS_API_KEY:
@@ -90,3 +101,9 @@ if MIN_OBSERVACIONES_HISTORICAS <= 0:
     raise ValueError("MIN_OBSERVACIONES_HISTORICAS debe ser mayor que cero.")
 if RADIO_DEMANDA_M <= 0:
     raise ValueError("RADIO_DEMANDA_M debe ser mayor que cero.")
+if VELOCIDAD_CAMINATA_KMH <= 0:
+    raise ValueError("VELOCIDAD_CAMINATA_KMH debe ser mayor que cero.")
+if FACTOR_DESVIO_CAMINATA < 1:
+    raise ValueError("FACTOR_DESVIO_CAMINATA no puede ser menor que 1.")
+if RADIO_BUSQUEDA_PARADA_M <= 0:
+    raise ValueError("RADIO_BUSQUEDA_PARADA_M debe ser mayor que cero.")

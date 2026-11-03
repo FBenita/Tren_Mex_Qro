@@ -64,7 +64,7 @@ El cálculo compartido:
 
 Puede ejecutarse sin nuevas solicitudes facturables cuando ya existe el histórico local, pero requiere ejecutar primero `01_PromedioRutas.ipynb` para regenerar las estadísticas.
 
-El escenario sin cruces se muestra como mapa interactivo dentro de `02_RutasQroBus.ipynb` y también se guarda en `maps/`. Sus tiempos combinan la mediana programada del autobús con una caminata final medida sobre la red peatonal de OpenStreetMap del lado sur, a 80 m/min; no representan navegación ni tráfico en tiempo real.
+El escenario sin cruces se muestra como mapa interactivo dentro de `02_RutasQroBus.ipynb` y también se guarda en `maps/`. Sus tiempos combinan la mediana programada del autobús con una caminata final medida sobre la red peatonal de OpenStreetMap del lado sur, a 4 km/h y de diez minutos o menos (unos 667 m; ver [Parámetros de caminata](#parámetros-de-caminata)); no representan navegación ni tráfico en tiempo real.
 
 ### Demanda potencial con la malla geoestadística
 
@@ -73,7 +73,7 @@ La sección 13 de `src/notebooks/02_RutasQroBus.ipynb` estima la población cubi
 - `Datos totales.csv`: 38,937 celdas de Querétaro y zonas vecinas con indicadores del Censo 2020.
 - `Datos filtrados.csv`: las seis celdas que rodean la estación Corregidora (11,548 personas); se usan para validar la geometría.
 
-Antes se usaban las manzanas del servicio del INEGI; como ambas fuentes dan resultados muy parecidos, se adoptó la malla, que no depende de descargas externas. Cada celda es un cuadro de unos 468 m por lado (0.219 km², unas 22 hectáreas). Cada buffer mide 800 metros de diámetro, unos cinco minutos caminando; la variable guarda el radio (400 m) y puede modificarse en `.env`:
+Antes se usaban las manzanas del servicio del INEGI; como ambas fuentes dan resultados muy parecidos, se adoptó la malla, que no depende de descargas externas. Cada celda es un cuadro de unos 468 m por lado (0.219 km², unas 22 hectáreas). Cada buffer mide 800 metros de diámetro; sus 400 m de radio en línea recta equivalen a unos 500 m por calles y 7.5 minutos a pie, cerca del percentil 85 de las caminatas reales a paradas de autobús (524 m; ver [Parámetros de caminata](#parámetros-de-caminata)). La variable guarda el radio y puede modificarse en `.env`:
 
 ```dotenv
 RADIO_DEMANDA_M=400
@@ -86,7 +86,7 @@ Como los buffers cortan las celdas en fracciones, el resultado principal es el *
 - Mujeres y hombres no vienen por separado; se estiman con la relación hombres-mujeres (`REL_H_M`) de cada celda.
 - Los CSV no incluyen geometría. `src/scripts/malla_inegi.py` reconstruye cada celda desde su código, que sigue el estándar rHEALPix (una letra y un dígito por nivel). La posición que da el estándar queda unos 4.7 km al norte de la real, así que el módulo aplica una corrección de latitud calibrada contra las manzanas del censo: con ella, la población de cada celda y la de las manzanas que contiene tienen una correlación de 0.99, y las seis celdas filtradas quedan alrededor de la estación. Es una reconstrucción validada con datos, no la geometría oficial; si se consigue el shapefile de la malla, conviene sustituirla.
 
-El mapa `maps/mapa_demanda_potencial.html` es interactivo: al hacer clic en cualquier punto, un panel muestra la **ruta óptima hacia Corregidora** y los **datos de la celda** donde cae el punto. La ruta se elige entre las paradas a 1,000 m o menos (`RADIO_BUSQUEDA_PARADA_M`) minimizando caminata + P80 histórico; la caminata se aproxima como línea recta × 1.3 a 80 m/min. Si ninguna parada cercana tiene muestra suficiente, se usa el tiempo GTFS y el panel lo advierte. El mapa dibuja la caminata, cada tramo de autobús con el color de su ruta y los puntos de subida y transbordo, y el panel lista los pasos y hasta tres alternativas. La celda muestra población, mujeres y hombres estimados, 0-14 años, 60 o más, discapacidad, PEA, viviendas habitadas y el escenario P80 más corto que la toca, con la fracción de la celda dentro de los buffers; solo hay datos para celdas tocadas por algún buffer. Todo se calcula en el navegador con datos incrustados en el HTML.
+El mapa `maps/mapa_demanda_potencial.html` es interactivo: al hacer clic en cualquier punto, un panel muestra la **ruta óptima hacia Corregidora** y los **datos de la celda** donde cae el punto. La ruta se elige entre las paradas a 800 m o menos en línea recta (`RADIO_BUSQUEDA_PARADA_M`) minimizando caminata + P80 histórico; la caminata se aproxima como línea recta × 1.25 (`FACTOR_DESVIO_CAMINATA`) a 4 km/h (`VELOCIDAD_CAMINATA_KMH`). Si no hay paradas dentro del radio, se usan las cinco más cercanas y el panel lo advierte. Si ninguna parada cercana tiene muestra suficiente, se usa el tiempo GTFS y el panel lo advierte. El mapa dibuja la caminata, cada tramo de autobús con el color de su ruta y los puntos de subida y transbordo, y el panel lista los pasos y hasta tres alternativas. La celda muestra población, mujeres y hombres estimados, 0-14 años, 60 o más, discapacidad, PEA, viviendas habitadas y el escenario P80 más corto que la toca, con la fracción de la celda dentro de los buffers; solo hay datos para celdas tocadas por algún buffer. Todo se calcula en el navegador con datos incrustados en el HTML.
 
 El análisis y las utilidades de mapas viven directamente en celdas independientes de `02_RutasQroBus.ipynb`; no requieren módulos auxiliares exclusivos del notebook. Cada mapa queda integrado en su salida y conserva una copia HTML en `maps/`. Los mapas dibujan la unión deduplicada de todos los segmentos utilizados: una parada solo se muestra cuando tiene un tramo conectado hacia el destino. Cada ruta conserva un color estable en líneas, paradas y leyendas; los tramos finales a pie se muestran en gris discontinuo.
 
@@ -94,7 +94,7 @@ El análisis y las utilidades de mapas viven directamente en celdas independient
 
 `src/notebooks/03_TiemposTotalesRutasGTFS.ipynb` contiene todo el cálculo paso a paso, muestra la tabla resumida e integra el mapa. Además aprende del histórico local una calibración robusta `constante + factor × GTFS`, construye escenarios P50/P80 y acumula los segmentos corregidos hacia atrás desde la última parada. No realiza llamadas nuevas a Google ni depende de un script adicional.
 
-Genera `data/processed/tiempos_totales_rutas_gtfs.csv`, `data/processed/duraciones_viajes_gtfs.csv`, `data/processed/calibracion_tiempos_rutas_google.csv`, `data/processed/tiempos_acumulados_paradas_rutas.csv`, `data/processed/conexiones_paradas_rutas.csv` y `maps/mapa_tiempos_totales_rutas_gtfs.html`. El mapa colorea cada ruta de forma distinta y compara GTFS con P50/P80 por sentido. También muestra las **conexiones entre rutas**: la capa *Paradas de transbordo* marca las paradas donde pasan dos o más rutas (el único transbordo que usa el Dijkstra), y la capa *Conexiones a pie* une paradas a 200 m o menos en línea recta (`RADIO_CONEXION_A_PIE_M`) que ofrecen rutas distintas; esta última es solo una referencia. Al dar clic en una ruta se listan sus paradas de transbordo y a qué rutas conectan; al dar clic en una parada se ven sus rutas y las paradas cercanas a las que se puede caminar. Como el GTFS no incluye `shapes.txt`, las líneas unen paradas consecutivas siguiendo la red vial de OpenStreetMap: son el recorrido más probable por calles, no el derrotero oficial. Las alternativas, fórmulas y limitaciones están documentadas en `docs/soluciones_tiempos_rutas.md`.
+Genera `data/processed/tiempos_totales_rutas_gtfs.csv`, `data/processed/duraciones_viajes_gtfs.csv`, `data/processed/calibracion_tiempos_rutas_google.csv`, `data/processed/tiempos_acumulados_paradas_rutas.csv`, `data/processed/conexiones_paradas_rutas.csv` y `maps/mapa_tiempos_totales_rutas_gtfs.html`. El mapa colorea cada ruta de forma distinta y compara GTFS con P50/P80 por sentido. También muestra las **conexiones entre rutas**: la capa *Paradas de transbordo* marca las paradas donde pasan dos o más rutas (el único transbordo que usa el Dijkstra), y la capa *Conexiones a pie* une paradas a 200 m o menos en línea recta (`RADIO_CONEXION_A_PIE_M`) que ofrecen rutas distintas; esta última es solo una referencia y su tiempo usa el mismo factor de desvío y la misma velocidad de caminata (200 m ≈ 250 m por calles ≈ 4 min). Al dar clic en una ruta se listan sus paradas de transbordo y a qué rutas conectan; al dar clic en una parada se ven sus rutas y las paradas cercanas a las que se puede caminar. Como el GTFS no incluye `shapes.txt`, las líneas unen paradas consecutivas siguiendo la red vial de OpenStreetMap: son el recorrido más probable por calles, no el derrotero oficial. Las alternativas, fórmulas y limitaciones están documentadas en `docs/soluciones_tiempos_rutas.md`.
 
 #### Escenarios de 5 a 60 minutos y desglose por sexo y edad
 
@@ -129,6 +129,26 @@ Las columnas `X`, `Y` y `WKT` van al final de cada CSV. Para trabajar en QGIS co
 ### Tiempos P50/P80 en los mapas
 
 Cada tramo de ruta muestra, al pasar el cursor, su distancia por calles y el P50 y P80 histórico hacia Corregidora desde la parada donde inicia. La leyenda resume el rango P50 y P80 de cada ruta. El par P50/P80 sigue la medida de confiabilidad *Level of Travel Time Reliability* de la Federal Highway Administration (percentil 80 entre percentil 50, [23 CFR § 490.511](https://www.law.cornell.edu/cfr/text/23/490.511)), adoptada aquí por analogía para transporte público con muestras pequeñas; la justificación completa está en la sección 9 de `02_RutasQroBus.ipynb`.
+
+### Parámetros de caminata
+
+Todo el proyecto usa los mismos tres parámetros de caminata. Se definen en `src/scripts/config.py` y pueden cambiarse en `.env`:
+
+| Variable | Valor | Dónde se usa |
+|---|---|---|
+| `VELOCIDAD_CAMINATA_KMH` | 4 km/h (1.11 m/s, 66.7 m/min) | Último tramo a pie del escenario sin cruces (`01`), ruta óptima del mapa de demanda (`02`) y conexiones a pie (`03`). |
+| `FACTOR_DESVIO_CAMINATA` | 1.25 | Convierte una distancia en línea recta en distancia por calles cuando no se usa la red peatonal: mapa de demanda y conexiones a pie. El escenario sin cruces mide la caminata sobre la red peatonal de OpenStreetMap y no lo necesita. |
+| `RADIO_BUSQUEDA_PARADA_M` | 800 m en línea recta | Paradas candidatas alrededor del punto seleccionado en el mapa de demanda. |
+
+**Velocidad: 4 km/h.** Es un valor conservador. La velocidad libre promedio de adultos en la literatura es de 1.34 m/s, unos 4.8 km/h, con un rango de 0.97 a 1.65 m/s (revisión de Weidmann, 1993, retomada en [Bosina y Weidmann, 2017](https://econpapers.repec.org/RePEc:eee:phsmap:v:468:y:2017:i:c:p:1-29)). Un meta-análisis con 23,111 personas encontró desde 1.43 m/s en hombres de 40 a 49 años hasta 0.94 m/s en mujeres de 80 a 99 años ([Bohannon y Andrews, 2011](https://bacpar.csp.org.uk/node/338279)). Los manuales de ingeniería usan 1.25 m/s para diseño y 1.2 m/s para tiempos de semáforo ([Giannoulaki y Christoforou, 2024](https://www.mdpi.com/2071-1050/16/11/4813/html)), y en el Reino Unido la mayoría de los mayores de 65 años no alcanza 1.2 m/s ([estudio en adultos mayores](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5536437/)). Con 1.11 m/s el análisis queda debajo del promedio adulto, para incluir a personas mayores, niños y cruces con espera, en línea con el criterio conservador del P80. Antes se usaban 80 m/min (4.8 km/h), el promedio adulto.
+
+**Factor de desvío: 1.25.** Es el cociente entre la distancia por calles y la distancia en línea recta (*circuity* o *pedestrian route directness*). En caminatas reales a estaciones de tren ligero en Calgary se midió entre 1.21 y 1.24 ([O'Sullivan y Morrall, 1996](https://www.academia.edu/87338913/Walking_Distances_to_and_from_Light_Rail_Transit_Stations); [Levinson y El-Geneidy](https://core.ac.uk/download/76364877.pdf)), y estudios de redes de transporte usan entre 1.2 y 1.5. En trayectos cortos el desvío es mayor que en largos ([Giacomin y Levinson, 2015](https://econpapers.repec.org/RePEc:sae:envirb:v:42:y:2015:i:6:p:1040-1053)). Se tomó 1.25, un poco arriba de lo medido, porque Querétaro tiene barreras como la vía del tren y vialidades sin cruce. Aplicar un factor es necesario: los buffers en línea recta sobreestiman la población cubierta y la distancia por red predice mejor el uso del transporte ([Gutiérrez y García-Palomares, 2008](https://econpapers.repec.org/RePEc:sae:envirb:v:35:y:2008:i:3:p:480-503)). Antes se usaba 1.3.
+
+**Radio de búsqueda: 800 m.** El estándar de la industria es 400 m para autobús y 800 m para tren. Las caminatas reales a paradas de autobús tienen un percentil 85 de 524 m en Montreal ([El-Geneidy et al., 2014](https://www.worldtransitresearch.info/research/5119)) y, en San José de Costa Rica, mediana de 255 m, percentil 85 de 525 m y percentil 95 de 740 m ([estudio de San José](https://revistalatam.redilat.org/index.php/lt/article/download/1677/2361/2753)). ITDP México usa 800 m, unos 10 minutos, para estaciones de transporte masivo ([ITDP](https://itdp.org/?p=5745)). Con el factor de desvío, 800 m en línea recta son unos 1,000 m por calles: cerca del límite superior de lo observado, lo suficiente para no descartar una parada mejor un poco más lejana. El ordenamiento penaliza la caminata, así que una parada lejana solo gana si su tiempo en autobús lo compensa. Antes se usaban 1,000 m.
+
+El buffer de demanda (`RADIO_DEMANDA_M=400`) es coherente con estos valores: 400 m en línea recta × 1.25 son unos 500 m por calles, prácticamente el percentil 85 de El-Geneidy et al. (524 m).
+
+Limitaciones: varias cifras provienen del resumen de cada artículo o de fuentes que lo citan, no de la lectura del texto completo. Ninguno de los estudios es de Querétaro. Para un resultado local convendría medir distancias peatonales sobre la red de OpenStreetMap de toda la zona o levantar encuestas de acceso a paradas.
 
 ### Módulos compartidos en `src/scripts/`
 
@@ -225,6 +245,9 @@ PENALIZACION_TRANSBORDO_MIN=5
 MAX_EDAD_ETA_HORAS=24
 MIN_OBSERVACIONES_HISTORICAS=5
 RADIO_DEMANDA_M=400
+VELOCIDAD_CAMINATA_KMH=4
+FACTOR_DESVIO_CAMINATA=1.25
+RADIO_BUSQUEDA_PARADA_M=800
 UMBRAL_CONSULTA_GOOGLE_MIN=60
 ```
 
@@ -240,6 +263,9 @@ Variables disponibles:
 | `MAX_EDAD_ETA_HORAS` | Antigüedad máxima permitida para usar una ETA de Google en el mapa; por defecto, 24 horas. |
 | `MIN_OBSERVACIONES_HISTORICAS` | Muestra mínima por parada para una clasificación P50/P80 preliminar; por defecto, 5. Diez o más se etiquetan como calidad alta. |
 | `RADIO_DEMANDA_M` | Radio en metros del buffer de cada parada para estimar demanda potencial; por defecto, 400, es decir, 800 m de diámetro. |
+| `VELOCIDAD_CAMINATA_KMH` | Velocidad de caminata en km/h; por defecto, 4. Ver [Parámetros de caminata](#parámetros-de-caminata). |
+| `FACTOR_DESVIO_CAMINATA` | Distancia por calles entre distancia en línea recta; por defecto, 1.25. |
+| `RADIO_BUSQUEDA_PARADA_M` | Radio en línea recta para buscar paradas desde un punto del mapa de demanda; por defecto, 800. |
 | `ACTUALIZAR_RED_OSM` | Si es `true`, vuelve a descargar las redes vial y peatonal de OpenStreetMap en vez de usar `data/cache/`. |
 | `RETENCION_HISTORICO_DIAS` | Ventana de retención para las observaciones de Google; por defecto, 365 días. |
 
