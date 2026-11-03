@@ -72,7 +72,6 @@ RETENCION_HISTORICO_DIAS = int(os.getenv("RETENCION_HISTORICO_DIAS", "365"))
 # Radio del buffer de cada parada: 400 m equivalen a un diámetro de 800 m,
 # unos cinco minutos caminando.
 RADIO_DEMANDA_M = float(os.getenv("RADIO_DEMANDA_M", "400"))
-ACTUALIZAR_DATOS_INEGI = _booleano("ACTUALIZAR_DATOS_INEGI")
 ACTUALIZAR_RED_OSM = _booleano("ACTUALIZAR_RED_OSM")
 
 if EJECUTAR_GOOGLE_MAPS and not GOOGLE_MAPS_API_KEY:

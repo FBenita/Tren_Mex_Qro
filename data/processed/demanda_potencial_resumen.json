@@ -1,16 +1,13 @@
 {
-  "fuente": "INEGI. Censo de Población y Vivienda, 2020",
-  "metodo": "conteo de la poblacion completa de cada manzana intersectada",
+  "fuente": "Malla geoestadística del INEGI, nivel 9, con indicadores del Censo 2020; proporcionada por el Instituto de Movilidad",
+  "metodo": "prorrateo por área de las celdas de la malla tocadas por los buffers",
   "radio_buffer_m": 400.0,
   "numero_paradas": 327,
-  "numero_manzanas_inegi": 44827,
-  "numero_manzanas_intersectadas": 3321,
-  "manzanas_sin_poblacion_numerica": 3248,
-  "poblacion_base_manzanas_inegi": 1854152.0,
-  "poblacion_total_estatal_inegi": 2368467,
-  "poblacion_estimada_area": 258329.0,
-  "porcentaje_sobre_poblacion_en_manzanas": 13.932461,
-  "porcentaje_sobre_poblacion_estatal": 10.907013,
-  "poblacion_manzanas_intersectadas_cota_alta": 258329.0,
-  "poblacion_por_punto_representativo": 229908.0
+  "numero_celdas_malla": 38937,
+  "numero_celdas_tocadas": 249,
+  "poblacion_base_malla": 7042690.0,
+  "poblacion_total_estatal_censo_2020": 2368467,
+  "poblacion_estimada_area": 227442.07,
+  "porcentaje_sobre_poblacion_estatal": 9.602923,
+  "poblacion_celdas_completas_cota_alta": 323435.0
 }

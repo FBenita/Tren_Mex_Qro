@@ -1,6 +1,6 @@
-﻿umbral_min,paradas,manzanas,poblacion_manzanas_completas
-5,1,48,5376.0
-15,66,639,54336.0
-30,327,3321,258329.0
-45,775,7419,579042.0
-60,1019,9395,739056.0
+﻿umbral_min,paradas,celdas,poblacion_prorrateada,poblacion_celdas_completas
+5,1,8,3911.9,14451.0
+15,66,54,48158.29,62378.0
+30,327,249,227442.07,323435.0
+45,775,529,533057.01,656846.0
+60,1019,662,690982.08,817840.0

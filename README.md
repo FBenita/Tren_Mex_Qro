@@ -66,17 +66,27 @@ Puede ejecutarse sin nuevas solicitudes facturables cuando ya existe el históri
 
 El escenario sin cruces se muestra como mapa interactivo dentro de `02_RutasQroBus.ipynb` y también se guarda en `maps/`. Sus tiempos combinan la mediana programada del autobús con una caminata final medida sobre la red peatonal de OpenStreetMap del lado sur, a 80 m/min; no representan navegación ni tráfico en tiempo real.
 
-### Demanda potencial con INEGI
+### Demanda potencial con la malla geoestadística
 
-La sección final de `src/notebooks/02_RutasQroBus.ipynb` consulta las manzanas del estado de Querétaro desde el servicio oficial del INEGI y estima la población cubierta por buffers alrededor de las paradas con acceso confiable a Corregidora. Si un buffer toca una manzana, se incluye la población de toda esa manzana. Cada buffer mide 800 metros de diámetro, unos cinco minutos caminando; la variable guarda el radio (400 m) y puede modificarse en `.env`:
+La sección 13 de `src/notebooks/02_RutasQroBus.ipynb` estima la población cubierta por buffers alrededor de las paradas con acceso confiable a Corregidora usando la **malla geoestadística del INEGI de nivel 9**, proporcionada por el Instituto de Movilidad y guardada en `data/InegiMalla/`:
+
+- `Datos totales.csv`: 38,937 celdas de Querétaro y zonas vecinas con indicadores del Censo 2020.
+- `Datos filtrados.csv`: las seis celdas que rodean la estación Corregidora (11,548 personas); se usan para validar la geometría.
+
+Antes se usaban las manzanas del servicio del INEGI; como ambas fuentes dan resultados muy parecidos, se adoptó la malla, que no depende de descargas externas. Cada celda es un cuadro de unos 468 m por lado (0.219 km², unas 22 hectáreas). Cada buffer mide 800 metros de diámetro, unos cinco minutos caminando; la variable guarda el radio (400 m) y puede modificarse en `.env`:
 
 ```dotenv
 RADIO_DEMANDA_M=400
 ```
 
-La respuesta se conserva en `data/cache/`, que Git ignora. `ACTUALIZAR_DATOS_INEGI=true` fuerza una descarga nueva de geometrías al ejecutar el notebook. Se generan CSV de manzanas y paradas, comparaciones acumuladas para P80 de 5, 15, 30, 45 y 60 minutos y `maps/mapa_demanda_potencial.html`. La población por manzana proviene del Censo 2020, el último censo nacional disponible; el servicio de geometría puede refrescarse, pero no actualiza el año de referencia censal. El servicio geográfico usado en este notebook solo expone población total, población por sexo y viviendas habitadas. Los indicadores de edad, discapacidad, escolaridad, actividad económica, salud y vivienda del `FD_CPV2020.xlsx` requieren una tabla censal adicional por `CVEGEO`; no deben sustituirse con indicadores agregados de localidad o malla.
+Como los buffers cortan las celdas en fracciones, el resultado principal es el **prorrateo por área**: de cada celda se cuenta la proporción de su superficie dentro de la unión de buffers, suponiendo población uniforme en la celda. La suma de celdas completas se reporta solo como techo. Para leer los resultados hay que tener en cuenta:
 
-El mapa de demanda es interactivo: al hacer clic en cualquier punto, un panel muestra la **ruta óptima hacia Corregidora** y los **datos censales de la manzana** donde cae el punto. La ruta se elige entre las paradas a 1,000 m o menos (`RADIO_BUSQUEDA_PARADA_M`) minimizando caminata + P80 histórico; la caminata se aproxima como línea recta × 1.3 a 80 m/min. Si ninguna parada cercana tiene muestra suficiente, se usa el tiempo GTFS y el panel lo advierte. El mapa dibuja la caminata, cada tramo de autobús con el color de su ruta y los puntos de subida y transbordo, y el panel lista los pasos y hasta tres alternativas. La manzana muestra población total, mujeres, hombres, 0-14 años, 65 o más, discapacidad, PEA, viviendas habitadas y el escenario P80 más corto que la cubre; solo hay datos para manzanas tocadas por algún buffer. Todo se calcula en el navegador con datos incrustados en el HTML.
+- Los valores negativos de los CSV (`-6`, `-7`, `-9`) son códigos de dato reservado o no disponible, no cantidades; se tratan como vacíos.
+- La malla trae población de 60 años o más (`P_60YMAS`), no de 65 o más.
+- Mujeres y hombres no vienen por separado; se estiman con la relación hombres-mujeres (`REL_H_M`) de cada celda.
+- Los CSV no incluyen geometría. `src/scripts/malla_inegi.py` reconstruye cada celda desde su código, que sigue el estándar rHEALPix (una letra y un dígito por nivel). La posición que da el estándar queda unos 4.7 km al norte de la real, así que el módulo aplica una corrección de latitud calibrada contra las manzanas del censo: con ella, la población de cada celda y la de las manzanas que contiene tienen una correlación de 0.99, y las seis celdas filtradas quedan alrededor de la estación. Es una reconstrucción validada con datos, no la geometría oficial; si se consigue el shapefile de la malla, conviene sustituirla.
+
+El mapa `maps/mapa_demanda_potencial.html` es interactivo: al hacer clic en cualquier punto, un panel muestra la **ruta óptima hacia Corregidora** y los **datos de la celda** donde cae el punto. La ruta se elige entre las paradas a 1,000 m o menos (`RADIO_BUSQUEDA_PARADA_M`) minimizando caminata + P80 histórico; la caminata se aproxima como línea recta × 1.3 a 80 m/min. Si ninguna parada cercana tiene muestra suficiente, se usa el tiempo GTFS y el panel lo advierte. El mapa dibuja la caminata, cada tramo de autobús con el color de su ruta y los puntos de subida y transbordo, y el panel lista los pasos y hasta tres alternativas. La celda muestra población, mujeres y hombres estimados, 0-14 años, 60 o más, discapacidad, PEA, viviendas habitadas y el escenario P80 más corto que la toca, con la fracción de la celda dentro de los buffers; solo hay datos para celdas tocadas por algún buffer. Todo se calcula en el navegador con datos incrustados en el HTML.
 
 El análisis y las utilidades de mapas viven directamente en celdas independientes de `02_RutasQroBus.ipynb`; no requieren módulos auxiliares exclusivos del notebook. Cada mapa queda integrado en su salida y conserva una copia HTML en `maps/`. Los mapas dibujan la unión deduplicada de todos los segmentos utilizados: una parada solo se muestra cuando tiene un tramo conectado hacia el destino. Cada ruta conserva un color estable en líneas, paradas y leyendas; los tramos finales a pie se muestran en gris discontinuo.
 
@@ -92,47 +102,29 @@ La sección de demanda repite el cálculo para paradas con acceso confiable (P80
 
 ```text
 data/processed/paradas_acceso_5_15_30_45_60_min.csv    # paradas de cada escenario
-data/processed/resumen_acceso_5_15_30_45_60_min.csv    # paradas, manzanas y población
+data/processed/resumen_acceso_5_15_30_45_60_min.csv    # paradas, celdas y población
 data/processed/paradas_acceso_5_15_30[_45]_min.csv     # los mismos datos, solo hasta 30 o 45 min
 data/processed/resumen_acceso_5_15_30[_45]_min.csv
 data/processed/personas_acceso_5_15_30_45_60_min.csv   # tabla de resumen por sexo y edad
-data/processed/manzanas_acceso_<minutos>_min.csv       # manzanas de cada escenario
+data/processed/celdas_acceso_<minutos>_min.csv         # celdas de la malla de cada escenario
+data/processed/demanda_potencial_celdas.csv            # celdas del escenario general (P80 <= 30 min)
+data/processed/demanda_potencial_resumen.json          # resumen del escenario general
 ```
 
-La tabla de resumen cuenta manzanas completas y únicas, e incluye por cada tiempo: personas totales, mujeres (`POBFEM`), hombres (`POBMAS`), niños de 0 a 14 años (`POB0_14`), personas de 65 años o más (`POB65_MAS`), personas con discapacidad (`PCON_DISC`) y población económicamente activa (`PEA`). Las variables provienen del conjunto por manzana del Censo 2020, que se descarga a `data/cache/`.
-
-El INEGI oculta con `*` los valores de manzanas con muy poca población. Esas manzanas no suman al desglose: mujeres más hombres puede ser menor que el total y los grupos de edad son un mínimo, no un conteo exacto. El notebook muestra junto a la tabla cuántas manzanas tienen cada dato.
+La tabla de resumen prorratea por área, para cada tiempo: personas, mujeres y hombres estimados, niños de 0 a 14 años (`POB0_14`), personas de 60 años o más (`P_60YMAS`), personas con discapacidad (`PCON_DISC`), población económicamente activa (`PEA`) y viviendas habitadas (`TVIVHAB`), además de la población de celdas completas como techo. Las celdas con datos reservados no suman a ese indicador, así que los grupos son un mínimo; el notebook muestra junto a la tabla cuántas celdas tienen cada dato.
 
 El escenario de 60 minutos depende de que Google se haya consultado para paradas con hasta 60 minutos de tiempo GTFS (`UMBRAL_CONSULTA_GOOGLE_MIN=60`). Una parada recién incorporada no cuenta como acceso confiable hasta acumular el mínimo de observaciones, así que el escenario de una hora crece conforme se repiten las consultas en distintos días y horarios.
 
 ### Abrir los resultados en QGIS
 
-Los archivos de paradas y manzanas se pueden cargar como capas, no solo como tablas:
+Los archivos de paradas y celdas se pueden cargar como capas, no solo como tablas:
 
-- **Opción recomendada:** arrastra a QGIS `data/processed/acceso_corregidora_qgis.gpkg`. Es un GeoPackage con una capa de paradas (puntos) y otra de manzanas (polígonos) por cada escenario de 5, 15, 30, 45 y 60 minutos, ya con su sistema de coordenadas.
+- **Opción recomendada:** arrastra a QGIS `data/processed/acceso_corregidora_qgis.gpkg`. Es un GeoPackage con una capa de paradas (puntos) y otra de celdas de la malla (polígonos) por cada escenario de 5, 15, 30, 45 y 60 minutos, ya con su sistema de coordenadas.
 - **Desde los CSV:** usa *Capa > Añadir capa > Añadir capa de texto delimitado* y elige EPSG:4326 (WGS 84) como SRC.
   - `paradas_acceso_5_15_30_45_60_min.csv` y `paradas_demanda_potencial.csv`: *Coordenadas de punto*, con `X` (longitud) y `Y` (latitud). Para ver un solo escenario, filtra por la columna `umbral_min`.
-  - `manzanas_acceso_<minutos>_min.csv` y `demanda_potencial_manzanas.csv`: *Texto bien conocido (WKT)* con la columna `WKT` para ver el contorno de cada manzana, o `X` y `Y` para ver solo un punto interior.
+  - `celdas_acceso_<minutos>_min.csv` y `demanda_potencial_celdas.csv`: *Texto bien conocido (WKT)* con la columna `WKT` para ver el contorno de cada celda, o `X` y `Y` para ver solo su punto interior.
 
-Las columnas `X`, `Y` y `WKT` van al final de cada CSV. Algunos contornos superan el límite de 32,767 caracteres por celda de Excel: si el CSV se abre y se vuelve a guardar desde Excel, esa columna se trunca. Para trabajar en QGIS conviene usar el GeoPackage.
-
-### Ejemplo con la malla geoestadística del INEGI
-
-La sección 14 de `02_RutasQroBus.ipynb` repite la estimación de demanda con la malla geoestadística del INEGI de nivel 9, guardada en `data/InegiMalla/`:
-
-- `Datos totales.csv`: 38,937 celdas de Querétaro y zonas vecinas con indicadores del Censo 2020.
-- `Datos filtrados.csv`: las seis celdas que rodean la estación Corregidora (11,548 personas).
-
-Cada celda es un cuadro de unos 468 m por lado (0.219 km², unas 22 hectáreas). No son manzanas: la cuadrícula es uniforme y mucho más gruesa. Por eso el resultado principal del ejemplo es el **prorrateo por área** (de cada celda se cuenta la proporción de su superficie dentro de los buffers, suponiendo población uniforme) y la suma de celdas completas se muestra solo como techo.
-
-Genera `data/processed/personas_acceso_malla_inegi_5_15_30_45_60_min.csv` y `maps/mapa_demanda_malla_inegi.html`. Para leer los resultados hay que tener en cuenta:
-
-- Los valores negativos de los CSV (`-6`, `-7`, `-9`) son códigos de dato reservado o no disponible, no cantidades; se tratan como vacíos.
-- La malla trae población de 60 años o más (`P_60YMAS`), no de 65 o más como las manzanas.
-- Mujeres y hombres no vienen por separado; se estiman con la relación hombres-mujeres (`REL_H_M`) de cada celda.
-- Los CSV no incluyen geometría. `src/scripts/malla_inegi.py` reconstruye cada celda desde su código, que sigue el estándar rHEALPix (una letra y un dígito por nivel). La posición que da el estándar queda unos 4.7 km al norte de la real, así que el módulo aplica una corrección de latitud calibrada contra las manzanas del censo: con ella, la población de cada celda y la de las manzanas que contiene tienen una correlación de 0.99, y las seis celdas filtradas quedan alrededor de la estación. Es una reconstrucción validada con datos, no la geometría oficial; si se consigue el shapefile de la malla, conviene sustituirla.
-
-Las dos fuentes no dan la misma cifra ni deben darla: con manzanas se cuenta la manzana completa cuando el buffer la toca, y con la malla solo la fracción de celda cubierta.
+Las columnas `X`, `Y` y `WKT` van al final de cada CSV. Para trabajar en QGIS conviene usar el GeoPackage.
 
 ### Tiempos P50/P80 en los mapas
 
@@ -248,7 +240,6 @@ Variables disponibles:
 | `MAX_EDAD_ETA_HORAS` | Antigüedad máxima permitida para usar una ETA de Google en el mapa; por defecto, 24 horas. |
 | `MIN_OBSERVACIONES_HISTORICAS` | Muestra mínima por parada para una clasificación P50/P80 preliminar; por defecto, 5. Diez o más se etiquetan como calidad alta. |
 | `RADIO_DEMANDA_M` | Radio en metros del buffer de cada parada para estimar demanda potencial; por defecto, 400, es decir, 800 m de diámetro. |
-| `ACTUALIZAR_DATOS_INEGI` | Si es `true`, vuelve a descargar las geometrías de manzana del servicio del INEGI en vez de usar la caché. |
 | `ACTUALIZAR_RED_OSM` | Si es `true`, vuelve a descargar las redes vial y peatonal de OpenStreetMap en vez de usar `data/cache/`. |
 | `RETENCION_HISTORICO_DIAS` | Ventana de retención para las observaciones de Google; por defecto, 365 días. |
 
