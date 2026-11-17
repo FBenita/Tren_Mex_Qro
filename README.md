@@ -106,13 +106,32 @@ El cálculo se hace en el navegador:
 2. Se recorren los tramos del GTFS con su tiempo programado mediano (el mismo grafo del Dijkstra de `01` y `02`). Al abordar la primera ruta se suma la constante de espera del escenario y cada cambio de ruta suma la penalización de transbordo (`PENALIZACION_TRANSBORDO_MIN`, editable en el panel).
 3. Con el tiempo que sobra en cada parada alcanzada se dibuja lo que se alcanza caminando desde ahí; esa es la mancha de color.
 
-Para ver **cuáles** paradas quedan en cada tiempo, se da clic en una fila de la tabla (o se elige en *Ver paradas*): el mapa deja solo la mancha, los tramos y las paradas de ese rango, y debajo aparece la lista de paradas ordenada por minutos desde el origen. Con la casilla *Incluir las de menos tiempo* activada (predeterminado) se ven las paradas a ese tiempo o menos, igual que los conteos de la tabla; al desactivarla se ven solo las de esa banda (0–5, 5–15, 15–30, 30–45 o 45–60 min). Clic en una parada de la lista la ubica en el mapa. Desde Corregidora con P80 las bandas tienen 1, 56, 290, 698 y 680 paradas (acumuladas: 1, 57, 347, 1,045 y 1,725).
+Para ver **cuáles** paradas quedan en cada tiempo, se da clic en una fila de la tabla (o se elige en *Ver paradas*): el mapa deja solo la mancha, los tramos y las paradas de ese rango, y debajo aparece la lista de paradas ordenada por minutos desde el origen. Con la casilla *Incluir las de menos tiempo* activada (predeterminado) se ven las paradas a ese tiempo o menos, igual que los conteos de la tabla; al desactivarla se ven solo las de esa banda (0–5, 5–15, 15–30, 30–45 o 45–60 min). Clic en una parada de la lista la ubica en el mapa. Desde Corregidora con P80 y 15 minutos por transbordo las bandas tienen 1, 84, 262, 470 y 533 paradas (acumuladas: 1, 85, 347, 817 y 1,350).
 
 El panel permite elegir el escenario: **P80 confiable** (predeterminado, igual que los escenarios de demanda), P50 habitual u horario GTFS sin calibrar. P50 y P80 aplican la constante y el factor de cada ruta calibrados con Google, o los del modelo global cuando la ruta no tiene modelo propio. Los transbordos caminando entre paradas a 200 m o menos están apagados al inicio, para coincidir con el resto del análisis, y se activan con una casilla.
 
 Las rutas con sus tiempos totales y las paradas de transbordo siguen disponibles en el control de capas, apagadas al inicio; la tabla de tiempos por ruta queda abajo a la derecha (para no cruzarse con el panel de isócronas) y se despliega con clic en su título.
 
 Son tiempos modelados, no medidos: el P80 hacia Corregidora de `02_RutasQroBus.ipynb` sale directamente de las consultas a Google por parada, y por eso las dos cifras pueden diferir un poco (por ejemplo, 347 paradas a 30 minutos o menos aquí frente a 327 allá).
+
+#### Penalización por transbordo: 15 minutos
+
+`PENALIZACION_TRANSBORDO_MIN` pasó de 5 a 15 minutos. Afecta solo a los cálculos basados en el horario GTFS; los escenarios de acceso confiable y de población no cambian, porque dependen del P80 de las consultas a Google por parada. Con 5 y 15 minutos:
+
+| Resultado | 5 min | 15 min |
+|---|---:|---:|
+| Paradas con tiempo de red GTFS ≤ 30 min | 172 | 39 |
+| Paradas con tiempo de red GTFS ≤ 60 min | 1,629 | 480 |
+| Escenario sin cruces de la vía, GTFS ≤ 30 min | 135 | 59 |
+| Paradas confiables (P80 ≤ 30) que también cumplen GTFS ≤ 30 | 105 | 33 |
+| Itinerarios distintos entre las 327 paradas confiables | 79 | 70 |
+| Constante P80 del modelo global de calibración | +6 min | 0 min |
+| Isócrona P80 desde Corregidora: paradas a 15 / 30 / 45 / 60 min | 57 / 347 / 1,045 / 1,725 | 85 / 347 / 817 / 1,350 |
+
+Dos efectos a tener en cuenta:
+
+- La calibración compara las ETA de Google con el tiempo GTFS, que incluye la penalización. Con 15 minutos el tiempo GTFS crece y la calibración lo compensa: la constante P80 global baja de 6 a 0 minutos. Por eso la isócrona a 15 minutos alcanza más paradas que antes, aunque los transbordos cuesten más.
+- La selección de paradas que se consultan en Google usa el tiempo GTFS (`UMBRAL_CONSULTA_GOOGLE_MIN=60`). Con 15 minutos solo 480 paradas quedan dentro de 60 minutos, frente a unas 1,630 con 5, así que la siguiente corrida de `01` consultaría muchas menos paradas. Para seguir alimentando los escenarios de 45 y 60 minutos conviene subir ese umbral (por ejemplo, a 90) antes de volver a consultar.
 
 #### Escenarios de 5 a 60 minutos y desglose por sexo y edad
 
@@ -259,7 +278,7 @@ El contenido esperado es:
 GOOGLE_MAPS_API_KEY=pegue_aqui_su_api_key
 EJECUTAR_GOOGLE_MAPS=false
 UMBRAL_ANALISIS_MIN=30
-PENALIZACION_TRANSBORDO_MIN=5
+PENALIZACION_TRANSBORDO_MIN=15
 MAX_EDAD_ETA_HORAS=24
 MIN_OBSERVACIONES_HISTORICAS=5
 RADIO_DEMANDA_M=400
@@ -276,7 +295,7 @@ Variables disponibles:
 | `GOOGLE_MAPS_API_KEY` | Credencial para Routes API. No es necesaria para el análisis GTFS. |
 | `EJECUTAR_GOOGLE_MAPS` | Habilita las solicitudes a Google. Mantener en `false` hasta revisar cuotas y facturación. |
 | `UMBRAL_ANALISIS_MIN` | Máximo de minutos utilizado para seleccionar paradas; por defecto, 30. |
-| `PENALIZACION_TRANSBORDO_MIN` | Minutos aproximados de espera o caminata agregados por cada cambio de ruta. |
+| `PENALIZACION_TRANSBORDO_MIN` | Minutos aproximados de espera o caminata agregados por cada cambio de ruta; por defecto, 15. |
 | `UMBRAL_CONSULTA_GOOGLE_MIN` | Tiempo GTFS máximo de las paradas que se consultan en Google; por defecto igual a `UMBRAL_ANALISIS_MIN`. Con 60 se alimenta el escenario de una hora (unas 1,700 paradas por ejecución en lugar de unas 400). |
 | `MAX_EDAD_ETA_HORAS` | Antigüedad máxima permitida para usar una ETA de Google en el mapa; por defecto, 24 horas. |
 | `MIN_OBSERVACIONES_HISTORICAS` | Muestra mínima por parada para una clasificación P50/P80 preliminar; por defecto, 5. Diez o más se etiquetan como calidad alta. |
