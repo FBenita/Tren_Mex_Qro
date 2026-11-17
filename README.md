@@ -96,6 +96,24 @@ El análisis y las utilidades de mapas viven directamente en celdas independient
 
 Genera `data/processed/tiempos_totales_rutas_gtfs.csv`, `data/processed/duraciones_viajes_gtfs.csv`, `data/processed/calibracion_tiempos_rutas_google.csv`, `data/processed/tiempos_acumulados_paradas_rutas.csv`, `data/processed/conexiones_paradas_rutas.csv` y `maps/mapa_tiempos_totales_rutas_gtfs.html`. El mapa colorea cada ruta de forma distinta y compara GTFS con P50/P80 por sentido. También muestra las **conexiones entre rutas**: la capa *Paradas de transbordo* marca las paradas donde pasan dos o más rutas (el único transbordo que usa el Dijkstra), y la capa *Conexiones a pie* une paradas a 200 m o menos en línea recta (`RADIO_CONEXION_A_PIE_M`) que ofrecen rutas distintas; esta última es solo una referencia y su tiempo usa el mismo factor de desvío y la misma velocidad de caminata (200 m ≈ 250 m por calles ≈ 4 min). Al dar clic en una ruta se listan sus paradas de transbordo y a qué rutas conectan; al dar clic en una parada se ven sus rutas y las paradas cercanas a las que se puede caminar. Como el GTFS no incluye `shapes.txt`, las líneas unen paradas consecutivas siguiendo la red vial de OpenStreetMap: son el recorrido más probable por calles, no el derrotero oficial. Las alternativas, fórmulas y limitaciones están documentadas en `docs/soluciones_tiempos_rutas.md`.
 
+#### Isócronas en `mapa_tiempos_totales_rutas_gtfs.html`
+
+El mapa abre en modo **isócronas desde la Estación Corregidora**: colorea hasta dónde se llega en 5, 15, 30, 45 y 60 minutos y un panel indica, para cada tiempo, cuántas paradas y rutas quedan al alcance y a qué distancia en línea recta está la parada más lejana. El origen se cambia con clic en cualquier parada, buscando por nombre o ID, o con el botón *Isócrona desde esta parada* de los popups de transbordo; *Usar Estación Corregidora* regresa al origen inicial.
+
+El cálculo se hace en el navegador:
+
+1. Desde el origen se camina a las paradas a `RADIO_BUSQUEDA_PARADA_M` o menos, con la distancia en línea recta × `FACTOR_DESVIO_CAMINATA` a `VELOCIDAD_CAMINATA_KMH`.
+2. Se recorren los tramos del GTFS con su tiempo programado mediano (el mismo grafo del Dijkstra de `01` y `02`). Al abordar la primera ruta se suma la constante de espera del escenario y cada cambio de ruta suma la penalización de transbordo (`PENALIZACION_TRANSBORDO_MIN`, editable en el panel).
+3. Con el tiempo que sobra en cada parada alcanzada se dibuja lo que se alcanza caminando desde ahí; esa es la mancha de color.
+
+Para ver **cuáles** paradas quedan en cada tiempo, se da clic en una fila de la tabla (o se elige en *Ver paradas*): el mapa deja solo la mancha, los tramos y las paradas de ese rango, y debajo aparece la lista de paradas ordenada por minutos desde el origen. Con la casilla *Incluir las de menos tiempo* activada (predeterminado) se ven las paradas a ese tiempo o menos, igual que los conteos de la tabla; al desactivarla se ven solo las de esa banda (0–5, 5–15, 15–30, 30–45 o 45–60 min). Clic en una parada de la lista la ubica en el mapa. Desde Corregidora con P80 las bandas tienen 1, 56, 290, 698 y 680 paradas (acumuladas: 1, 57, 347, 1,045 y 1,725).
+
+El panel permite elegir el escenario: **P80 confiable** (predeterminado, igual que los escenarios de demanda), P50 habitual u horario GTFS sin calibrar. P50 y P80 aplican la constante y el factor de cada ruta calibrados con Google, o los del modelo global cuando la ruta no tiene modelo propio. Los transbordos caminando entre paradas a 200 m o menos están apagados al inicio, para coincidir con el resto del análisis, y se activan con una casilla.
+
+Las rutas con sus tiempos totales y las paradas de transbordo siguen disponibles en el control de capas, apagadas al inicio; la tabla de tiempos por ruta queda abajo a la derecha (para no cruzarse con el panel de isócronas) y se despliega con clic en su título.
+
+Son tiempos modelados, no medidos: el P80 hacia Corregidora de `02_RutasQroBus.ipynb` sale directamente de las consultas a Google por parada, y por eso las dos cifras pueden diferir un poco (por ejemplo, 347 paradas a 30 minutos o menos aquí frente a 327 allá).
+
 #### Escenarios de 5 a 60 minutos y desglose por sexo y edad
 
 La sección de demanda repite el cálculo para paradas con acceso confiable (P80 histórico y al menos `MIN_OBSERVACIONES_HISTORICAS` observaciones) en 5, 15, 30, 45 y 60 minutos. Los escenarios son acumulados y cada uno tiene su capa en el mapa de demanda. Archivos generados:

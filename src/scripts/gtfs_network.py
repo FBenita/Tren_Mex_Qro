@@ -286,3 +286,32 @@ def cargar_rutas_base(path):
             lambda valor: [str(item) for item in json.loads(valor)]
         )
     return resultados
+
+
+def segmentos_medianos_gtfs(stop_times, trips):
+    """Tiempo programado mediano de cada tramo (parada, siguiente parada, ruta).
+
+    Une cada parada con la siguiente del mismo viaje, descarta tramos con
+    duración negativa o mayor a 180 minutos y resume con la mediana para que
+    un viaje atípico no gobierne el tramo.
+    """
+    trabajo = stop_times[
+        ["trip_id", "stop_id", "stop_sequence", "arrival_time", "departure_time"]
+    ].copy()
+    trabajo["stop_sequence"] = pd.to_numeric(trabajo["stop_sequence"], errors="raise")
+    trabajo["arrival_sec"] = gtfs_time_to_seconds(trabajo["arrival_time"])
+    trabajo["departure_sec"] = gtfs_time_to_seconds(trabajo["departure_time"])
+    trabajo = trabajo.merge(
+        trips[["trip_id", "route_id"]], on="trip_id", how="left", validate="many_to_one"
+    ).sort_values(["trip_id", "stop_sequence"], kind="stable")
+    por_viaje = trabajo.groupby("trip_id", sort=False)
+    trabajo["next_stop_id"] = por_viaje["stop_id"].shift(-1)
+    trabajo["next_arrival_sec"] = por_viaje["arrival_sec"].shift(-1)
+    trabajo = trabajo.dropna(subset=["next_stop_id", "next_arrival_sec", "route_id"]).copy()
+    trabajo["tiempo_segmento_min"] = (
+        trabajo["next_arrival_sec"] - trabajo["departure_sec"]
+    ) / 60
+    trabajo = trabajo[trabajo["tiempo_segmento_min"].between(0, 180, inclusive="both")]
+    return trabajo.groupby(
+        ["stop_id", "next_stop_id", "route_id"], as_index=False
+    )["tiempo_segmento_min"].median()
