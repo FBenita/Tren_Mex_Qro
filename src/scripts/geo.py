@@ -123,12 +123,3 @@ def tabla_con_coordenadas(capa):
     if not capa.geom_type.eq("Point").all():
         tabla["WKT"] = capa.geometry.to_wkt(rounding_precision=7).to_numpy()
     return tabla
-
-
-def guardar_capa_qgis(capa, path, nombre_capa):
-    """Agrega una capa a un GeoPackage, que QGIS abre con geometría y CRS."""
-    capa = capa.to_crs("EPSG:4326")
-    for columna in capa.columns.difference([capa.geometry.name]):
-        if capa[columna].map(lambda valor: isinstance(valor, (list, tuple))).any():
-            capa[columna] = capa[columna].map(str)
-    capa.to_file(Path(path), layer=nombre_capa, driver="GPKG")

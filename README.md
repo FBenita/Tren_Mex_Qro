@@ -154,14 +154,12 @@ El escenario de 60 minutos depende de que Google se haya consultado para paradas
 
 ### Abrir los resultados en QGIS
 
-Los archivos de paradas y celdas se pueden cargar como capas, no solo como tablas:
+Los CSV de paradas y celdas se pueden cargar como capas, no solo como tablas. Usa *Capa > Añadir capa > Añadir capa de texto delimitado* y elige EPSG:4326 (WGS 84) como SRC:
 
-- **Opción recomendada:** arrastra a QGIS `data/processed/acceso_corregidora_qgis.gpkg`. Es un GeoPackage con una capa de paradas (puntos) y otra de celdas de la malla (polígonos) por cada escenario de 5, 15, 30, 45 y 60 minutos, ya con su sistema de coordenadas.
-- **Desde los CSV:** usa *Capa > Añadir capa > Añadir capa de texto delimitado* y elige EPSG:4326 (WGS 84) como SRC.
-  - `paradas_acceso_5_15_30_45_60_min.csv` y `paradas_demanda_potencial.csv`: *Coordenadas de punto*, con `X` (longitud) y `Y` (latitud). Para ver un solo escenario, filtra por la columna `umbral_min`.
-  - `celdas_acceso_<minutos>_min.csv` y `demanda_potencial_celdas.csv`: *Texto bien conocido (WKT)* con la columna `WKT` para ver el contorno de cada celda, o `X` y `Y` para ver solo su punto interior.
+- `paradas_acceso_5_15_30_45_60_min.csv` y `paradas_demanda_potencial.csv`: *Coordenadas de punto*, con `X` (longitud) y `Y` (latitud). Para ver un solo escenario, filtra por la columna `umbral_min`.
+- `celdas_acceso_<minutos>_min.csv` y `demanda_potencial_celdas.csv`: *Texto bien conocido (WKT)* con la columna `WKT` para ver el contorno de cada celda, o `X` y `Y` para ver solo su punto interior.
 
-Las columnas `X`, `Y` y `WKT` van al final de cada CSV. Para trabajar en QGIS conviene usar el GeoPackage.
+Las columnas `X`, `Y` y `WKT` van al final de cada CSV.
 
 ### Tiempos P50/P80 en los mapas
 
